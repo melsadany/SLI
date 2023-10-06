@@ -1,0 +1,16 @@
+#! /bin/bash
+#$ -cwd
+#$ -q JM,UI,CCOM
+#$ -pe smp 56
+#$ -N tx-imputation-SLI
+#$ -M muhammad-elsadany@uiowa.edu
+#$ -o logs/$JOB_NAME.log
+#$ -j y
+#$ -ckpt user
+
+conda activate tximpute2
+PROJECT_DIR=/Dedicated/jmichaelson-wdata/msmuhammad/projects/SLI
+
+RSCRIPT_F=${PROJECT_DIR}/src/01_tx-imputation.R
+
+Rscript $RSCRIPT_F

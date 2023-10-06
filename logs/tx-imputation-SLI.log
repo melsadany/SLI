@@ -1,0 +1,1444 @@
+         used (Mb) gc trigger (Mb) max used (Mb)
+Ncells 273748 14.7     660988 35.4   452091 24.2
+Vcells 459581  3.6    8388608 64.0  1801741 13.8
+── Attaching core tidyverse packages ──────────────────────── tidyverse 2.0.0 ──
+✔ dplyr     1.1.2     ✔ readr     2.1.4
+✔ forcats   1.0.0     ✔ stringr   1.5.0
+✔ ggplot2   3.4.0     ✔ tibble    3.2.1
+✔ lubridate 1.9.2     ✔ tidyr     1.3.0
+✔ purrr     1.0.1     
+── Conflicts ────────────────────────────────────────── tidyverse_conflicts() ──
+✖ dplyr::filter() masks stats::filter()
+✖ dplyr::lag()    masks stats::lag()
+ℹ Use the conflicted package (<http://conflicted.r-lib.org/>) to force all conflicts to become errors
+
+Attaching package: ‘data.table’
+
+The following objects are masked from ‘package:lubridate’:
+
+    hour, isoweek, mday, minute, month, quarter, second, wday, week,
+    yday, year
+
+The following objects are masked from ‘package:dplyr’:
+
+    between, first, last
+
+The following object is masked from ‘package:purrr’:
+
+    transpose
+
+
+Attaching package: ‘Hmisc’
+
+The following objects are masked from ‘package:dplyr’:
+
+    src, summarize
+
+The following objects are masked from ‘package:base’:
+
+    format.pval, units
+
+
+Attaching package: ‘foreach’
+
+The following objects are masked from ‘package:purrr’:
+
+    accumulate, when
+
+Loading required package: iterators
+Loading required package: parallel
+[1] "this is the GCTA command for tissue: Adrenal_Gland\n/Dedicated/jmichaelson-wdata/msmuhammad/workbench/gcta/gcta-1.94.1 --bfile /Dedicated/jmichaelson-sdata/devGenes/merged_arrays/data/gsa2020_psycharray_merged --extract /Dedicated/jmichaelson-wdata/msmuhammad/data/UTMOST-GTEx-model-weights/tmp/rsid-ID02-UTMOST-for-Adrenal_Gland --thread-num 2 --recode --out /Dedicated/jmichaelson-wdata/msmuhammad/projects/SLI/data/derivatives/genotypes-subset/Adrenal_Gland"
+[1] "this is the GCTA command for tissue: Adipose_Visceral_Omentum\n/Dedicated/jmichaelson-wdata/msmuhammad/workbench/gcta/gcta-1.94.1 --bfile /Dedicated/jmichaelson-sdata/devGenes/merged_arrays/data/gsa2020_psycharray_merged --extract /Dedicated/jmichaelson-wdata/msmuhammad/data/UTMOST-GTEx-model-weights/tmp/rsid-ID02-UTMOST-for-Adipose_Visceral_Omentum --thread-num 2 --recode --out /Dedicated/jmichaelson-wdata/msmuhammad/projects/SLI/data/derivatives/genotypes-subset/Adipose_Visceral_Omentum"
+[1] "this is the GCTA command for tissue: Adipose_Subcutaneous\n/Dedicated/jmichaelson-wdata/msmuhammad/workbench/gcta/gcta-1.94.1 --bfile /Dedicated/jmichaelson-sdata/devGenes/merged_arrays/data/gsa2020_psycharray_merged --extract /Dedicated/jmichaelson-wdata/msmuhammad/data/UTMOST-GTEx-model-weights/tmp/rsid-ID02-UTMOST-for-Adipose_Subcutaneous --thread-num 2 --recode --out /Dedicated/jmichaelson-wdata/msmuhammad/projects/SLI/data/derivatives/genotypes-subset/Adipose_Subcutaneous"
+[1][1] "this is the GCTA command for tissue: Artery_Aorta\n/Dedicated/jmichaelson-wdata/msmuhammad/workbench/gcta/gcta-1.94.1 --bfile /Dedicated/jmichaelson-sdata/devGenes/merged_arrays/data/gsa2020_psycharray_merged --extract /Dedicated/jmichaelson-wdata/msmuhammad/data/UTMOST-GTEx-model-weights/tmp/rsid-ID02-UTMOST-for-Artery_Aorta --thread-num 2 --recode --out /Dedicated/jmichaelson-wdata/msmuhammad/projects/SLI/data/derivatives/genotypes-subset/Artery_Aorta"
+ "this is the GCTA command for tissue: Artery_Coronary\n/Dedicated/jmichaelson-wdata/msmuhammad/workbench/gcta/gcta-1.94.1 --bfile /Dedicated/jmichaelson-sdata/devGenes/merged_arrays/data/gsa2020_psycharray_merged --extract /Dedicated/jmichaelson-wdata/msmuhammad/data/UTMOST-GTEx-model-weights/tmp/rsid-ID02-UTMOST-for-Artery_Coronary --thread-num 2 --recode --out /Dedicated/jmichaelson-wdata/msmuhammad/projects/SLI/data/derivatives/genotypes-subset/Artery_Coronary"
+[1] "this is the GCTA command for tissue: Artery_Tibial\n/Dedicated/jmichaelson-wdata/msmuhammad/workbench/gcta/gcta-1.94.1 --bfile /Dedicated/jmichaelson-sdata/devGenes/merged_arrays/data/gsa2020_psycharray_merged --extract /Dedicated/jmichaelson-wdata/msmuhammad/data/UTMOST-GTEx-model-weights/tmp/rsid-ID02-UTMOST-for-Artery_Tibial --thread-num 2 --recode --out /Dedicated/jmichaelson-wdata/msmuhammad/projects/SLI/data/derivatives/genotypes-subset/Artery_Tibial"
+*******************************************************************
+* Genome-wide Complex Trait Analysis (GCTA)
+* version v1.94.1 Linux
+*******************************************************************
+*******************************************************************
+* Genome-wide Complex Trait Analysis (GCTA)
+* Built at Nov 15 2022 21:14:25, by GCC 8.5
+* Genome-wide Complex Trait Analysis (GCTA)
+* (C) 2010-present, Yang Lab, Westlake University
+* Please report bugs to Jian Yang <jian.yang@westlake.edu.cn>
+*******************************************************************
+* version v1.94.1 Linux
+* version v1.94.1 Linux
+*******************************************************************
+* Built at Nov 15 2022 21:14:25, by GCC 8.5
+* Built at Nov 15 2022 21:14:25, by GCC 8.5
+* (C) 2010-present, Yang Lab, Westlake University
+* (C) 2010-present, Yang Lab, Westlake University
+* Genome-wide Complex Trait Analysis (GCTA)
+* Please report bugs to Jian Yang <jian.yang@westlake.edu.cn>
+*******************************************************************
+* Please report bugs to Jian Yang <jian.yang@westlake.edu.cn>
+*******************************************************************
+*******************************************************************
+* version v1.94.1 Linux
+*******************************************************************
+* Genome-wide Complex Trait Analysis (GCTA)
+* Genome-wide Complex Trait Analysis (GCTA)
+Analysis started at 16:36:49 CDT on Fri Oct 06 2023.
+* Built at Nov 15 2022 21:14:25, by GCC 8.5
+* version v1.94.1 Linux
+Hostname: argon-lc-g14-39.hpc
+* version v1.94.1 Linux
+* (C) 2010-present, Yang Lab, Westlake University
+
+* Please report bugs to Jian Yang <jian.yang@westlake.edu.cn>
+*******************************************************************
+* Built at Nov 15 2022 21:14:25, by GCC 8.5
+* (C) 2010-present, Yang Lab, Westlake University
+* Built at Nov 15 2022 21:14:25, by GCC 8.5
+* Please report bugs to Jian Yang <jian.yang@westlake.edu.cn>
+* (C) 2010-present, Yang Lab, Westlake University
+Analysis started at 16:36:49 CDT on Fri Oct 06 2023.
+*******************************************************************
+* Please report bugs to Jian Yang <jian.yang@westlake.edu.cn>
+Hostname: argon-lc-g14-39.hpc
+*******************************************************************
+
+Analysis started at 16:36:49 CDT on Fri Oct 06 2023.
+Hostname: argon-lc-g14-39.hpc
+
+Analysis started at 16:36:49 CDT on Fri Oct 06 2023.
+Hostname: argon-lc-g14-39.hpc
+
+Analysis started at 16:36:49 CDT on Fri Oct 06 2023.
+Analysis started at 16:36:49 CDT on Fri Oct 06 2023.
+Hostname: argon-lc-g14-39.hpc
+Hostname: argon-lc-g14-39.hpc
+
+
+Accepted options:
+--bfile /Dedicated/jmichaelson-sdata/devGenes/merged_arrays/data/gsa2020_psycharray_merged
+--extract /Dedicated/jmichaelson-wdata/msmuhammad/data/UTMOST-GTEx-model-weights/tmp/rsid-ID02-UTMOST-for-Artery_Aorta
+--thread-num 2
+--recode
+--out /Dedicated/jmichaelson-wdata/msmuhammad/projects/SLI/data/derivatives/genotypes-subset/Artery_Aorta
+
+Note: the program will be running on 2 threads.
+
+Reading PLINK FAM file from [/Dedicated/jmichaelson-sdata/devGenes/merged_arrays/data/gsa2020_psycharray_merged.fam].
+Accepted options:
+--bfile /Dedicated/jmichaelson-sdata/devGenes/merged_arrays/data/gsa2020_psycharray_merged
+--extract /Dedicated/jmichaelson-wdata/msmuhammad/data/UTMOST-GTEx-model-weights/tmp/rsid-ID02-UTMOST-for-Artery_Tibial
+Accepted options:
+--bfile /Dedicated/jmichaelson-sdata/devGenes/merged_arrays/data/gsa2020_psycharray_merged
+--extract /Dedicated/jmichaelson-wdata/msmuhammad/data/UTMOST-GTEx-model-weights/tmp/rsid-ID02-UTMOST-for-Adipose_Visceral_Omentum
+--thread-num 2
+--recode
+--out /Dedicated/jmichaelson-wdata/msmuhammad/projects/SLI/data/derivatives/genotypes-subset/Artery_Tibial
+
+Note: the program will be running on 2 threads.
+
+--thread-num 2
+--recode
+--out /Dedicated/jmichaelson-wdata/msmuhammad/projects/SLI/data/derivatives/genotypes-subset/Adipose_Visceral_Omentum
+
+Note: the program will be running on 2 threads.
+
+Reading PLINK FAM file from [/Dedicated/jmichaelson-sdata/devGenes/merged_arrays/data/gsa2020_psycharray_merged.fam].
+1388 individuals to be included from [/Dedicated/jmichaelson-sdata/devGenes/merged_arrays/data/gsa2020_psycharray_merged.fam].
+Reading PLINK FAM file from [/Dedicated/jmichaelson-sdata/devGenes/merged_arrays/data/gsa2020_psycharray_merged.fam].
+Accepted options:
+--bfile /Dedicated/jmichaelson-sdata/devGenes/merged_arrays/data/gsa2020_psycharray_merged
+--extract /Dedicated/jmichaelson-wdata/msmuhammad/data/UTMOST-GTEx-model-weights/tmp/rsid-ID02-UTMOST-for-Adrenal_Gland
+--thread-num 2
+--recode
+--out /Dedicated/jmichaelson-wdata/msmuhammad/projects/SLI/data/derivatives/genotypes-subset/Adrenal_Gland
+
+Note: the program will be running on 2 threads.
+
+1388 individuals to be included from [/Dedicated/jmichaelson-sdata/devGenes/merged_arrays/data/gsa2020_psycharray_merged.fam].
+Reading PLINK BIM file from [/Dedicated/jmichaelson-sdata/devGenes/merged_arrays/data/gsa2020_psycharray_merged.bim].
+Reading PLINK FAM file from [/Dedicated/jmichaelson-sdata/devGenes/merged_arrays/data/gsa2020_psycharray_merged.fam].
+1388 individuals to be included from [/Dedicated/jmichaelson-sdata/devGenes/merged_arrays/data/gsa2020_psycharray_merged.fam].
+Accepted options:
+--bfile /Dedicated/jmichaelson-sdata/devGenes/merged_arrays/data/gsa2020_psycharray_merged
+--extract /Dedicated/jmichaelson-wdata/msmuhammad/data/UTMOST-GTEx-model-weights/tmp/rsid-ID02-UTMOST-for-Adipose_Subcutaneous
+Reading PLINK BIM file from [/Dedicated/jmichaelson-sdata/devGenes/merged_arrays/data/gsa2020_psycharray_merged.bim].
+--thread-num 2
+--recode
+--out /Dedicated/jmichaelson-wdata/msmuhammad/projects/SLI/data/derivatives/genotypes-subset/Adipose_Subcutaneous
+
+Note: the program will be running on 2 threads.
+
+Reading PLINK BIM file from [/Dedicated/jmichaelson-sdata/devGenes/merged_arrays/data/gsa2020_psycharray_merged.bim].
+Reading PLINK FAM file from [/Dedicated/jmichaelson-sdata/devGenes/merged_arrays/data/gsa2020_psycharray_merged.fam].
+Accepted options:
+1388 individuals to be included from [/Dedicated/jmichaelson-sdata/devGenes/merged_arrays/data/gsa2020_psycharray_merged.fam].
+--bfile /Dedicated/jmichaelson-sdata/devGenes/merged_arrays/data/gsa2020_psycharray_merged
+--extract /Dedicated/jmichaelson-wdata/msmuhammad/data/UTMOST-GTEx-model-weights/tmp/rsid-ID02-UTMOST-for-Artery_Coronary
+--thread-num 2
+--recode
+--out /Dedicated/jmichaelson-wdata/msmuhammad/projects/SLI/data/derivatives/genotypes-subset/Artery_Coronary
+
+Note: the program will be running on 2 threads.
+
+1388 individuals to be included from [/Dedicated/jmichaelson-sdata/devGenes/merged_arrays/data/gsa2020_psycharray_merged.fam].
+Reading PLINK BIM file from [/Dedicated/jmichaelson-sdata/devGenes/merged_arrays/data/gsa2020_psycharray_merged.bim].
+Reading PLINK FAM file from [/Dedicated/jmichaelson-sdata/devGenes/merged_arrays/data/gsa2020_psycharray_merged.fam].
+1388 individuals to be included from [/Dedicated/jmichaelson-sdata/devGenes/merged_arrays/data/gsa2020_psycharray_merged.fam].
+Reading PLINK BIM file from [/Dedicated/jmichaelson-sdata/devGenes/merged_arrays/data/gsa2020_psycharray_merged.bim].
+Reading PLINK BIM file from [/Dedicated/jmichaelson-sdata/devGenes/merged_arrays/data/gsa2020_psycharray_merged.bim].
+11850356 SNPs to be included from [/Dedicated/jmichaelson-sdata/devGenes/merged_arrays/data/gsa2020_psycharray_merged.bim].
+11850356 SNPs to be included from [/Dedicated/jmichaelson-sdata/devGenes/merged_arrays/data/gsa2020_psycharray_merged.bim].
+11850356 SNPs to be included from [/Dedicated/jmichaelson-sdata/devGenes/merged_arrays/data/gsa2020_psycharray_merged.bim].
+11850356 SNPs to be included from [/Dedicated/jmichaelson-sdata/devGenes/merged_arrays/data/gsa2020_psycharray_merged.bim].
+11850356 SNPs to be included from [/Dedicated/jmichaelson-sdata/devGenes/merged_arrays/data/gsa2020_psycharray_merged.bim].
+11850356 SNPs to be included from [/Dedicated/jmichaelson-sdata/devGenes/merged_arrays/data/gsa2020_psycharray_merged.bim].
+Reading a list of SNPs from [/Dedicated/jmichaelson-wdata/msmuhammad/data/UTMOST-GTEx-model-weights/tmp/rsid-ID02-UTMOST-for-Adipose_Visceral_Omentum].
+Reading a list of SNPs from [/Dedicated/jmichaelson-wdata/msmuhammad/data/UTMOST-GTEx-model-weights/tmp/rsid-ID02-UTMOST-for-Artery_Coronary].
+Reading a list of SNPs from [/Dedicated/jmichaelson-wdata/msmuhammad/data/UTMOST-GTEx-model-weights/tmp/rsid-ID02-UTMOST-for-Artery_Tibial].
+Reading a list of SNPs from [/Dedicated/jmichaelson-wdata/msmuhammad/data/UTMOST-GTEx-model-weights/tmp/rsid-ID02-UTMOST-for-Adipose_Subcutaneous].
+Reading a list of SNPs from [/Dedicated/jmichaelson-wdata/msmuhammad/data/UTMOST-GTEx-model-weights/tmp/rsid-ID02-UTMOST-for-Artery_Aorta].
+Reading a list of SNPs from [/Dedicated/jmichaelson-wdata/msmuhammad/data/UTMOST-GTEx-model-weights/tmp/rsid-ID02-UTMOST-for-Adrenal_Gland].
+334324 SNPs are extracted from [/Dedicated/jmichaelson-wdata/msmuhammad/data/UTMOST-GTEx-model-weights/tmp/rsid-ID02-UTMOST-for-Artery_Tibial].
+346408 SNPs are extracted from [/Dedicated/jmichaelson-wdata/msmuhammad/data/UTMOST-GTEx-model-weights/tmp/rsid-ID02-UTMOST-for-Adipose_Visceral_Omentum].
+319114 SNPs are extracted from [/Dedicated/jmichaelson-wdata/msmuhammad/data/UTMOST-GTEx-model-weights/tmp/rsid-ID02-UTMOST-for-Artery_Aorta].
+369200 SNPs are extracted from [/Dedicated/jmichaelson-wdata/msmuhammad/data/UTMOST-GTEx-model-weights/tmp/rsid-ID02-UTMOST-for-Adipose_Subcutaneous].
+316198 SNPs are extracted from [/Dedicated/jmichaelson-wdata/msmuhammad/data/UTMOST-GTEx-model-weights/tmp/rsid-ID02-UTMOST-for-Adrenal_Gland].
+316108 SNPs are extracted from [/Dedicated/jmichaelson-wdata/msmuhammad/data/UTMOST-GTEx-model-weights/tmp/rsid-ID02-UTMOST-for-Artery_Coronary].
+Reading PLINK BED file from [/Dedicated/jmichaelson-sdata/devGenes/merged_arrays/data/gsa2020_psycharray_merged.bed] in SNP-major format ...
+Reading PLINK BED file from [/Dedicated/jmichaelson-sdata/devGenes/merged_arrays/data/gsa2020_psycharray_merged.bed] in SNP-major format ...
+Reading PLINK BED file from [/Dedicated/jmichaelson-sdata/devGenes/merged_arrays/data/gsa2020_psycharray_merged.bed] in SNP-major format ...
+Reading PLINK BED file from [/Dedicated/jmichaelson-sdata/devGenes/merged_arrays/data/gsa2020_psycharray_merged.bed] in SNP-major format ...
+Reading PLINK BED file from [/Dedicated/jmichaelson-sdata/devGenes/merged_arrays/data/gsa2020_psycharray_merged.bed] in SNP-major format ...
+Reading PLINK BED file from [/Dedicated/jmichaelson-sdata/devGenes/merged_arrays/data/gsa2020_psycharray_merged.bed] in SNP-major format ...
+Genotype data for 1388 individuals and 316108 SNPs to be included from [/Dedicated/jmichaelson-sdata/devGenes/merged_arrays/data/gsa2020_psycharray_merged.bed].
+Genotype data for 1388 individuals and 334324 SNPs to be included from [/Dedicated/jmichaelson-sdata/devGenes/merged_arrays/data/gsa2020_psycharray_merged.bed].
+Genotype data for 1388 individuals and 346408 SNPs to be included from [/Dedicated/jmichaelson-sdata/devGenes/merged_arrays/data/gsa2020_psycharray_merged.bed].
+Genotype data for 1388 individuals and 316198 SNPs to be included from [/Dedicated/jmichaelson-sdata/devGenes/merged_arrays/data/gsa2020_psycharray_merged.bed].
+Genotype data for 1388 individuals and 319114 SNPs to be included from [/Dedicated/jmichaelson-sdata/devGenes/merged_arrays/data/gsa2020_psycharray_merged.bed].
+Genotype data for 1388 individuals and 369200 SNPs to be included from [/Dedicated/jmichaelson-sdata/devGenes/merged_arrays/data/gsa2020_psycharray_merged.bed].
+Saving the recoded genotype matrix to the file [/Dedicated/jmichaelson-wdata/msmuhammad/projects/SLI/data/derivatives/genotypes-subset/Artery_Aorta.xmat.gz].
+Saving the recoded genotype matrix to the file [/Dedicated/jmichaelson-wdata/msmuhammad/projects/SLI/data/derivatives/genotypes-subset/Adipose_Visceral_Omentum.xmat.gz].
+Saving the recoded genotype matrix to the file [/Dedicated/jmichaelson-wdata/msmuhammad/projects/SLI/data/derivatives/genotypes-subset/Adipose_Subcutaneous.xmat.gz].
+Saving the recoded genotype matrix to the file [/Dedicated/jmichaelson-wdata/msmuhammad/projects/SLI/data/derivatives/genotypes-subset/Artery_Tibial.xmat.gz].
+Saving the recoded genotype matrix to the file [/Dedicated/jmichaelson-wdata/msmuhammad/projects/SLI/data/derivatives/genotypes-subset/Adrenal_Gland.xmat.gz].
+Saving the recoded genotype matrix to the file [/Dedicated/jmichaelson-wdata/msmuhammad/projects/SLI/data/derivatives/genotypes-subset/Artery_Coronary.xmat.gz].
+The recoded genotype matrix has been saved in the file [/Dedicated/jmichaelson-wdata/msmuhammad/projects/SLI/data/derivatives/genotypes-subset/Artery_Coronary.xmat.gz] (in compressed text format).
+
+Analysis finished at 16:42:46 CDT on Fri Oct 06 2023
+Overall computational time: 5 minutes 56 sec.
+[1] "done subsetting for tissue: Artery_Coronary"
+[1] "this is the GCTA command for tissue: Brain_Cortex\n/Dedicated/jmichaelson-wdata/msmuhammad/workbench/gcta/gcta-1.94.1 --bfile /Dedicated/jmichaelson-sdata/devGenes/merged_arrays/data/gsa2020_psycharray_merged --extract /Dedicated/jmichaelson-wdata/msmuhammad/data/UTMOST-GTEx-model-weights/tmp/rsid-ID02-UTMOST-for-Brain_Cortex --thread-num 2 --recode --out /Dedicated/jmichaelson-wdata/msmuhammad/projects/SLI/data/derivatives/genotypes-subset/Brain_Cortex"
+*******************************************************************
+* Genome-wide Complex Trait Analysis (GCTA)
+* version v1.94.1 Linux
+* Built at Nov 15 2022 21:14:25, by GCC 8.5
+* (C) 2010-present, Yang Lab, Westlake University
+* Please report bugs to Jian Yang <jian.yang@westlake.edu.cn>
+*******************************************************************
+Analysis started at 16:42:46 CDT on Fri Oct 06 2023.
+Hostname: argon-lc-g14-39.hpc
+
+Accepted options:
+--bfile /Dedicated/jmichaelson-sdata/devGenes/merged_arrays/data/gsa2020_psycharray_merged
+--extract /Dedicated/jmichaelson-wdata/msmuhammad/data/UTMOST-GTEx-model-weights/tmp/rsid-ID02-UTMOST-for-Brain_Cortex
+--thread-num 2
+--recode
+--out /Dedicated/jmichaelson-wdata/msmuhammad/projects/SLI/data/derivatives/genotypes-subset/Brain_Cortex
+
+Note: the program will be running on 2 threads.
+
+Reading PLINK FAM file from [/Dedicated/jmichaelson-sdata/devGenes/merged_arrays/data/gsa2020_psycharray_merged.fam].
+1388 individuals to be included from [/Dedicated/jmichaelson-sdata/devGenes/merged_arrays/data/gsa2020_psycharray_merged.fam].
+Reading PLINK BIM file from [/Dedicated/jmichaelson-sdata/devGenes/merged_arrays/data/gsa2020_psycharray_merged.bim].
+11850356 SNPs to be included from [/Dedicated/jmichaelson-sdata/devGenes/merged_arrays/data/gsa2020_psycharray_merged.bim].
+The recoded genotype matrix has been saved in the file [/Dedicated/jmichaelson-wdata/msmuhammad/projects/SLI/data/derivatives/genotypes-subset/Adrenal_Gland.xmat.gz] (in compressed text format).
+
+Analysis finished at 16:42:56 CDT on Fri Oct 06 2023
+Overall computational time: 6 minutes 7 sec.
+[1] "done subsetting for tissue: Adrenal_Gland"
+[1] "this is the GCTA command for tissue: Brain_Cerebellar_Hemisphere\n/Dedicated/jmichaelson-wdata/msmuhammad/workbench/gcta/gcta-1.94.1 --bfile /Dedicated/jmichaelson-sdata/devGenes/merged_arrays/data/gsa2020_psycharray_merged --extract /Dedicated/jmichaelson-wdata/msmuhammad/data/UTMOST-GTEx-model-weights/tmp/rsid-ID02-UTMOST-for-Brain_Cerebellar_Hemisphere --thread-num 2 --recode --out /Dedicated/jmichaelson-wdata/msmuhammad/projects/SLI/data/derivatives/genotypes-subset/Brain_Cerebellar_Hemisphere"
+*******************************************************************
+* Genome-wide Complex Trait Analysis (GCTA)
+* version v1.94.1 Linux
+* Built at Nov 15 2022 21:14:25, by GCC 8.5
+* (C) 2010-present, Yang Lab, Westlake University
+* Please report bugs to Jian Yang <jian.yang@westlake.edu.cn>
+*******************************************************************
+Analysis started at 16:42:56 CDT on Fri Oct 06 2023.
+Hostname: argon-lc-g14-39.hpc
+
+Accepted options:
+--bfile /Dedicated/jmichaelson-sdata/devGenes/merged_arrays/data/gsa2020_psycharray_merged
+--extract /Dedicated/jmichaelson-wdata/msmuhammad/data/UTMOST-GTEx-model-weights/tmp/rsid-ID02-UTMOST-for-Brain_Cerebellar_Hemisphere
+--thread-num 2
+--recode
+--out /Dedicated/jmichaelson-wdata/msmuhammad/projects/SLI/data/derivatives/genotypes-subset/Brain_Cerebellar_Hemisphere
+
+Note: the program will be running on 2 threads.
+
+Reading PLINK FAM file from [/Dedicated/jmichaelson-sdata/devGenes/merged_arrays/data/gsa2020_psycharray_merged.fam].
+1388 individuals to be included from [/Dedicated/jmichaelson-sdata/devGenes/merged_arrays/data/gsa2020_psycharray_merged.fam].
+Reading PLINK BIM file from [/Dedicated/jmichaelson-sdata/devGenes/merged_arrays/data/gsa2020_psycharray_merged.bim].
+The recoded genotype matrix has been saved in the file [/Dedicated/jmichaelson-wdata/msmuhammad/projects/SLI/data/derivatives/genotypes-subset/Artery_Aorta.xmat.gz] (in compressed text format).
+
+Analysis finished at 16:42:56 CDT on Fri Oct 06 2023
+Overall computational time: 6 minutes 7 sec.
+[1] "done subsetting for tissue: Artery_Aorta"
+[1] "this is the GCTA command for tissue: Brain_Cerebellum\n/Dedicated/jmichaelson-wdata/msmuhammad/workbench/gcta/gcta-1.94.1 --bfile /Dedicated/jmichaelson-sdata/devGenes/merged_arrays/data/gsa2020_psycharray_merged --extract /Dedicated/jmichaelson-wdata/msmuhammad/data/UTMOST-GTEx-model-weights/tmp/rsid-ID02-UTMOST-for-Brain_Cerebellum --thread-num 2 --recode --out /Dedicated/jmichaelson-wdata/msmuhammad/projects/SLI/data/derivatives/genotypes-subset/Brain_Cerebellum"
+*******************************************************************
+* Genome-wide Complex Trait Analysis (GCTA)
+* version v1.94.1 Linux
+* Built at Nov 15 2022 21:14:25, by GCC 8.5
+* (C) 2010-present, Yang Lab, Westlake University
+* Please report bugs to Jian Yang <jian.yang@westlake.edu.cn>
+*******************************************************************
+Analysis started at 16:42:56 CDT on Fri Oct 06 2023.
+Hostname: argon-lc-g14-39.hpc
+
+Accepted options:
+--bfile /Dedicated/jmichaelson-sdata/devGenes/merged_arrays/data/gsa2020_psycharray_merged
+--extract /Dedicated/jmichaelson-wdata/msmuhammad/data/UTMOST-GTEx-model-weights/tmp/rsid-ID02-UTMOST-for-Brain_Cerebellum
+--thread-num 2
+--recode
+--out /Dedicated/jmichaelson-wdata/msmuhammad/projects/SLI/data/derivatives/genotypes-subset/Brain_Cerebellum
+
+Note: the program will be running on 2 threads.
+
+Reading PLINK FAM file from [/Dedicated/jmichaelson-sdata/devGenes/merged_arrays/data/gsa2020_psycharray_merged.fam].
+1388 individuals to be included from [/Dedicated/jmichaelson-sdata/devGenes/merged_arrays/data/gsa2020_psycharray_merged.fam].
+Reading PLINK BIM file from [/Dedicated/jmichaelson-sdata/devGenes/merged_arrays/data/gsa2020_psycharray_merged.bim].
+Reading a list of SNPs from [/Dedicated/jmichaelson-wdata/msmuhammad/data/UTMOST-GTEx-model-weights/tmp/rsid-ID02-UTMOST-for-Brain_Cortex].
+11850356 SNPs to be included from [/Dedicated/jmichaelson-sdata/devGenes/merged_arrays/data/gsa2020_psycharray_merged.bim].
+11850356 SNPs to be included from [/Dedicated/jmichaelson-sdata/devGenes/merged_arrays/data/gsa2020_psycharray_merged.bim].
+287966 SNPs are extracted from [/Dedicated/jmichaelson-wdata/msmuhammad/data/UTMOST-GTEx-model-weights/tmp/rsid-ID02-UTMOST-for-Brain_Cortex].
+The recoded genotype matrix has been saved in the file [/Dedicated/jmichaelson-wdata/msmuhammad/projects/SLI/data/derivatives/genotypes-subset/Artery_Tibial.xmat.gz] (in compressed text format).
+Reading PLINK BED file from [/Dedicated/jmichaelson-sdata/devGenes/merged_arrays/data/gsa2020_psycharray_merged.bed] in SNP-major format ...
+Reading a list of SNPs from [/Dedicated/jmichaelson-wdata/msmuhammad/data/UTMOST-GTEx-model-weights/tmp/rsid-ID02-UTMOST-for-Brain_Cerebellar_Hemisphere].
+
+Analysis finished at 16:43:12 CDT on Fri Oct 06 2023
+Overall computational time: 6 minutes 22 sec.
+[1] "done subsetting for tissue: Artery_Tibial"
+[1] "this is the GCTA command for tissue: Brain_Frontal_Cortex_BA9\n/Dedicated/jmichaelson-wdata/msmuhammad/workbench/gcta/gcta-1.94.1 --bfile /Dedicated/jmichaelson-sdata/devGenes/merged_arrays/data/gsa2020_psycharray_merged --extract /Dedicated/jmichaelson-wdata/msmuhammad/data/UTMOST-GTEx-model-weights/tmp/rsid-ID02-UTMOST-for-Brain_Frontal_Cortex_BA9 --thread-num 2 --recode --out /Dedicated/jmichaelson-wdata/msmuhammad/projects/SLI/data/derivatives/genotypes-subset/Brain_Frontal_Cortex_BA9"
+*******************************************************************
+* Genome-wide Complex Trait Analysis (GCTA)
+* version v1.94.1 Linux
+* Built at Nov 15 2022 21:14:25, by GCC 8.5
+* (C) 2010-present, Yang Lab, Westlake University
+* Please report bugs to Jian Yang <jian.yang@westlake.edu.cn>
+*******************************************************************
+Analysis started at 16:43:12 CDT on Fri Oct 06 2023.
+Hostname: argon-lc-g14-39.hpc
+
+Accepted options:
+--bfile /Dedicated/jmichaelson-sdata/devGenes/merged_arrays/data/gsa2020_psycharray_merged
+--extract /Dedicated/jmichaelson-wdata/msmuhammad/data/UTMOST-GTEx-model-weights/tmp/rsid-ID02-UTMOST-for-Brain_Frontal_Cortex_BA9
+--thread-num 2
+--recode
+--out /Dedicated/jmichaelson-wdata/msmuhammad/projects/SLI/data/derivatives/genotypes-subset/Brain_Frontal_Cortex_BA9
+
+Note: the program will be running on 2 threads.
+
+Reading PLINK FAM file from [/Dedicated/jmichaelson-sdata/devGenes/merged_arrays/data/gsa2020_psycharray_merged.fam].
+1388 individuals to be included from [/Dedicated/jmichaelson-sdata/devGenes/merged_arrays/data/gsa2020_psycharray_merged.fam].
+Reading PLINK BIM file from [/Dedicated/jmichaelson-sdata/devGenes/merged_arrays/data/gsa2020_psycharray_merged.bim].
+Reading a list of SNPs from [/Dedicated/jmichaelson-wdata/msmuhammad/data/UTMOST-GTEx-model-weights/tmp/rsid-ID02-UTMOST-for-Brain_Cerebellum].
+The recoded genotype matrix has been saved in the file [/Dedicated/jmichaelson-wdata/msmuhammad/projects/SLI/data/derivatives/genotypes-subset/Adipose_Visceral_Omentum.xmat.gz] (in compressed text format).
+
+Analysis finished at 16:43:16 CDT on Fri Oct 06 2023
+Overall computational time: 6 minutes 27 sec.
+[1] "done subsetting for tissue: Adipose_Visceral_Omentum"
+[1] "this is the GCTA command for tissue: Brain_Caudate_basal_ganglia\n/Dedicated/jmichaelson-wdata/msmuhammad/workbench/gcta/gcta-1.94.1 --bfile /Dedicated/jmichaelson-sdata/devGenes/merged_arrays/data/gsa2020_psycharray_merged --extract /Dedicated/jmichaelson-wdata/msmuhammad/data/UTMOST-GTEx-model-weights/tmp/rsid-ID02-UTMOST-for-Brain_Caudate_basal_ganglia --thread-num 2 --recode --out /Dedicated/jmichaelson-wdata/msmuhammad/projects/SLI/data/derivatives/genotypes-subset/Brain_Caudate_basal_ganglia"
+*******************************************************************
+* Genome-wide Complex Trait Analysis (GCTA)
+* version v1.94.1 Linux
+* Built at Nov 15 2022 21:14:25, by GCC 8.5
+* (C) 2010-present, Yang Lab, Westlake University
+* Please report bugs to Jian Yang <jian.yang@westlake.edu.cn>
+*******************************************************************
+Analysis started at 16:43:17 CDT on Fri Oct 06 2023.
+Hostname: argon-lc-g14-39.hpc
+
+Accepted options:
+--bfile /Dedicated/jmichaelson-sdata/devGenes/merged_arrays/data/gsa2020_psycharray_merged
+--extract /Dedicated/jmichaelson-wdata/msmuhammad/data/UTMOST-GTEx-model-weights/tmp/rsid-ID02-UTMOST-for-Brain_Caudate_basal_ganglia
+--thread-num 2
+--recode
+--out /Dedicated/jmichaelson-wdata/msmuhammad/projects/SLI/data/derivatives/genotypes-subset/Brain_Caudate_basal_ganglia
+
+Note: the program will be running on 2 threads.
+
+Reading PLINK FAM file from [/Dedicated/jmichaelson-sdata/devGenes/merged_arrays/data/gsa2020_psycharray_merged.fam].
+1388 individuals to be included from [/Dedicated/jmichaelson-sdata/devGenes/merged_arrays/data/gsa2020_psycharray_merged.fam].
+Reading PLINK BIM file from [/Dedicated/jmichaelson-sdata/devGenes/merged_arrays/data/gsa2020_psycharray_merged.bim].
+11850356 SNPs to be included from [/Dedicated/jmichaelson-sdata/devGenes/merged_arrays/data/gsa2020_psycharray_merged.bim].
+274405 SNPs are extracted from [/Dedicated/jmichaelson-wdata/msmuhammad/data/UTMOST-GTEx-model-weights/tmp/rsid-ID02-UTMOST-for-Brain_Cerebellar_Hemisphere].
+283004 SNPs are extracted from [/Dedicated/jmichaelson-wdata/msmuhammad/data/UTMOST-GTEx-model-weights/tmp/rsid-ID02-UTMOST-for-Brain_Cerebellum].
+Reading PLINK BED file from [/Dedicated/jmichaelson-sdata/devGenes/merged_arrays/data/gsa2020_psycharray_merged.bed] in SNP-major format ...
+Reading PLINK BED file from [/Dedicated/jmichaelson-sdata/devGenes/merged_arrays/data/gsa2020_psycharray_merged.bed] in SNP-major format ...
+11850356 SNPs to be included from [/Dedicated/jmichaelson-sdata/devGenes/merged_arrays/data/gsa2020_psycharray_merged.bim].
+Reading a list of SNPs from [/Dedicated/jmichaelson-wdata/msmuhammad/data/UTMOST-GTEx-model-weights/tmp/rsid-ID02-UTMOST-for-Brain_Frontal_Cortex_BA9].
+Reading a list of SNPs from [/Dedicated/jmichaelson-wdata/msmuhammad/data/UTMOST-GTEx-model-weights/tmp/rsid-ID02-UTMOST-for-Brain_Caudate_basal_ganglia].
+290868 SNPs are extracted from [/Dedicated/jmichaelson-wdata/msmuhammad/data/UTMOST-GTEx-model-weights/tmp/rsid-ID02-UTMOST-for-Brain_Frontal_Cortex_BA9].
+The recoded genotype matrix has been saved in the file [/Dedicated/jmichaelson-wdata/msmuhammad/projects/SLI/data/derivatives/genotypes-subset/Adipose_Subcutaneous.xmat.gz] (in compressed text format).
+
+Analysis finished at 16:43:39 CDT on Fri Oct 06 2023
+Overall computational time: 6 minutes 49 sec.
+Reading PLINK BED file from [/Dedicated/jmichaelson-sdata/devGenes/merged_arrays/data/gsa2020_psycharray_merged.bed] in SNP-major format ...
+[1] "done subsetting for tissue: Adipose_Subcutaneous"
+[1] "this is the GCTA command for tissue: Brain_Anterior_cingulate_cortex_BA24\n/Dedicated/jmichaelson-wdata/msmuhammad/workbench/gcta/gcta-1.94.1 --bfile /Dedicated/jmichaelson-sdata/devGenes/merged_arrays/data/gsa2020_psycharray_merged --extract /Dedicated/jmichaelson-wdata/msmuhammad/data/UTMOST-GTEx-model-weights/tmp/rsid-ID02-UTMOST-for-Brain_Anterior_cingulate_cortex_BA24 --thread-num 2 --recode --out /Dedicated/jmichaelson-wdata/msmuhammad/projects/SLI/data/derivatives/genotypes-subset/Brain_Anterior_cingulate_cortex_BA24"
+*******************************************************************
+* Genome-wide Complex Trait Analysis (GCTA)
+* version v1.94.1 Linux
+* Built at Nov 15 2022 21:14:25, by GCC 8.5
+* (C) 2010-present, Yang Lab, Westlake University
+* Please report bugs to Jian Yang <jian.yang@westlake.edu.cn>
+*******************************************************************
+Analysis started at 16:43:39 CDT on Fri Oct 06 2023.
+Hostname: argon-lc-g14-39.hpc
+
+Accepted options:
+--bfile /Dedicated/jmichaelson-sdata/devGenes/merged_arrays/data/gsa2020_psycharray_merged
+--extract /Dedicated/jmichaelson-wdata/msmuhammad/data/UTMOST-GTEx-model-weights/tmp/rsid-ID02-UTMOST-for-Brain_Anterior_cingulate_cortex_BA24
+--thread-num 2
+--recode
+--out /Dedicated/jmichaelson-wdata/msmuhammad/projects/SLI/data/derivatives/genotypes-subset/Brain_Anterior_cingulate_cortex_BA24
+
+Note: the program will be running on 2 threads.
+
+Reading PLINK FAM file from [/Dedicated/jmichaelson-sdata/devGenes/merged_arrays/data/gsa2020_psycharray_merged.fam].
+1388 individuals to be included from [/Dedicated/jmichaelson-sdata/devGenes/merged_arrays/data/gsa2020_psycharray_merged.fam].
+Reading PLINK BIM file from [/Dedicated/jmichaelson-sdata/devGenes/merged_arrays/data/gsa2020_psycharray_merged.bim].
+294734 SNPs are extracted from [/Dedicated/jmichaelson-wdata/msmuhammad/data/UTMOST-GTEx-model-weights/tmp/rsid-ID02-UTMOST-for-Brain_Caudate_basal_ganglia].
+Reading PLINK BED file from [/Dedicated/jmichaelson-sdata/devGenes/merged_arrays/data/gsa2020_psycharray_merged.bed] in SNP-major format ...
+11850356 SNPs to be included from [/Dedicated/jmichaelson-sdata/devGenes/merged_arrays/data/gsa2020_psycharray_merged.bim].
+Reading a list of SNPs from [/Dedicated/jmichaelson-wdata/msmuhammad/data/UTMOST-GTEx-model-weights/tmp/rsid-ID02-UTMOST-for-Brain_Anterior_cingulate_cortex_BA24].
+245985 SNPs are extracted from [/Dedicated/jmichaelson-wdata/msmuhammad/data/UTMOST-GTEx-model-weights/tmp/rsid-ID02-UTMOST-for-Brain_Anterior_cingulate_cortex_BA24].
+Reading PLINK BED file from [/Dedicated/jmichaelson-sdata/devGenes/merged_arrays/data/gsa2020_psycharray_merged.bed] in SNP-major format ...
+Genotype data for 1388 individuals and 287966 SNPs to be included from [/Dedicated/jmichaelson-sdata/devGenes/merged_arrays/data/gsa2020_psycharray_merged.bed].
+Saving the recoded genotype matrix to the file [/Dedicated/jmichaelson-wdata/msmuhammad/projects/SLI/data/derivatives/genotypes-subset/Brain_Cortex.xmat.gz].
+Genotype data for 1388 individuals and 274405 SNPs to be included from [/Dedicated/jmichaelson-sdata/devGenes/merged_arrays/data/gsa2020_psycharray_merged.bed].
+Saving the recoded genotype matrix to the file [/Dedicated/jmichaelson-wdata/msmuhammad/projects/SLI/data/derivatives/genotypes-subset/Brain_Cerebellar_Hemisphere.xmat.gz].
+Genotype data for 1388 individuals and 283004 SNPs to be included from [/Dedicated/jmichaelson-sdata/devGenes/merged_arrays/data/gsa2020_psycharray_merged.bed].
+Saving the recoded genotype matrix to the file [/Dedicated/jmichaelson-wdata/msmuhammad/projects/SLI/data/derivatives/genotypes-subset/Brain_Cerebellum.xmat.gz].
+Genotype data for 1388 individuals and 290868 SNPs to be included from [/Dedicated/jmichaelson-sdata/devGenes/merged_arrays/data/gsa2020_psycharray_merged.bed].
+Saving the recoded genotype matrix to the file [/Dedicated/jmichaelson-wdata/msmuhammad/projects/SLI/data/derivatives/genotypes-subset/Brain_Frontal_Cortex_BA9.xmat.gz].
+Genotype data for 1388 individuals and 294734 SNPs to be included from [/Dedicated/jmichaelson-sdata/devGenes/merged_arrays/data/gsa2020_psycharray_merged.bed].
+Saving the recoded genotype matrix to the file [/Dedicated/jmichaelson-wdata/msmuhammad/projects/SLI/data/derivatives/genotypes-subset/Brain_Caudate_basal_ganglia.xmat.gz].
+Genotype data for 1388 individuals and 245985 SNPs to be included from [/Dedicated/jmichaelson-sdata/devGenes/merged_arrays/data/gsa2020_psycharray_merged.bed].
+Saving the recoded genotype matrix to the file [/Dedicated/jmichaelson-wdata/msmuhammad/projects/SLI/data/derivatives/genotypes-subset/Brain_Anterior_cingulate_cortex_BA24.xmat.gz].
+The recoded genotype matrix has been saved in the file [/Dedicated/jmichaelson-wdata/msmuhammad/projects/SLI/data/derivatives/genotypes-subset/Brain_Cortex.xmat.gz] (in compressed text format).
+
+Analysis finished at 16:48:20 CDT on Fri Oct 06 2023
+Overall computational time: 5 minutes 33 sec.
+[1] "done subsetting for tissue: Brain_Cortex"
+[1] "this is the GCTA command for tissue: Breast_Mammary_Tissue\n/Dedicated/jmichaelson-wdata/msmuhammad/workbench/gcta/gcta-1.94.1 --bfile /Dedicated/jmichaelson-sdata/devGenes/merged_arrays/data/gsa2020_psycharray_merged --extract /Dedicated/jmichaelson-wdata/msmuhammad/data/UTMOST-GTEx-model-weights/tmp/rsid-ID02-UTMOST-for-Breast_Mammary_Tissue --thread-num 2 --recode --out /Dedicated/jmichaelson-wdata/msmuhammad/projects/SLI/data/derivatives/genotypes-subset/Breast_Mammary_Tissue"
+*******************************************************************
+* Genome-wide Complex Trait Analysis (GCTA)
+* version v1.94.1 Linux
+* Built at Nov 15 2022 21:14:25, by GCC 8.5
+* (C) 2010-present, Yang Lab, Westlake University
+* Please report bugs to Jian Yang <jian.yang@westlake.edu.cn>
+*******************************************************************
+Analysis started at 16:48:20 CDT on Fri Oct 06 2023.
+Hostname: argon-lc-g14-39.hpc
+
+Accepted options:
+--bfile /Dedicated/jmichaelson-sdata/devGenes/merged_arrays/data/gsa2020_psycharray_merged
+--extract /Dedicated/jmichaelson-wdata/msmuhammad/data/UTMOST-GTEx-model-weights/tmp/rsid-ID02-UTMOST-for-Breast_Mammary_Tissue
+--thread-num 2
+--recode
+--out /Dedicated/jmichaelson-wdata/msmuhammad/projects/SLI/data/derivatives/genotypes-subset/Breast_Mammary_Tissue
+
+Note: the program will be running on 2 threads.
+
+Reading PLINK FAM file from [/Dedicated/jmichaelson-sdata/devGenes/merged_arrays/data/gsa2020_psycharray_merged.fam].
+1388 individuals to be included from [/Dedicated/jmichaelson-sdata/devGenes/merged_arrays/data/gsa2020_psycharray_merged.fam].
+Reading PLINK BIM file from [/Dedicated/jmichaelson-sdata/devGenes/merged_arrays/data/gsa2020_psycharray_merged.bim].
+The recoded genotype matrix has been saved in the file [/Dedicated/jmichaelson-wdata/msmuhammad/projects/SLI/data/derivatives/genotypes-subset/Brain_Cerebellum.xmat.gz] (in compressed text format).
+
+Analysis finished at 16:48:21 CDT on Fri Oct 06 2023
+Overall computational time: 5 minutes 24 sec.
+[1] "done subsetting for tissue: Brain_Cerebellum"
+[1] "this is the GCTA command for tissue: Brain_Putamen_basal_ganglia\n/Dedicated/jmichaelson-wdata/msmuhammad/workbench/gcta/gcta-1.94.1 --bfile /Dedicated/jmichaelson-sdata/devGenes/merged_arrays/data/gsa2020_psycharray_merged --extract /Dedicated/jmichaelson-wdata/msmuhammad/data/UTMOST-GTEx-model-weights/tmp/rsid-ID02-UTMOST-for-Brain_Putamen_basal_ganglia --thread-num 2 --recode --out /Dedicated/jmichaelson-wdata/msmuhammad/projects/SLI/data/derivatives/genotypes-subset/Brain_Putamen_basal_ganglia"
+*******************************************************************
+* Genome-wide Complex Trait Analysis (GCTA)
+* version v1.94.1 Linux
+* Built at Nov 15 2022 21:14:25, by GCC 8.5
+* (C) 2010-present, Yang Lab, Westlake University
+* Please report bugs to Jian Yang <jian.yang@westlake.edu.cn>
+*******************************************************************
+Analysis started at 16:48:21 CDT on Fri Oct 06 2023.
+Hostname: argon-lc-g14-39.hpc
+
+Accepted options:
+--bfile /Dedicated/jmichaelson-sdata/devGenes/merged_arrays/data/gsa2020_psycharray_merged
+--extract /Dedicated/jmichaelson-wdata/msmuhammad/data/UTMOST-GTEx-model-weights/tmp/rsid-ID02-UTMOST-for-Brain_Putamen_basal_ganglia
+--thread-num 2
+--recode
+--out /Dedicated/jmichaelson-wdata/msmuhammad/projects/SLI/data/derivatives/genotypes-subset/Brain_Putamen_basal_ganglia
+
+Note: the program will be running on 2 threads.
+
+Reading PLINK FAM file from [/Dedicated/jmichaelson-sdata/devGenes/merged_arrays/data/gsa2020_psycharray_merged.fam].
+1388 individuals to be included from [/Dedicated/jmichaelson-sdata/devGenes/merged_arrays/data/gsa2020_psycharray_merged.fam].
+Reading PLINK BIM file from [/Dedicated/jmichaelson-sdata/devGenes/merged_arrays/data/gsa2020_psycharray_merged.bim].
+The recoded genotype matrix has been saved in the file [/Dedicated/jmichaelson-wdata/msmuhammad/projects/SLI/data/derivatives/genotypes-subset/Brain_Cerebellar_Hemisphere.xmat.gz] (in compressed text format).
+
+Analysis finished at 16:48:23 CDT on Fri Oct 06 2023
+Overall computational time: 5 minutes 27 sec.
+[1] "done subsetting for tissue: Brain_Cerebellar_Hemisphere"
+[1] "this is the GCTA command for tissue: Brain_Nucleus_accumbens_basal_ganglia\n/Dedicated/jmichaelson-wdata/msmuhammad/workbench/gcta/gcta-1.94.1 --bfile /Dedicated/jmichaelson-sdata/devGenes/merged_arrays/data/gsa2020_psycharray_merged --extract /Dedicated/jmichaelson-wdata/msmuhammad/data/UTMOST-GTEx-model-weights/tmp/rsid-ID02-UTMOST-for-Brain_Nucleus_accumbens_basal_ganglia --thread-num 2 --recode --out /Dedicated/jmichaelson-wdata/msmuhammad/projects/SLI/data/derivatives/genotypes-subset/Brain_Nucleus_accumbens_basal_ganglia"
+*******************************************************************
+* Genome-wide Complex Trait Analysis (GCTA)
+* version v1.94.1 Linux
+* Built at Nov 15 2022 21:14:25, by GCC 8.5
+* (C) 2010-present, Yang Lab, Westlake University
+* Please report bugs to Jian Yang <jian.yang@westlake.edu.cn>
+*******************************************************************
+Analysis started at 16:48:23 CDT on Fri Oct 06 2023.
+Hostname: argon-lc-g14-39.hpc
+
+Accepted options:
+--bfile /Dedicated/jmichaelson-sdata/devGenes/merged_arrays/data/gsa2020_psycharray_merged
+--extract /Dedicated/jmichaelson-wdata/msmuhammad/data/UTMOST-GTEx-model-weights/tmp/rsid-ID02-UTMOST-for-Brain_Nucleus_accumbens_basal_ganglia
+--thread-num 2
+--recode
+--out /Dedicated/jmichaelson-wdata/msmuhammad/projects/SLI/data/derivatives/genotypes-subset/Brain_Nucleus_accumbens_basal_ganglia
+
+Note: the program will be running on 2 threads.
+
+Reading PLINK FAM file from [/Dedicated/jmichaelson-sdata/devGenes/merged_arrays/data/gsa2020_psycharray_merged.fam].
+1388 individuals to be included from [/Dedicated/jmichaelson-sdata/devGenes/merged_arrays/data/gsa2020_psycharray_merged.fam].
+Reading PLINK BIM file from [/Dedicated/jmichaelson-sdata/devGenes/merged_arrays/data/gsa2020_psycharray_merged.bim].
+11850356 SNPs to be included from [/Dedicated/jmichaelson-sdata/devGenes/merged_arrays/data/gsa2020_psycharray_merged.bim].
+11850356 SNPs to be included from [/Dedicated/jmichaelson-sdata/devGenes/merged_arrays/data/gsa2020_psycharray_merged.bim].
+11850356 SNPs to be included from [/Dedicated/jmichaelson-sdata/devGenes/merged_arrays/data/gsa2020_psycharray_merged.bim].
+The recoded genotype matrix has been saved in the file [/Dedicated/jmichaelson-wdata/msmuhammad/projects/SLI/data/derivatives/genotypes-subset/Brain_Anterior_cingulate_cortex_BA24.xmat.gz] (in compressed text format).
+
+Analysis finished at 16:48:32 CDT on Fri Oct 06 2023
+Overall computational time: 4 minutes 52 sec.
+[1] "done subsetting for tissue: Brain_Anterior_cingulate_cortex_BA24"
+[1] "this is the GCTA command for tissue: Brain_Hippocampus\n/Dedicated/jmichaelson-wdata/msmuhammad/workbench/gcta/gcta-1.94.1 --bfile /Dedicated/jmichaelson-sdata/devGenes/merged_arrays/data/gsa2020_psycharray_merged --extract /Dedicated/jmichaelson-wdata/msmuhammad/data/UTMOST-GTEx-model-weights/tmp/rsid-ID02-UTMOST-for-Brain_Hippocampus --thread-num 2 --recode --out /Dedicated/jmichaelson-wdata/msmuhammad/projects/SLI/data/derivatives/genotypes-subset/Brain_Hippocampus"
+*******************************************************************
+* Genome-wide Complex Trait Analysis (GCTA)
+* version v1.94.1 Linux
+* Built at Nov 15 2022 21:14:25, by GCC 8.5
+* (C) 2010-present, Yang Lab, Westlake University
+* Please report bugs to Jian Yang <jian.yang@westlake.edu.cn>
+*******************************************************************
+Analysis started at 16:48:32 CDT on Fri Oct 06 2023.
+Hostname: argon-lc-g14-39.hpc
+
+Accepted options:
+--bfile /Dedicated/jmichaelson-sdata/devGenes/merged_arrays/data/gsa2020_psycharray_merged
+--extract /Dedicated/jmichaelson-wdata/msmuhammad/data/UTMOST-GTEx-model-weights/tmp/rsid-ID02-UTMOST-for-Brain_Hippocampus
+--thread-num 2
+--recode
+--out /Dedicated/jmichaelson-wdata/msmuhammad/projects/SLI/data/derivatives/genotypes-subset/Brain_Hippocampus
+
+Note: the program will be running on 2 threads.
+
+Reading PLINK FAM file from [/Dedicated/jmichaelson-sdata/devGenes/merged_arrays/data/gsa2020_psycharray_merged.fam].
+1388 individuals to be included from [/Dedicated/jmichaelson-sdata/devGenes/merged_arrays/data/gsa2020_psycharray_merged.fam].
+Reading PLINK BIM file from [/Dedicated/jmichaelson-sdata/devGenes/merged_arrays/data/gsa2020_psycharray_merged.bim].
+Reading a list of SNPs from [/Dedicated/jmichaelson-wdata/msmuhammad/data/UTMOST-GTEx-model-weights/tmp/rsid-ID02-UTMOST-for-Breast_Mammary_Tissue].
+Reading a list of SNPs from [/Dedicated/jmichaelson-wdata/msmuhammad/data/UTMOST-GTEx-model-weights/tmp/rsid-ID02-UTMOST-for-Brain_Putamen_basal_ganglia].
+Reading a list of SNPs from [/Dedicated/jmichaelson-wdata/msmuhammad/data/UTMOST-GTEx-model-weights/tmp/rsid-ID02-UTMOST-for-Brain_Nucleus_accumbens_basal_ganglia].
+11850356 SNPs to be included from [/Dedicated/jmichaelson-sdata/devGenes/merged_arrays/data/gsa2020_psycharray_merged.bim].
+368348 SNPs are extracted from [/Dedicated/jmichaelson-wdata/msmuhammad/data/UTMOST-GTEx-model-weights/tmp/rsid-ID02-UTMOST-for-Breast_Mammary_Tissue].
+271045 SNPs are extracted from [/Dedicated/jmichaelson-wdata/msmuhammad/data/UTMOST-GTEx-model-weights/tmp/rsid-ID02-UTMOST-for-Brain_Putamen_basal_ganglia].
+Reading PLINK BED file from [/Dedicated/jmichaelson-sdata/devGenes/merged_arrays/data/gsa2020_psycharray_merged.bed] in SNP-major format ...
+293686 SNPs are extracted from [/Dedicated/jmichaelson-wdata/msmuhammad/data/UTMOST-GTEx-model-weights/tmp/rsid-ID02-UTMOST-for-Brain_Nucleus_accumbens_basal_ganglia].
+Reading PLINK BED file from [/Dedicated/jmichaelson-sdata/devGenes/merged_arrays/data/gsa2020_psycharray_merged.bed] in SNP-major format ...
+Reading a list of SNPs from [/Dedicated/jmichaelson-wdata/msmuhammad/data/UTMOST-GTEx-model-weights/tmp/rsid-ID02-UTMOST-for-Brain_Hippocampus].
+The recoded genotype matrix has been saved in the file [/Dedicated/jmichaelson-wdata/msmuhammad/projects/SLI/data/derivatives/genotypes-subset/Brain_Caudate_basal_ganglia.xmat.gz] (in compressed text format).
+
+Analysis finished at 16:48:49 CDT on Fri Oct 06 2023
+Overall computational time: 5 minutes 32 sec.
+[1] "done subsetting for tissue: Brain_Caudate_basal_ganglia"
+[1] "this is the GCTA command for tissue: Brain_Hypothalamus\n/Dedicated/jmichaelson-wdata/msmuhammad/workbench/gcta/gcta-1.94.1 --bfile /Dedicated/jmichaelson-sdata/devGenes/merged_arrays/data/gsa2020_psycharray_merged --extract /Dedicated/jmichaelson-wdata/msmuhammad/data/UTMOST-GTEx-model-weights/tmp/rsid-ID02-UTMOST-for-Brain_Hypothalamus --thread-num 2 --recode --out /Dedicated/jmichaelson-wdata/msmuhammad/projects/SLI/data/derivatives/genotypes-subset/Brain_Hypothalamus"
+*******************************************************************
+* Genome-wide Complex Trait Analysis (GCTA)
+* version v1.94.1 Linux
+* Built at Nov 15 2022 21:14:25, by GCC 8.5
+* (C) 2010-present, Yang Lab, Westlake University
+* Please report bugs to Jian Yang <jian.yang@westlake.edu.cn>
+*******************************************************************
+Analysis started at 16:48:49 CDT on Fri Oct 06 2023.
+Hostname: argon-lc-g14-39.hpc
+
+Accepted options:
+--bfile /Dedicated/jmichaelson-sdata/devGenes/merged_arrays/data/gsa2020_psycharray_merged
+--extract /Dedicated/jmichaelson-wdata/msmuhammad/data/UTMOST-GTEx-model-weights/tmp/rsid-ID02-UTMOST-for-Brain_Hypothalamus
+--thread-num 2
+--recode
+--out /Dedicated/jmichaelson-wdata/msmuhammad/projects/SLI/data/derivatives/genotypes-subset/Brain_Hypothalamus
+
+Note: the program will be running on 2 threads.
+
+Reading PLINK FAM file from [/Dedicated/jmichaelson-sdata/devGenes/merged_arrays/data/gsa2020_psycharray_merged.fam].
+1388 individuals to be included from [/Dedicated/jmichaelson-sdata/devGenes/merged_arrays/data/gsa2020_psycharray_merged.fam].
+Reading PLINK BIM file from [/Dedicated/jmichaelson-sdata/devGenes/merged_arrays/data/gsa2020_psycharray_merged.bim].
+Reading PLINK BED file from [/Dedicated/jmichaelson-sdata/devGenes/merged_arrays/data/gsa2020_psycharray_merged.bed] in SNP-major format ...
+281852 SNPs are extracted from [/Dedicated/jmichaelson-wdata/msmuhammad/data/UTMOST-GTEx-model-weights/tmp/rsid-ID02-UTMOST-for-Brain_Hippocampus].
+11850356 SNPs to be included from [/Dedicated/jmichaelson-sdata/devGenes/merged_arrays/data/gsa2020_psycharray_merged.bim].
+Reading PLINK BED file from [/Dedicated/jmichaelson-sdata/devGenes/merged_arrays/data/gsa2020_psycharray_merged.bed] in SNP-major format ...
+The recoded genotype matrix has been saved in the file [/Dedicated/jmichaelson-wdata/msmuhammad/projects/SLI/data/derivatives/genotypes-subset/Brain_Frontal_Cortex_BA9.xmat.gz] (in compressed text format).
+
+Analysis finished at 16:49:01 CDT on Fri Oct 06 2023
+Overall computational time: 5 minutes 49 sec.
+[1] "done subsetting for tissue: Brain_Frontal_Cortex_BA9"
+[1] "this is the GCTA command for tissue: Cells_EBV-transformed_lymphocytes\n/Dedicated/jmichaelson-wdata/msmuhammad/workbench/gcta/gcta-1.94.1 --bfile /Dedicated/jmichaelson-sdata/devGenes/merged_arrays/data/gsa2020_psycharray_merged --extract /Dedicated/jmichaelson-wdata/msmuhammad/data/UTMOST-GTEx-model-weights/tmp/rsid-ID02-UTMOST-for-Cells_EBV-transformed_lymphocytes --thread-num 2 --recode --out /Dedicated/jmichaelson-wdata/msmuhammad/projects/SLI/data/derivatives/genotypes-subset/Cells_EBV-transformed_lymphocytes"
+*******************************************************************
+* Genome-wide Complex Trait Analysis (GCTA)
+* version v1.94.1 Linux
+* Built at Nov 15 2022 21:14:25, by GCC 8.5
+* (C) 2010-present, Yang Lab, Westlake University
+* Please report bugs to Jian Yang <jian.yang@westlake.edu.cn>
+*******************************************************************
+Analysis started at 16:49:02 CDT on Fri Oct 06 2023.
+Hostname: argon-lc-g14-39.hpc
+
+Accepted options:
+--bfile /Dedicated/jmichaelson-sdata/devGenes/merged_arrays/data/gsa2020_psycharray_merged
+--extract /Dedicated/jmichaelson-wdata/msmuhammad/data/UTMOST-GTEx-model-weights/tmp/rsid-ID02-UTMOST-for-Cells_EBV-transformed_lymphocytes
+--thread-num 2
+--recode
+--out /Dedicated/jmichaelson-wdata/msmuhammad/projects/SLI/data/derivatives/genotypes-subset/Cells_EBV-transformed_lymphocytes
+
+Note: the program will be running on 2 threads.
+
+Reading PLINK FAM file from [/Dedicated/jmichaelson-sdata/devGenes/merged_arrays/data/gsa2020_psycharray_merged.fam].
+1388 individuals to be included from [/Dedicated/jmichaelson-sdata/devGenes/merged_arrays/data/gsa2020_psycharray_merged.fam].
+Reading PLINK BIM file from [/Dedicated/jmichaelson-sdata/devGenes/merged_arrays/data/gsa2020_psycharray_merged.bim].
+Reading a list of SNPs from [/Dedicated/jmichaelson-wdata/msmuhammad/data/UTMOST-GTEx-model-weights/tmp/rsid-ID02-UTMOST-for-Brain_Hypothalamus].
+11850356 SNPs to be included from [/Dedicated/jmichaelson-sdata/devGenes/merged_arrays/data/gsa2020_psycharray_merged.bim].
+309466 SNPs are extracted from [/Dedicated/jmichaelson-wdata/msmuhammad/data/UTMOST-GTEx-model-weights/tmp/rsid-ID02-UTMOST-for-Brain_Hypothalamus].
+Reading PLINK BED file from [/Dedicated/jmichaelson-sdata/devGenes/merged_arrays/data/gsa2020_psycharray_merged.bed] in SNP-major format ...
+Reading a list of SNPs from [/Dedicated/jmichaelson-wdata/msmuhammad/data/UTMOST-GTEx-model-weights/tmp/rsid-ID02-UTMOST-for-Cells_EBV-transformed_lymphocytes].
+297623 SNPs are extracted from [/Dedicated/jmichaelson-wdata/msmuhammad/data/UTMOST-GTEx-model-weights/tmp/rsid-ID02-UTMOST-for-Cells_EBV-transformed_lymphocytes].
+Reading PLINK BED file from [/Dedicated/jmichaelson-sdata/devGenes/merged_arrays/data/gsa2020_psycharray_merged.bed] in SNP-major format ...
+Genotype data for 1388 individuals and 368348 SNPs to be included from [/Dedicated/jmichaelson-sdata/devGenes/merged_arrays/data/gsa2020_psycharray_merged.bed].
+Saving the recoded genotype matrix to the file [/Dedicated/jmichaelson-wdata/msmuhammad/projects/SLI/data/derivatives/genotypes-subset/Breast_Mammary_Tissue.xmat.gz].
+Genotype data for 1388 individuals and 271045 SNPs to be included from [/Dedicated/jmichaelson-sdata/devGenes/merged_arrays/data/gsa2020_psycharray_merged.bed].
+Genotype data for 1388 individuals and 293686 SNPs to be included from [/Dedicated/jmichaelson-sdata/devGenes/merged_arrays/data/gsa2020_psycharray_merged.bed].
+Saving the recoded genotype matrix to the file [/Dedicated/jmichaelson-wdata/msmuhammad/projects/SLI/data/derivatives/genotypes-subset/Brain_Putamen_basal_ganglia.xmat.gz].
+Saving the recoded genotype matrix to the file [/Dedicated/jmichaelson-wdata/msmuhammad/projects/SLI/data/derivatives/genotypes-subset/Brain_Nucleus_accumbens_basal_ganglia.xmat.gz].
+Genotype data for 1388 individuals and 281852 SNPs to be included from [/Dedicated/jmichaelson-sdata/devGenes/merged_arrays/data/gsa2020_psycharray_merged.bed].
+Saving the recoded genotype matrix to the file [/Dedicated/jmichaelson-wdata/msmuhammad/projects/SLI/data/derivatives/genotypes-subset/Brain_Hippocampus.xmat.gz].
+Genotype data for 1388 individuals and 309466 SNPs to be included from [/Dedicated/jmichaelson-sdata/devGenes/merged_arrays/data/gsa2020_psycharray_merged.bed].
+Saving the recoded genotype matrix to the file [/Dedicated/jmichaelson-wdata/msmuhammad/projects/SLI/data/derivatives/genotypes-subset/Brain_Hypothalamus.xmat.gz].
+Genotype data for 1388 individuals and 297623 SNPs to be included from [/Dedicated/jmichaelson-sdata/devGenes/merged_arrays/data/gsa2020_psycharray_merged.bed].
+Saving the recoded genotype matrix to the file [/Dedicated/jmichaelson-wdata/msmuhammad/projects/SLI/data/derivatives/genotypes-subset/Cells_EBV-transformed_lymphocytes.xmat.gz].
+The recoded genotype matrix has been saved in the file [/Dedicated/jmichaelson-wdata/msmuhammad/projects/SLI/data/derivatives/genotypes-subset/Brain_Putamen_basal_ganglia.xmat.gz] (in compressed text format).
+
+Analysis finished at 16:53:35 CDT on Fri Oct 06 2023
+Overall computational time: 5 minutes 13 sec.
+[1] "done subsetting for tissue: Brain_Putamen_basal_ganglia"
+[1] "this is the GCTA command for tissue: Esophagus_Gastroesophageal_Junction\n/Dedicated/jmichaelson-wdata/msmuhammad/workbench/gcta/gcta-1.94.1 --bfile /Dedicated/jmichaelson-sdata/devGenes/merged_arrays/data/gsa2020_psycharray_merged --extract /Dedicated/jmichaelson-wdata/msmuhammad/data/UTMOST-GTEx-model-weights/tmp/rsid-ID02-UTMOST-for-Esophagus_Gastroesophageal_Junction --thread-num 2 --recode --out /Dedicated/jmichaelson-wdata/msmuhammad/projects/SLI/data/derivatives/genotypes-subset/Esophagus_Gastroesophageal_Junction"
+*******************************************************************
+* Genome-wide Complex Trait Analysis (GCTA)
+* version v1.94.1 Linux
+* Built at Nov 15 2022 21:14:25, by GCC 8.5
+* (C) 2010-present, Yang Lab, Westlake University
+* Please report bugs to Jian Yang <jian.yang@westlake.edu.cn>
+*******************************************************************
+Analysis started at 16:53:35 CDT on Fri Oct 06 2023.
+Hostname: argon-lc-g14-39.hpc
+
+Accepted options:
+--bfile /Dedicated/jmichaelson-sdata/devGenes/merged_arrays/data/gsa2020_psycharray_merged
+--extract /Dedicated/jmichaelson-wdata/msmuhammad/data/UTMOST-GTEx-model-weights/tmp/rsid-ID02-UTMOST-for-Esophagus_Gastroesophageal_Junction
+--thread-num 2
+--recode
+--out /Dedicated/jmichaelson-wdata/msmuhammad/projects/SLI/data/derivatives/genotypes-subset/Esophagus_Gastroesophageal_Junction
+
+Note: the program will be running on 2 threads.
+
+Reading PLINK FAM file from [/Dedicated/jmichaelson-sdata/devGenes/merged_arrays/data/gsa2020_psycharray_merged.fam].
+1388 individuals to be included from [/Dedicated/jmichaelson-sdata/devGenes/merged_arrays/data/gsa2020_psycharray_merged.fam].
+Reading PLINK BIM file from [/Dedicated/jmichaelson-sdata/devGenes/merged_arrays/data/gsa2020_psycharray_merged.bim].
+11850356 SNPs to be included from [/Dedicated/jmichaelson-sdata/devGenes/merged_arrays/data/gsa2020_psycharray_merged.bim].
+Reading a list of SNPs from [/Dedicated/jmichaelson-wdata/msmuhammad/data/UTMOST-GTEx-model-weights/tmp/rsid-ID02-UTMOST-for-Esophagus_Gastroesophageal_Junction].
+306132 SNPs are extracted from [/Dedicated/jmichaelson-wdata/msmuhammad/data/UTMOST-GTEx-model-weights/tmp/rsid-ID02-UTMOST-for-Esophagus_Gastroesophageal_Junction].
+Reading PLINK BED file from [/Dedicated/jmichaelson-sdata/devGenes/merged_arrays/data/gsa2020_psycharray_merged.bed] in SNP-major format ...
+The recoded genotype matrix has been saved in the file [/Dedicated/jmichaelson-wdata/msmuhammad/projects/SLI/data/derivatives/genotypes-subset/Brain_Nucleus_accumbens_basal_ganglia.xmat.gz] (in compressed text format).
+
+Analysis finished at 16:54:03 CDT on Fri Oct 06 2023
+Overall computational time: 5 minutes 39 sec.
+[1] "done subsetting for tissue: Brain_Nucleus_accumbens_basal_ganglia"
+[1] "this is the GCTA command for tissue: Colon_Transverse\n/Dedicated/jmichaelson-wdata/msmuhammad/workbench/gcta/gcta-1.94.1 --bfile /Dedicated/jmichaelson-sdata/devGenes/merged_arrays/data/gsa2020_psycharray_merged --extract /Dedicated/jmichaelson-wdata/msmuhammad/data/UTMOST-GTEx-model-weights/tmp/rsid-ID02-UTMOST-for-Colon_Transverse --thread-num 2 --recode --out /Dedicated/jmichaelson-wdata/msmuhammad/projects/SLI/data/derivatives/genotypes-subset/Colon_Transverse"
+*******************************************************************
+* Genome-wide Complex Trait Analysis (GCTA)
+* version v1.94.1 Linux
+* Built at Nov 15 2022 21:14:25, by GCC 8.5
+* (C) 2010-present, Yang Lab, Westlake University
+* Please report bugs to Jian Yang <jian.yang@westlake.edu.cn>
+*******************************************************************
+Analysis started at 16:54:03 CDT on Fri Oct 06 2023.
+Hostname: argon-lc-g14-39.hpc
+
+Accepted options:
+--bfile /Dedicated/jmichaelson-sdata/devGenes/merged_arrays/data/gsa2020_psycharray_merged
+--extract /Dedicated/jmichaelson-wdata/msmuhammad/data/UTMOST-GTEx-model-weights/tmp/rsid-ID02-UTMOST-for-Colon_Transverse
+--thread-num 2
+--recode
+--out /Dedicated/jmichaelson-wdata/msmuhammad/projects/SLI/data/derivatives/genotypes-subset/Colon_Transverse
+
+Note: the program will be running on 2 threads.
+
+Reading PLINK FAM file from [/Dedicated/jmichaelson-sdata/devGenes/merged_arrays/data/gsa2020_psycharray_merged.fam].
+1388 individuals to be included from [/Dedicated/jmichaelson-sdata/devGenes/merged_arrays/data/gsa2020_psycharray_merged.fam].
+Reading PLINK BIM file from [/Dedicated/jmichaelson-sdata/devGenes/merged_arrays/data/gsa2020_psycharray_merged.bim].
+11850356 SNPs to be included from [/Dedicated/jmichaelson-sdata/devGenes/merged_arrays/data/gsa2020_psycharray_merged.bim].
+The recoded genotype matrix has been saved in the file [/Dedicated/jmichaelson-wdata/msmuhammad/projects/SLI/data/derivatives/genotypes-subset/Brain_Hippocampus.xmat.gz] (in compressed text format).
+
+Analysis finished at 16:54:15 CDT on Fri Oct 06 2023
+Overall computational time: 5 minutes 43 sec.
+[1] "done subsetting for tissue: Brain_Hippocampus"
+[1] "this is the GCTA command for tissue: Cells_Transformed_fibroblasts\n/Dedicated/jmichaelson-wdata/msmuhammad/workbench/gcta/gcta-1.94.1 --bfile /Dedicated/jmichaelson-sdata/devGenes/merged_arrays/data/gsa2020_psycharray_merged --extract /Dedicated/jmichaelson-wdata/msmuhammad/data/UTMOST-GTEx-model-weights/tmp/rsid-ID02-UTMOST-for-Cells_Transformed_fibroblasts --thread-num 2 --recode --out /Dedicated/jmichaelson-wdata/msmuhammad/projects/SLI/data/derivatives/genotypes-subset/Cells_Transformed_fibroblasts"
+*******************************************************************
+* Genome-wide Complex Trait Analysis (GCTA)
+* version v1.94.1 Linux
+* Built at Nov 15 2022 21:14:25, by GCC 8.5
+* (C) 2010-present, Yang Lab, Westlake University
+* Please report bugs to Jian Yang <jian.yang@westlake.edu.cn>
+*******************************************************************
+Analysis started at 16:54:16 CDT on Fri Oct 06 2023.
+Hostname: argon-lc-g14-39.hpc
+
+Accepted options:
+--bfile /Dedicated/jmichaelson-sdata/devGenes/merged_arrays/data/gsa2020_psycharray_merged
+--extract /Dedicated/jmichaelson-wdata/msmuhammad/data/UTMOST-GTEx-model-weights/tmp/rsid-ID02-UTMOST-for-Cells_Transformed_fibroblasts
+--thread-num 2
+--recode
+--out /Dedicated/jmichaelson-wdata/msmuhammad/projects/SLI/data/derivatives/genotypes-subset/Cells_Transformed_fibroblasts
+
+Note: the program will be running on 2 threads.
+
+Reading PLINK FAM file from [/Dedicated/jmichaelson-sdata/devGenes/merged_arrays/data/gsa2020_psycharray_merged.fam].
+1388 individuals to be included from [/Dedicated/jmichaelson-sdata/devGenes/merged_arrays/data/gsa2020_psycharray_merged.fam].
+Reading PLINK BIM file from [/Dedicated/jmichaelson-sdata/devGenes/merged_arrays/data/gsa2020_psycharray_merged.bim].
+Reading a list of SNPs from [/Dedicated/jmichaelson-wdata/msmuhammad/data/UTMOST-GTEx-model-weights/tmp/rsid-ID02-UTMOST-for-Colon_Transverse].
+11850356 SNPs to be included from [/Dedicated/jmichaelson-sdata/devGenes/merged_arrays/data/gsa2020_psycharray_merged.bim].
+348033 SNPs are extracted from [/Dedicated/jmichaelson-wdata/msmuhammad/data/UTMOST-GTEx-model-weights/tmp/rsid-ID02-UTMOST-for-Colon_Transverse].
+Reading PLINK BED file from [/Dedicated/jmichaelson-sdata/devGenes/merged_arrays/data/gsa2020_psycharray_merged.bed] in SNP-major format ...
+Reading a list of SNPs from [/Dedicated/jmichaelson-wdata/msmuhammad/data/UTMOST-GTEx-model-weights/tmp/rsid-ID02-UTMOST-for-Cells_Transformed_fibroblasts].
+312763 SNPs are extracted from [/Dedicated/jmichaelson-wdata/msmuhammad/data/UTMOST-GTEx-model-weights/tmp/rsid-ID02-UTMOST-for-Cells_Transformed_fibroblasts].
+The recoded genotype matrix has been saved in the file [/Dedicated/jmichaelson-wdata/msmuhammad/projects/SLI/data/derivatives/genotypes-subset/Brain_Hypothalamus.xmat.gz] (in compressed text format).
+
+Analysis finished at 16:54:41 CDT on Fri Oct 06 2023
+Overall computational time: 5 minutes 52 sec.
+Reading PLINK BED file from [/Dedicated/jmichaelson-sdata/devGenes/merged_arrays/data/gsa2020_psycharray_merged.bed] in SNP-major format ...
+[1] "done subsetting for tissue: Brain_Hypothalamus"
+[1] "this is the GCTA command for tissue: Colon_Sigmoid\n/Dedicated/jmichaelson-wdata/msmuhammad/workbench/gcta/gcta-1.94.1 --bfile /Dedicated/jmichaelson-sdata/devGenes/merged_arrays/data/gsa2020_psycharray_merged --extract /Dedicated/jmichaelson-wdata/msmuhammad/data/UTMOST-GTEx-model-weights/tmp/rsid-ID02-UTMOST-for-Colon_Sigmoid --thread-num 2 --recode --out /Dedicated/jmichaelson-wdata/msmuhammad/projects/SLI/data/derivatives/genotypes-subset/Colon_Sigmoid"
+*******************************************************************
+* Genome-wide Complex Trait Analysis (GCTA)
+* version v1.94.1 Linux
+* Built at Nov 15 2022 21:14:25, by GCC 8.5
+* (C) 2010-present, Yang Lab, Westlake University
+* Please report bugs to Jian Yang <jian.yang@westlake.edu.cn>
+*******************************************************************
+Analysis started at 16:54:42 CDT on Fri Oct 06 2023.
+Hostname: argon-lc-g14-39.hpc
+
+Accepted options:
+--bfile /Dedicated/jmichaelson-sdata/devGenes/merged_arrays/data/gsa2020_psycharray_merged
+--extract /Dedicated/jmichaelson-wdata/msmuhammad/data/UTMOST-GTEx-model-weights/tmp/rsid-ID02-UTMOST-for-Colon_Sigmoid
+--thread-num 2
+--recode
+--out /Dedicated/jmichaelson-wdata/msmuhammad/projects/SLI/data/derivatives/genotypes-subset/Colon_Sigmoid
+
+Note: the program will be running on 2 threads.
+
+Reading PLINK FAM file from [/Dedicated/jmichaelson-sdata/devGenes/merged_arrays/data/gsa2020_psycharray_merged.fam].
+1388 individuals to be included from [/Dedicated/jmichaelson-sdata/devGenes/merged_arrays/data/gsa2020_psycharray_merged.fam].
+Reading PLINK BIM file from [/Dedicated/jmichaelson-sdata/devGenes/merged_arrays/data/gsa2020_psycharray_merged.bim].
+The recoded genotype matrix has been saved in the file [/Dedicated/jmichaelson-wdata/msmuhammad/projects/SLI/data/derivatives/genotypes-subset/Breast_Mammary_Tissue.xmat.gz] (in compressed text format).
+
+Analysis finished at 16:54:49 CDT on Fri Oct 06 2023
+Overall computational time: 6 minutes 29 sec.
+11850356 SNPs to be included from [/Dedicated/jmichaelson-sdata/devGenes/merged_arrays/data/gsa2020_psycharray_merged.bim].
+[1] "done subsetting for tissue: Breast_Mammary_Tissue"
+[1] "this is the GCTA command for tissue: Esophagus_Mucosa\n/Dedicated/jmichaelson-wdata/msmuhammad/workbench/gcta/gcta-1.94.1 --bfile /Dedicated/jmichaelson-sdata/devGenes/merged_arrays/data/gsa2020_psycharray_merged --extract /Dedicated/jmichaelson-wdata/msmuhammad/data/UTMOST-GTEx-model-weights/tmp/rsid-ID02-UTMOST-for-Esophagus_Mucosa --thread-num 2 --recode --out /Dedicated/jmichaelson-wdata/msmuhammad/projects/SLI/data/derivatives/genotypes-subset/Esophagus_Mucosa"
+*******************************************************************
+* Genome-wide Complex Trait Analysis (GCTA)
+* version v1.94.1 Linux
+* Built at Nov 15 2022 21:14:25, by GCC 8.5
+* (C) 2010-present, Yang Lab, Westlake University
+* Please report bugs to Jian Yang <jian.yang@westlake.edu.cn>
+*******************************************************************
+Analysis started at 16:54:50 CDT on Fri Oct 06 2023.
+Hostname: argon-lc-g14-39.hpc
+
+Accepted options:
+--bfile /Dedicated/jmichaelson-sdata/devGenes/merged_arrays/data/gsa2020_psycharray_merged
+--extract /Dedicated/jmichaelson-wdata/msmuhammad/data/UTMOST-GTEx-model-weights/tmp/rsid-ID02-UTMOST-for-Esophagus_Mucosa
+--thread-num 2
+--recode
+--out /Dedicated/jmichaelson-wdata/msmuhammad/projects/SLI/data/derivatives/genotypes-subset/Esophagus_Mucosa
+
+Note: the program will be running on 2 threads.
+
+Reading PLINK FAM file from [/Dedicated/jmichaelson-sdata/devGenes/merged_arrays/data/gsa2020_psycharray_merged.fam].
+1388 individuals to be included from [/Dedicated/jmichaelson-sdata/devGenes/merged_arrays/data/gsa2020_psycharray_merged.fam].
+Reading PLINK BIM file from [/Dedicated/jmichaelson-sdata/devGenes/merged_arrays/data/gsa2020_psycharray_merged.bim].
+The recoded genotype matrix has been saved in the file [/Dedicated/jmichaelson-wdata/msmuhammad/projects/SLI/data/derivatives/genotypes-subset/Cells_EBV-transformed_lymphocytes.xmat.gz] (in compressed text format).
+
+Analysis finished at 16:54:51 CDT on Fri Oct 06 2023
+Overall computational time: 5 minutes 49 sec.
+[1] "done subsetting for tissue: Cells_EBV-transformed_lymphocytes"
+[1] "this is the GCTA command for tissue: Esophagus_Muscularis\n/Dedicated/jmichaelson-wdata/msmuhammad/workbench/gcta/gcta-1.94.1 --bfile /Dedicated/jmichaelson-sdata/devGenes/merged_arrays/data/gsa2020_psycharray_merged --extract /Dedicated/jmichaelson-wdata/msmuhammad/data/UTMOST-GTEx-model-weights/tmp/rsid-ID02-UTMOST-for-Esophagus_Muscularis --thread-num 2 --recode --out /Dedicated/jmichaelson-wdata/msmuhammad/projects/SLI/data/derivatives/genotypes-subset/Esophagus_Muscularis"
+*******************************************************************
+* Genome-wide Complex Trait Analysis (GCTA)
+* version v1.94.1 Linux
+* Built at Nov 15 2022 21:14:25, by GCC 8.5
+* (C) 2010-present, Yang Lab, Westlake University
+* Please report bugs to Jian Yang <jian.yang@westlake.edu.cn>
+*******************************************************************
+Analysis started at 16:54:51 CDT on Fri Oct 06 2023.
+Hostname: argon-lc-g14-39.hpc
+
+Accepted options:
+--bfile /Dedicated/jmichaelson-sdata/devGenes/merged_arrays/data/gsa2020_psycharray_merged
+--extract /Dedicated/jmichaelson-wdata/msmuhammad/data/UTMOST-GTEx-model-weights/tmp/rsid-ID02-UTMOST-for-Esophagus_Muscularis
+--thread-num 2
+--recode
+--out /Dedicated/jmichaelson-wdata/msmuhammad/projects/SLI/data/derivatives/genotypes-subset/Esophagus_Muscularis
+
+Note: the program will be running on 2 threads.
+
+Reading PLINK FAM file from [/Dedicated/jmichaelson-sdata/devGenes/merged_arrays/data/gsa2020_psycharray_merged.fam].
+1388 individuals to be included from [/Dedicated/jmichaelson-sdata/devGenes/merged_arrays/data/gsa2020_psycharray_merged.fam].
+Reading PLINK BIM file from [/Dedicated/jmichaelson-sdata/devGenes/merged_arrays/data/gsa2020_psycharray_merged.bim].
+11850356 SNPs to be included from [/Dedicated/jmichaelson-sdata/devGenes/merged_arrays/data/gsa2020_psycharray_merged.bim].
+Reading a list of SNPs from [/Dedicated/jmichaelson-wdata/msmuhammad/data/UTMOST-GTEx-model-weights/tmp/rsid-ID02-UTMOST-for-Colon_Sigmoid].
+11850356 SNPs to be included from [/Dedicated/jmichaelson-sdata/devGenes/merged_arrays/data/gsa2020_psycharray_merged.bim].
+Reading a list of SNPs from [/Dedicated/jmichaelson-wdata/msmuhammad/data/UTMOST-GTEx-model-weights/tmp/rsid-ID02-UTMOST-for-Esophagus_Mucosa].
+311320 SNPs are extracted from [/Dedicated/jmichaelson-wdata/msmuhammad/data/UTMOST-GTEx-model-weights/tmp/rsid-ID02-UTMOST-for-Colon_Sigmoid].
+Reading a list of SNPs from [/Dedicated/jmichaelson-wdata/msmuhammad/data/UTMOST-GTEx-model-weights/tmp/rsid-ID02-UTMOST-for-Esophagus_Muscularis].
+Reading PLINK BED file from [/Dedicated/jmichaelson-sdata/devGenes/merged_arrays/data/gsa2020_psycharray_merged.bed] in SNP-major format ...
+Genotype data for 1388 individuals and 306132 SNPs to be included from [/Dedicated/jmichaelson-sdata/devGenes/merged_arrays/data/gsa2020_psycharray_merged.bed].
+Saving the recoded genotype matrix to the file [/Dedicated/jmichaelson-wdata/msmuhammad/projects/SLI/data/derivatives/genotypes-subset/Esophagus_Gastroesophageal_Junction.xmat.gz].
+342853 SNPs are extracted from [/Dedicated/jmichaelson-wdata/msmuhammad/data/UTMOST-GTEx-model-weights/tmp/rsid-ID02-UTMOST-for-Esophagus_Mucosa].
+323994 SNPs are extracted from [/Dedicated/jmichaelson-wdata/msmuhammad/data/UTMOST-GTEx-model-weights/tmp/rsid-ID02-UTMOST-for-Esophagus_Muscularis].
+Reading PLINK BED file from [/Dedicated/jmichaelson-sdata/devGenes/merged_arrays/data/gsa2020_psycharray_merged.bed] in SNP-major format ...
+Reading PLINK BED file from [/Dedicated/jmichaelson-sdata/devGenes/merged_arrays/data/gsa2020_psycharray_merged.bed] in SNP-major format ...
+Genotype data for 1388 individuals and 348033 SNPs to be included from [/Dedicated/jmichaelson-sdata/devGenes/merged_arrays/data/gsa2020_psycharray_merged.bed].
+Saving the recoded genotype matrix to the file [/Dedicated/jmichaelson-wdata/msmuhammad/projects/SLI/data/derivatives/genotypes-subset/Colon_Transverse.xmat.gz].
+Genotype data for 1388 individuals and 312763 SNPs to be included from [/Dedicated/jmichaelson-sdata/devGenes/merged_arrays/data/gsa2020_psycharray_merged.bed].
+Saving the recoded genotype matrix to the file [/Dedicated/jmichaelson-wdata/msmuhammad/projects/SLI/data/derivatives/genotypes-subset/Cells_Transformed_fibroblasts.xmat.gz].
+Genotype data for 1388 individuals and 311320 SNPs to be included from [/Dedicated/jmichaelson-sdata/devGenes/merged_arrays/data/gsa2020_psycharray_merged.bed].
+Saving the recoded genotype matrix to the file [/Dedicated/jmichaelson-wdata/msmuhammad/projects/SLI/data/derivatives/genotypes-subset/Colon_Sigmoid.xmat.gz].
+Genotype data for 1388 individuals and 342853 SNPs to be included from [/Dedicated/jmichaelson-sdata/devGenes/merged_arrays/data/gsa2020_psycharray_merged.bed].
+Saving the recoded genotype matrix to the file [/Dedicated/jmichaelson-wdata/msmuhammad/projects/SLI/data/derivatives/genotypes-subset/Esophagus_Mucosa.xmat.gz].
+Genotype data for 1388 individuals and 323994 SNPs to be included from [/Dedicated/jmichaelson-sdata/devGenes/merged_arrays/data/gsa2020_psycharray_merged.bed].
+Saving the recoded genotype matrix to the file [/Dedicated/jmichaelson-wdata/msmuhammad/projects/SLI/data/derivatives/genotypes-subset/Esophagus_Muscularis.xmat.gz].
+The recoded genotype matrix has been saved in the file [/Dedicated/jmichaelson-wdata/msmuhammad/projects/SLI/data/derivatives/genotypes-subset/Esophagus_Gastroesophageal_Junction.xmat.gz] (in compressed text format).
+
+Analysis finished at 16:59:34 CDT on Fri Oct 06 2023
+Overall computational time: 5 minutes 59 sec.
+[1] "done subsetting for tissue: Esophagus_Gastroesophageal_Junction"
+[1] "this is the GCTA command for tissue: Lung\n/Dedicated/jmichaelson-wdata/msmuhammad/workbench/gcta/gcta-1.94.1 --bfile /Dedicated/jmichaelson-sdata/devGenes/merged_arrays/data/gsa2020_psycharray_merged --extract /Dedicated/jmichaelson-wdata/msmuhammad/data/UTMOST-GTEx-model-weights/tmp/rsid-ID02-UTMOST-for-Lung --thread-num 2 --recode --out /Dedicated/jmichaelson-wdata/msmuhammad/projects/SLI/data/derivatives/genotypes-subset/Lung"
+*******************************************************************
+* Genome-wide Complex Trait Analysis (GCTA)
+* version v1.94.1 Linux
+* Built at Nov 15 2022 21:14:25, by GCC 8.5
+* (C) 2010-present, Yang Lab, Westlake University
+* Please report bugs to Jian Yang <jian.yang@westlake.edu.cn>
+*******************************************************************
+Analysis started at 16:59:34 CDT on Fri Oct 06 2023.
+Hostname: argon-lc-g14-39.hpc
+
+Accepted options:
+--bfile /Dedicated/jmichaelson-sdata/devGenes/merged_arrays/data/gsa2020_psycharray_merged
+--extract /Dedicated/jmichaelson-wdata/msmuhammad/data/UTMOST-GTEx-model-weights/tmp/rsid-ID02-UTMOST-for-Lung
+--thread-num 2
+--recode
+--out /Dedicated/jmichaelson-wdata/msmuhammad/projects/SLI/data/derivatives/genotypes-subset/Lung
+
+Note: the program will be running on 2 threads.
+
+Reading PLINK FAM file from [/Dedicated/jmichaelson-sdata/devGenes/merged_arrays/data/gsa2020_psycharray_merged.fam].
+1388 individuals to be included from [/Dedicated/jmichaelson-sdata/devGenes/merged_arrays/data/gsa2020_psycharray_merged.fam].
+Reading PLINK BIM file from [/Dedicated/jmichaelson-sdata/devGenes/merged_arrays/data/gsa2020_psycharray_merged.bim].
+11850356 SNPs to be included from [/Dedicated/jmichaelson-sdata/devGenes/merged_arrays/data/gsa2020_psycharray_merged.bim].
+Reading a list of SNPs from [/Dedicated/jmichaelson-wdata/msmuhammad/data/UTMOST-GTEx-model-weights/tmp/rsid-ID02-UTMOST-for-Lung].
+388474 SNPs are extracted from [/Dedicated/jmichaelson-wdata/msmuhammad/data/UTMOST-GTEx-model-weights/tmp/rsid-ID02-UTMOST-for-Lung].
+Reading PLINK BED file from [/Dedicated/jmichaelson-sdata/devGenes/merged_arrays/data/gsa2020_psycharray_merged.bed] in SNP-major format ...
+The recoded genotype matrix has been saved in the file [/Dedicated/jmichaelson-wdata/msmuhammad/projects/SLI/data/derivatives/genotypes-subset/Cells_Transformed_fibroblasts.xmat.gz] (in compressed text format).
+
+Analysis finished at 17:00:17 CDT on Fri Oct 06 2023
+Overall computational time: 6 minutes 1 sec.
+[1] "done subsetting for tissue: Cells_Transformed_fibroblasts"
+[1] "this is the GCTA command for tissue: Heart_Atrial_Appendage\n/Dedicated/jmichaelson-wdata/msmuhammad/workbench/gcta/gcta-1.94.1 --bfile /Dedicated/jmichaelson-sdata/devGenes/merged_arrays/data/gsa2020_psycharray_merged --extract /Dedicated/jmichaelson-wdata/msmuhammad/data/UTMOST-GTEx-model-weights/tmp/rsid-ID02-UTMOST-for-Heart_Atrial_Appendage --thread-num 2 --recode --out /Dedicated/jmichaelson-wdata/msmuhammad/projects/SLI/data/derivatives/genotypes-subset/Heart_Atrial_Appendage"
+*******************************************************************
+* Genome-wide Complex Trait Analysis (GCTA)
+* version v1.94.1 Linux
+* Built at Nov 15 2022 21:14:25, by GCC 8.5
+* (C) 2010-present, Yang Lab, Westlake University
+* Please report bugs to Jian Yang <jian.yang@westlake.edu.cn>
+*******************************************************************
+Analysis started at 17:00:18 CDT on Fri Oct 06 2023.
+Hostname: argon-lc-g14-39.hpc
+
+Accepted options:
+--bfile /Dedicated/jmichaelson-sdata/devGenes/merged_arrays/data/gsa2020_psycharray_merged
+--extract /Dedicated/jmichaelson-wdata/msmuhammad/data/UTMOST-GTEx-model-weights/tmp/rsid-ID02-UTMOST-for-Heart_Atrial_Appendage
+--thread-num 2
+--recode
+--out /Dedicated/jmichaelson-wdata/msmuhammad/projects/SLI/data/derivatives/genotypes-subset/Heart_Atrial_Appendage
+
+Note: the program will be running on 2 threads.
+
+Reading PLINK FAM file from [/Dedicated/jmichaelson-sdata/devGenes/merged_arrays/data/gsa2020_psycharray_merged.fam].
+1388 individuals to be included from [/Dedicated/jmichaelson-sdata/devGenes/merged_arrays/data/gsa2020_psycharray_merged.fam].
+Reading PLINK BIM file from [/Dedicated/jmichaelson-sdata/devGenes/merged_arrays/data/gsa2020_psycharray_merged.bim].
+The recoded genotype matrix has been saved in the file [/Dedicated/jmichaelson-wdata/msmuhammad/projects/SLI/data/derivatives/genotypes-subset/Colon_Transverse.xmat.gz] (in compressed text format).
+
+Analysis finished at 17:00:24 CDT on Fri Oct 06 2023
+Overall computational time: 6 minutes 20 sec.
+[1] "done subsetting for tissue: Colon_Transverse"
+[1] "this is the GCTA command for tissue: Liver\n/Dedicated/jmichaelson-wdata/msmuhammad/workbench/gcta/gcta-1.94.1 --bfile /Dedicated/jmichaelson-sdata/devGenes/merged_arrays/data/gsa2020_psycharray_merged --extract /Dedicated/jmichaelson-wdata/msmuhammad/data/UTMOST-GTEx-model-weights/tmp/rsid-ID02-UTMOST-for-Liver --thread-num 2 --recode --out /Dedicated/jmichaelson-wdata/msmuhammad/projects/SLI/data/derivatives/genotypes-subset/Liver"
+*******************************************************************
+* Genome-wide Complex Trait Analysis (GCTA)
+* version v1.94.1 Linux
+* Built at Nov 15 2022 21:14:25, by GCC 8.5
+* (C) 2010-present, Yang Lab, Westlake University
+* Please report bugs to Jian Yang <jian.yang@westlake.edu.cn>
+*******************************************************************
+Analysis started at 17:00:24 CDT on Fri Oct 06 2023.
+Hostname: argon-lc-g14-39.hpc
+
+Accepted options:
+--bfile /Dedicated/jmichaelson-sdata/devGenes/merged_arrays/data/gsa2020_psycharray_merged
+--extract /Dedicated/jmichaelson-wdata/msmuhammad/data/UTMOST-GTEx-model-weights/tmp/rsid-ID02-UTMOST-for-Liver
+--thread-num 2
+--recode
+--out /Dedicated/jmichaelson-wdata/msmuhammad/projects/SLI/data/derivatives/genotypes-subset/Liver
+
+Note: the program will be running on 2 threads.
+
+Reading PLINK FAM file from [/Dedicated/jmichaelson-sdata/devGenes/merged_arrays/data/gsa2020_psycharray_merged.fam].
+1388 individuals to be included from [/Dedicated/jmichaelson-sdata/devGenes/merged_arrays/data/gsa2020_psycharray_merged.fam].
+Reading PLINK BIM file from [/Dedicated/jmichaelson-sdata/devGenes/merged_arrays/data/gsa2020_psycharray_merged.bim].
+11850356 SNPs to be included from [/Dedicated/jmichaelson-sdata/devGenes/merged_arrays/data/gsa2020_psycharray_merged.bim].
+11850356 SNPs to be included from [/Dedicated/jmichaelson-sdata/devGenes/merged_arrays/data/gsa2020_psycharray_merged.bim].
+Reading a list of SNPs from [/Dedicated/jmichaelson-wdata/msmuhammad/data/UTMOST-GTEx-model-weights/tmp/rsid-ID02-UTMOST-for-Heart_Atrial_Appendage].
+Reading a list of SNPs from [/Dedicated/jmichaelson-wdata/msmuhammad/data/UTMOST-GTEx-model-weights/tmp/rsid-ID02-UTMOST-for-Liver].
+The recoded genotype matrix has been saved in the file [/Dedicated/jmichaelson-wdata/msmuhammad/projects/SLI/data/derivatives/genotypes-subset/Colon_Sigmoid.xmat.gz] (in compressed text format).
+
+Analysis finished at 17:00:41 CDT on Fri Oct 06 2023
+Overall computational time: 5 minutes 59 sec.
+[1] "done subsetting for tissue: Colon_Sigmoid"
+[1] "this is the GCTA command for tissue: Heart_Left_Ventricle\n/Dedicated/jmichaelson-wdata/msmuhammad/workbench/gcta/gcta-1.94.1 --bfile /Dedicated/jmichaelson-sdata/devGenes/merged_arrays/data/gsa2020_psycharray_merged --extract /Dedicated/jmichaelson-wdata/msmuhammad/data/UTMOST-GTEx-model-weights/tmp/rsid-ID02-UTMOST-for-Heart_Left_Ventricle --thread-num 2 --recode --out /Dedicated/jmichaelson-wdata/msmuhammad/projects/SLI/data/derivatives/genotypes-subset/Heart_Left_Ventricle"
+*******************************************************************
+* Genome-wide Complex Trait Analysis (GCTA)
+* version v1.94.1 Linux
+* Built at Nov 15 2022 21:14:25, by GCC 8.5
+* (C) 2010-present, Yang Lab, Westlake University
+* Please report bugs to Jian Yang <jian.yang@westlake.edu.cn>
+*******************************************************************
+Analysis started at 17:00:41 CDT on Fri Oct 06 2023.
+Hostname: argon-lc-g14-39.hpc
+
+Accepted options:
+--bfile /Dedicated/jmichaelson-sdata/devGenes/merged_arrays/data/gsa2020_psycharray_merged
+--extract /Dedicated/jmichaelson-wdata/msmuhammad/data/UTMOST-GTEx-model-weights/tmp/rsid-ID02-UTMOST-for-Heart_Left_Ventricle
+--thread-num 2
+--recode
+--out /Dedicated/jmichaelson-wdata/msmuhammad/projects/SLI/data/derivatives/genotypes-subset/Heart_Left_Ventricle
+
+Note: the program will be running on 2 threads.
+
+Reading PLINK FAM file from [/Dedicated/jmichaelson-sdata/devGenes/merged_arrays/data/gsa2020_psycharray_merged.fam].
+1388 individuals to be included from [/Dedicated/jmichaelson-sdata/devGenes/merged_arrays/data/gsa2020_psycharray_merged.fam].
+Reading PLINK BIM file from [/Dedicated/jmichaelson-sdata/devGenes/merged_arrays/data/gsa2020_psycharray_merged.bim].
+295568 SNPs are extracted from [/Dedicated/jmichaelson-wdata/msmuhammad/data/UTMOST-GTEx-model-weights/tmp/rsid-ID02-UTMOST-for-Heart_Atrial_Appendage].
+Reading PLINK BED file from [/Dedicated/jmichaelson-sdata/devGenes/merged_arrays/data/gsa2020_psycharray_merged.bed] in SNP-major format ...
+11850356 SNPs to be included from [/Dedicated/jmichaelson-sdata/devGenes/merged_arrays/data/gsa2020_psycharray_merged.bim].
+309091 SNPs are extracted from [/Dedicated/jmichaelson-wdata/msmuhammad/data/UTMOST-GTEx-model-weights/tmp/rsid-ID02-UTMOST-for-Liver].
+Reading PLINK BED file from [/Dedicated/jmichaelson-sdata/devGenes/merged_arrays/data/gsa2020_psycharray_merged.bed] in SNP-major format ...
+Reading a list of SNPs from [/Dedicated/jmichaelson-wdata/msmuhammad/data/UTMOST-GTEx-model-weights/tmp/rsid-ID02-UTMOST-for-Heart_Left_Ventricle].
+The recoded genotype matrix has been saved in the file [/Dedicated/jmichaelson-wdata/msmuhammad/projects/SLI/data/derivatives/genotypes-subset/Esophagus_Muscularis.xmat.gz] (in compressed text format).
+
+Analysis finished at 17:00:58 CDT on Fri Oct 06 2023
+Overall computational time: 6 minutes 7 sec.
+[1] "done subsetting for tissue: Esophagus_Muscularis"
+[1] "this is the GCTA command for tissue: Nerve_Tibial\n/Dedicated/jmichaelson-wdata/msmuhammad/workbench/gcta/gcta-1.94.1 --bfile /Dedicated/jmichaelson-sdata/devGenes/merged_arrays/data/gsa2020_psycharray_merged --extract /Dedicated/jmichaelson-wdata/msmuhammad/data/UTMOST-GTEx-model-weights/tmp/rsid-ID02-UTMOST-for-Nerve_Tibial --thread-num 2 --recode --out /Dedicated/jmichaelson-wdata/msmuhammad/projects/SLI/data/derivatives/genotypes-subset/Nerve_Tibial"
+*******************************************************************
+* Genome-wide Complex Trait Analysis (GCTA)
+* version v1.94.1 Linux
+* Built at Nov 15 2022 21:14:25, by GCC 8.5
+* (C) 2010-present, Yang Lab, Westlake University
+* Please report bugs to Jian Yang <jian.yang@westlake.edu.cn>
+*******************************************************************
+Analysis started at 17:00:58 CDT on Fri Oct 06 2023.
+Hostname: argon-lc-g14-39.hpc
+
+Accepted options:
+--bfile /Dedicated/jmichaelson-sdata/devGenes/merged_arrays/data/gsa2020_psycharray_merged
+--extract /Dedicated/jmichaelson-wdata/msmuhammad/data/UTMOST-GTEx-model-weights/tmp/rsid-ID02-UTMOST-for-Nerve_Tibial
+--thread-num 2
+--recode
+--out /Dedicated/jmichaelson-wdata/msmuhammad/projects/SLI/data/derivatives/genotypes-subset/Nerve_Tibial
+
+Note: the program will be running on 2 threads.
+
+Reading PLINK FAM file from [/Dedicated/jmichaelson-sdata/devGenes/merged_arrays/data/gsa2020_psycharray_merged.fam].
+1388 individuals to be included from [/Dedicated/jmichaelson-sdata/devGenes/merged_arrays/data/gsa2020_psycharray_merged.fam].
+Reading PLINK BIM file from [/Dedicated/jmichaelson-sdata/devGenes/merged_arrays/data/gsa2020_psycharray_merged.bim].
+The recoded genotype matrix has been saved in the file [/Dedicated/jmichaelson-wdata/msmuhammad/projects/SLI/data/derivatives/genotypes-subset/Esophagus_Mucosa.xmat.gz] (in compressed text format).
+
+Analysis finished at 17:01:05 CDT on Fri Oct 06 2023
+Overall computational time: 6 minutes 14 sec.
+[1] "done subsetting for tissue: Esophagus_Mucosa"
+[1] "this is the GCTA command for tissue: Muscle_Skeletal\n/Dedicated/jmichaelson-wdata/msmuhammad/workbench/gcta/gcta-1.94.1 --bfile /Dedicated/jmichaelson-sdata/devGenes/merged_arrays/data/gsa2020_psycharray_merged --extract /Dedicated/jmichaelson-wdata/msmuhammad/data/UTMOST-GTEx-model-weights/tmp/rsid-ID02-UTMOST-for-Muscle_Skeletal --thread-num 2 --recode --out /Dedicated/jmichaelson-wdata/msmuhammad/projects/SLI/data/derivatives/genotypes-subset/Muscle_Skeletal"
+*******************************************************************
+* Genome-wide Complex Trait Analysis (GCTA)
+* version v1.94.1 Linux
+* Built at Nov 15 2022 21:14:25, by GCC 8.5
+* (C) 2010-present, Yang Lab, Westlake University
+* Please report bugs to Jian Yang <jian.yang@westlake.edu.cn>
+*******************************************************************
+Analysis started at 17:01:05 CDT on Fri Oct 06 2023.
+Hostname: argon-lc-g14-39.hpc
+
+Accepted options:
+--bfile /Dedicated/jmichaelson-sdata/devGenes/merged_arrays/data/gsa2020_psycharray_merged
+--extract /Dedicated/jmichaelson-wdata/msmuhammad/data/UTMOST-GTEx-model-weights/tmp/rsid-ID02-UTMOST-for-Muscle_Skeletal
+--thread-num 2
+--recode
+--out /Dedicated/jmichaelson-wdata/msmuhammad/projects/SLI/data/derivatives/genotypes-subset/Muscle_Skeletal
+
+Note: the program will be running on 2 threads.
+
+Reading PLINK FAM file from [/Dedicated/jmichaelson-sdata/devGenes/merged_arrays/data/gsa2020_psycharray_merged.fam].
+1388 individuals to be included from [/Dedicated/jmichaelson-sdata/devGenes/merged_arrays/data/gsa2020_psycharray_merged.fam].
+Reading PLINK BIM file from [/Dedicated/jmichaelson-sdata/devGenes/merged_arrays/data/gsa2020_psycharray_merged.bim].
+290516 SNPs are extracted from [/Dedicated/jmichaelson-wdata/msmuhammad/data/UTMOST-GTEx-model-weights/tmp/rsid-ID02-UTMOST-for-Heart_Left_Ventricle].
+11850356 SNPs to be included from [/Dedicated/jmichaelson-sdata/devGenes/merged_arrays/data/gsa2020_psycharray_merged.bim].
+Reading PLINK BED file from [/Dedicated/jmichaelson-sdata/devGenes/merged_arrays/data/gsa2020_psycharray_merged.bed] in SNP-major format ...
+Genotype data for 1388 individuals and 388474 SNPs to be included from [/Dedicated/jmichaelson-sdata/devGenes/merged_arrays/data/gsa2020_psycharray_merged.bed].
+Saving the recoded genotype matrix to the file [/Dedicated/jmichaelson-wdata/msmuhammad/projects/SLI/data/derivatives/genotypes-subset/Lung.xmat.gz].
+11850356 SNPs to be included from [/Dedicated/jmichaelson-sdata/devGenes/merged_arrays/data/gsa2020_psycharray_merged.bim].
+Reading a list of SNPs from [/Dedicated/jmichaelson-wdata/msmuhammad/data/UTMOST-GTEx-model-weights/tmp/rsid-ID02-UTMOST-for-Nerve_Tibial].
+Reading a list of SNPs from [/Dedicated/jmichaelson-wdata/msmuhammad/data/UTMOST-GTEx-model-weights/tmp/rsid-ID02-UTMOST-for-Muscle_Skeletal].
+353792 SNPs are extracted from [/Dedicated/jmichaelson-wdata/msmuhammad/data/UTMOST-GTEx-model-weights/tmp/rsid-ID02-UTMOST-for-Nerve_Tibial].
+Reading PLINK BED file from [/Dedicated/jmichaelson-sdata/devGenes/merged_arrays/data/gsa2020_psycharray_merged.bed] in SNP-major format ...
+317879 SNPs are extracted from [/Dedicated/jmichaelson-wdata/msmuhammad/data/UTMOST-GTEx-model-weights/tmp/rsid-ID02-UTMOST-for-Muscle_Skeletal].
+Reading PLINK BED file from [/Dedicated/jmichaelson-sdata/devGenes/merged_arrays/data/gsa2020_psycharray_merged.bed] in SNP-major format ...
+Genotype data for 1388 individuals and 295568 SNPs to be included from [/Dedicated/jmichaelson-sdata/devGenes/merged_arrays/data/gsa2020_psycharray_merged.bed].
+Saving the recoded genotype matrix to the file [/Dedicated/jmichaelson-wdata/msmuhammad/projects/SLI/data/derivatives/genotypes-subset/Heart_Atrial_Appendage.xmat.gz].
+Genotype data for 1388 individuals and 309091 SNPs to be included from [/Dedicated/jmichaelson-sdata/devGenes/merged_arrays/data/gsa2020_psycharray_merged.bed].
+Saving the recoded genotype matrix to the file [/Dedicated/jmichaelson-wdata/msmuhammad/projects/SLI/data/derivatives/genotypes-subset/Liver.xmat.gz].
+Genotype data for 1388 individuals and 290516 SNPs to be included from [/Dedicated/jmichaelson-sdata/devGenes/merged_arrays/data/gsa2020_psycharray_merged.bed].
+Saving the recoded genotype matrix to the file [/Dedicated/jmichaelson-wdata/msmuhammad/projects/SLI/data/derivatives/genotypes-subset/Heart_Left_Ventricle.xmat.gz].
+Genotype data for 1388 individuals and 353792 SNPs to be included from [/Dedicated/jmichaelson-sdata/devGenes/merged_arrays/data/gsa2020_psycharray_merged.bed].
+Saving the recoded genotype matrix to the file [/Dedicated/jmichaelson-wdata/msmuhammad/projects/SLI/data/derivatives/genotypes-subset/Nerve_Tibial.xmat.gz].
+Genotype data for 1388 individuals and 317879 SNPs to be included from [/Dedicated/jmichaelson-sdata/devGenes/merged_arrays/data/gsa2020_psycharray_merged.bed].
+Saving the recoded genotype matrix to the file [/Dedicated/jmichaelson-wdata/msmuhammad/projects/SLI/data/derivatives/genotypes-subset/Muscle_Skeletal.xmat.gz].
+The recoded genotype matrix has been saved in the file [/Dedicated/jmichaelson-wdata/msmuhammad/projects/SLI/data/derivatives/genotypes-subset/Heart_Atrial_Appendage.xmat.gz] (in compressed text format).
+
+Analysis finished at 17:06:13 CDT on Fri Oct 06 2023
+Overall computational time: 5 minutes 55 sec.
+[1] "done subsetting for tissue: Heart_Atrial_Appendage"
+[1] "this is the GCTA command for tissue: Ovary\n/Dedicated/jmichaelson-wdata/msmuhammad/workbench/gcta/gcta-1.94.1 --bfile /Dedicated/jmichaelson-sdata/devGenes/merged_arrays/data/gsa2020_psycharray_merged --extract /Dedicated/jmichaelson-wdata/msmuhammad/data/UTMOST-GTEx-model-weights/tmp/rsid-ID02-UTMOST-for-Ovary --thread-num 2 --recode --out /Dedicated/jmichaelson-wdata/msmuhammad/projects/SLI/data/derivatives/genotypes-subset/Ovary"
+*******************************************************************
+* Genome-wide Complex Trait Analysis (GCTA)
+* version v1.94.1 Linux
+* Built at Nov 15 2022 21:14:25, by GCC 8.5
+* (C) 2010-present, Yang Lab, Westlake University
+* Please report bugs to Jian Yang <jian.yang@westlake.edu.cn>
+*******************************************************************
+Analysis started at 17:06:13 CDT on Fri Oct 06 2023.
+Hostname: argon-lc-g14-39.hpc
+
+Accepted options:
+--bfile /Dedicated/jmichaelson-sdata/devGenes/merged_arrays/data/gsa2020_psycharray_merged
+--extract /Dedicated/jmichaelson-wdata/msmuhammad/data/UTMOST-GTEx-model-weights/tmp/rsid-ID02-UTMOST-for-Ovary
+--thread-num 2
+--recode
+--out /Dedicated/jmichaelson-wdata/msmuhammad/projects/SLI/data/derivatives/genotypes-subset/Ovary
+
+Note: the program will be running on 2 threads.
+
+Reading PLINK FAM file from [/Dedicated/jmichaelson-sdata/devGenes/merged_arrays/data/gsa2020_psycharray_merged.fam].
+1388 individuals to be included from [/Dedicated/jmichaelson-sdata/devGenes/merged_arrays/data/gsa2020_psycharray_merged.fam].
+Reading PLINK BIM file from [/Dedicated/jmichaelson-sdata/devGenes/merged_arrays/data/gsa2020_psycharray_merged.bim].
+The recoded genotype matrix has been saved in the file [/Dedicated/jmichaelson-wdata/msmuhammad/projects/SLI/data/derivatives/genotypes-subset/Liver.xmat.gz] (in compressed text format).
+
+Analysis finished at 17:06:20 CDT on Fri Oct 06 2023
+Overall computational time: 5 minutes 56 sec.
+[1] "done subsetting for tissue: Liver"
+[1] "this is the GCTA command for tissue: Pituitary\n/Dedicated/jmichaelson-wdata/msmuhammad/workbench/gcta/gcta-1.94.1 --bfile /Dedicated/jmichaelson-sdata/devGenes/merged_arrays/data/gsa2020_psycharray_merged --extract /Dedicated/jmichaelson-wdata/msmuhammad/data/UTMOST-GTEx-model-weights/tmp/rsid-ID02-UTMOST-for-Pituitary --thread-num 2 --recode --out /Dedicated/jmichaelson-wdata/msmuhammad/projects/SLI/data/derivatives/genotypes-subset/Pituitary"
+*******************************************************************
+* Genome-wide Complex Trait Analysis (GCTA)
+* version v1.94.1 Linux
+* Built at Nov 15 2022 21:14:25, by GCC 8.5
+* (C) 2010-present, Yang Lab, Westlake University
+* Please report bugs to Jian Yang <jian.yang@westlake.edu.cn>
+*******************************************************************
+Analysis started at 17:06:21 CDT on Fri Oct 06 2023.
+Hostname: argon-lc-g14-39.hpc
+
+Accepted options:
+--bfile /Dedicated/jmichaelson-sdata/devGenes/merged_arrays/data/gsa2020_psycharray_merged
+--extract /Dedicated/jmichaelson-wdata/msmuhammad/data/UTMOST-GTEx-model-weights/tmp/rsid-ID02-UTMOST-for-Pituitary
+--thread-num 2
+--recode
+--out /Dedicated/jmichaelson-wdata/msmuhammad/projects/SLI/data/derivatives/genotypes-subset/Pituitary
+
+Note: the program will be running on 2 threads.
+
+Reading PLINK FAM file from [/Dedicated/jmichaelson-sdata/devGenes/merged_arrays/data/gsa2020_psycharray_merged.fam].
+1388 individuals to be included from [/Dedicated/jmichaelson-sdata/devGenes/merged_arrays/data/gsa2020_psycharray_merged.fam].
+Reading PLINK BIM file from [/Dedicated/jmichaelson-sdata/devGenes/merged_arrays/data/gsa2020_psycharray_merged.bim].
+11850356 SNPs to be included from [/Dedicated/jmichaelson-sdata/devGenes/merged_arrays/data/gsa2020_psycharray_merged.bim].
+The recoded genotype matrix has been saved in the file [/Dedicated/jmichaelson-wdata/msmuhammad/projects/SLI/data/derivatives/genotypes-subset/Heart_Left_Ventricle.xmat.gz] (in compressed text format).
+
+Analysis finished at 17:06:28 CDT on Fri Oct 06 2023
+Overall computational time: 5 minutes 46 sec.
+[1] "done subsetting for tissue: Heart_Left_Ventricle"
+[1] "this is the GCTA command for tissue: Pancreas\n/Dedicated/jmichaelson-wdata/msmuhammad/workbench/gcta/gcta-1.94.1 --bfile /Dedicated/jmichaelson-sdata/devGenes/merged_arrays/data/gsa2020_psycharray_merged --extract /Dedicated/jmichaelson-wdata/msmuhammad/data/UTMOST-GTEx-model-weights/tmp/rsid-ID02-UTMOST-for-Pancreas --thread-num 2 --recode --out /Dedicated/jmichaelson-wdata/msmuhammad/projects/SLI/data/derivatives/genotypes-subset/Pancreas"
+*******************************************************************
+* Genome-wide Complex Trait Analysis (GCTA)
+* version v1.94.1 Linux
+* Built at Nov 15 2022 21:14:25, by GCC 8.5
+* (C) 2010-present, Yang Lab, Westlake University
+* Please report bugs to Jian Yang <jian.yang@westlake.edu.cn>
+*******************************************************************
+Analysis started at 17:06:28 CDT on Fri Oct 06 2023.
+Hostname: argon-lc-g14-39.hpc
+
+Accepted options:
+--bfile /Dedicated/jmichaelson-sdata/devGenes/merged_arrays/data/gsa2020_psycharray_merged
+--extract /Dedicated/jmichaelson-wdata/msmuhammad/data/UTMOST-GTEx-model-weights/tmp/rsid-ID02-UTMOST-for-Pancreas
+--thread-num 2
+--recode
+--out /Dedicated/jmichaelson-wdata/msmuhammad/projects/SLI/data/derivatives/genotypes-subset/Pancreas
+
+Note: the program will be running on 2 threads.
+
+Reading PLINK FAM file from [/Dedicated/jmichaelson-sdata/devGenes/merged_arrays/data/gsa2020_psycharray_merged.fam].
+1388 individuals to be included from [/Dedicated/jmichaelson-sdata/devGenes/merged_arrays/data/gsa2020_psycharray_merged.fam].
+Reading PLINK BIM file from [/Dedicated/jmichaelson-sdata/devGenes/merged_arrays/data/gsa2020_psycharray_merged.bim].
+11850356 SNPs to be included from [/Dedicated/jmichaelson-sdata/devGenes/merged_arrays/data/gsa2020_psycharray_merged.bim].
+Reading a list of SNPs from [/Dedicated/jmichaelson-wdata/msmuhammad/data/UTMOST-GTEx-model-weights/tmp/rsid-ID02-UTMOST-for-Ovary].
+11850356 SNPs to be included from [/Dedicated/jmichaelson-sdata/devGenes/merged_arrays/data/gsa2020_psycharray_merged.bim].
+Reading a list of SNPs from [/Dedicated/jmichaelson-wdata/msmuhammad/data/UTMOST-GTEx-model-weights/tmp/rsid-ID02-UTMOST-for-Pituitary].
+291521 SNPs are extracted from [/Dedicated/jmichaelson-wdata/msmuhammad/data/UTMOST-GTEx-model-weights/tmp/rsid-ID02-UTMOST-for-Ovary].
+The recoded genotype matrix has been saved in the file [/Dedicated/jmichaelson-wdata/msmuhammad/projects/SLI/data/derivatives/genotypes-subset/Lung.xmat.gz] (in compressed text format).
+
+Analysis finished at 17:06:40 CDT on Fri Oct 06 2023
+Overall computational time: 7 minutes 5 sec.
+[1] "done subsetting for tissue: Lung"
+[1] "this is the GCTA command for tissue: Prostate\n/Dedicated/jmichaelson-wdata/msmuhammad/workbench/gcta/gcta-1.94.1 --bfile /Dedicated/jmichaelson-sdata/devGenes/merged_arrays/data/gsa2020_psycharray_merged --extract /Dedicated/jmichaelson-wdata/msmuhammad/data/UTMOST-GTEx-model-weights/tmp/rsid-ID02-UTMOST-for-Prostate --thread-num 2 --recode --out /Dedicated/jmichaelson-wdata/msmuhammad/projects/SLI/data/derivatives/genotypes-subset/Prostate"
+*******************************************************************
+* Genome-wide Complex Trait Analysis (GCTA)
+* version v1.94.1 Linux
+* Built at Nov 15 2022 21:14:25, by GCC 8.5
+* (C) 2010-present, Yang Lab, Westlake University
+* Please report bugs to Jian Yang <jian.yang@westlake.edu.cn>
+*******************************************************************
+Analysis started at 17:06:40 CDT on Fri Oct 06 2023.
+Hostname: argon-lc-g14-39.hpc
+
+Accepted options:
+--bfile /Dedicated/jmichaelson-sdata/devGenes/merged_arrays/data/gsa2020_psycharray_merged
+--extract /Dedicated/jmichaelson-wdata/msmuhammad/data/UTMOST-GTEx-model-weights/tmp/rsid-ID02-UTMOST-for-Prostate
+--thread-num 2
+--recode
+--out /Dedicated/jmichaelson-wdata/msmuhammad/projects/SLI/data/derivatives/genotypes-subset/Prostate
+
+Note: the program will be running on 2 threads.
+
+Reading PLINK FAM file from [/Dedicated/jmichaelson-sdata/devGenes/merged_arrays/data/gsa2020_psycharray_merged.fam].
+1388 individuals to be included from [/Dedicated/jmichaelson-sdata/devGenes/merged_arrays/data/gsa2020_psycharray_merged.fam].
+Reading PLINK BIM file from [/Dedicated/jmichaelson-sdata/devGenes/merged_arrays/data/gsa2020_psycharray_merged.bim].
+Reading PLINK BED file from [/Dedicated/jmichaelson-sdata/devGenes/merged_arrays/data/gsa2020_psycharray_merged.bed] in SNP-major format ...
+Reading a list of SNPs from [/Dedicated/jmichaelson-wdata/msmuhammad/data/UTMOST-GTEx-model-weights/tmp/rsid-ID02-UTMOST-for-Pancreas].
+317082 SNPs are extracted from [/Dedicated/jmichaelson-wdata/msmuhammad/data/UTMOST-GTEx-model-weights/tmp/rsid-ID02-UTMOST-for-Pituitary].
+Reading PLINK BED file from [/Dedicated/jmichaelson-sdata/devGenes/merged_arrays/data/gsa2020_psycharray_merged.bed] in SNP-major format ...
+11850356 SNPs to be included from [/Dedicated/jmichaelson-sdata/devGenes/merged_arrays/data/gsa2020_psycharray_merged.bim].
+298087 SNPs are extracted from [/Dedicated/jmichaelson-wdata/msmuhammad/data/UTMOST-GTEx-model-weights/tmp/rsid-ID02-UTMOST-for-Pancreas].
+Reading PLINK BED file from [/Dedicated/jmichaelson-sdata/devGenes/merged_arrays/data/gsa2020_psycharray_merged.bed] in SNP-major format ...
+Reading a list of SNPs from [/Dedicated/jmichaelson-wdata/msmuhammad/data/UTMOST-GTEx-model-weights/tmp/rsid-ID02-UTMOST-for-Prostate].
+329745 SNPs are extracted from [/Dedicated/jmichaelson-wdata/msmuhammad/data/UTMOST-GTEx-model-weights/tmp/rsid-ID02-UTMOST-for-Prostate].
+Reading PLINK BED file from [/Dedicated/jmichaelson-sdata/devGenes/merged_arrays/data/gsa2020_psycharray_merged.bed] in SNP-major format ...
+The recoded genotype matrix has been saved in the file [/Dedicated/jmichaelson-wdata/msmuhammad/projects/SLI/data/derivatives/genotypes-subset/Muscle_Skeletal.xmat.gz] (in compressed text format).
+
+Analysis finished at 17:07:08 CDT on Fri Oct 06 2023
+Overall computational time: 6 minutes 3 sec.
+[1] "done subsetting for tissue: Muscle_Skeletal"
+[1] "this is the GCTA command for tissue: Skin_Not_Sun_Exposed_Suprapubic\n/Dedicated/jmichaelson-wdata/msmuhammad/workbench/gcta/gcta-1.94.1 --bfile /Dedicated/jmichaelson-sdata/devGenes/merged_arrays/data/gsa2020_psycharray_merged --extract /Dedicated/jmichaelson-wdata/msmuhammad/data/UTMOST-GTEx-model-weights/tmp/rsid-ID02-UTMOST-for-Skin_Not_Sun_Exposed_Suprapubic --thread-num 2 --recode --out /Dedicated/jmichaelson-wdata/msmuhammad/projects/SLI/data/derivatives/genotypes-subset/Skin_Not_Sun_Exposed_Suprapubic"
+*******************************************************************
+* Genome-wide Complex Trait Analysis (GCTA)
+* version v1.94.1 Linux
+* Built at Nov 15 2022 21:14:25, by GCC 8.5
+* (C) 2010-present, Yang Lab, Westlake University
+* Please report bugs to Jian Yang <jian.yang@westlake.edu.cn>
+*******************************************************************
+Analysis started at 17:07:08 CDT on Fri Oct 06 2023.
+Hostname: argon-lc-g14-39.hpc
+
+Accepted options:
+--bfile /Dedicated/jmichaelson-sdata/devGenes/merged_arrays/data/gsa2020_psycharray_merged
+--extract /Dedicated/jmichaelson-wdata/msmuhammad/data/UTMOST-GTEx-model-weights/tmp/rsid-ID02-UTMOST-for-Skin_Not_Sun_Exposed_Suprapubic
+--thread-num 2
+--recode
+--out /Dedicated/jmichaelson-wdata/msmuhammad/projects/SLI/data/derivatives/genotypes-subset/Skin_Not_Sun_Exposed_Suprapubic
+
+Note: the program will be running on 2 threads.
+
+Reading PLINK FAM file from [/Dedicated/jmichaelson-sdata/devGenes/merged_arrays/data/gsa2020_psycharray_merged.fam].
+1388 individuals to be included from [/Dedicated/jmichaelson-sdata/devGenes/merged_arrays/data/gsa2020_psycharray_merged.fam].
+Reading PLINK BIM file from [/Dedicated/jmichaelson-sdata/devGenes/merged_arrays/data/gsa2020_psycharray_merged.bim].
+11850356 SNPs to be included from [/Dedicated/jmichaelson-sdata/devGenes/merged_arrays/data/gsa2020_psycharray_merged.bim].
+The recoded genotype matrix has been saved in the file [/Dedicated/jmichaelson-wdata/msmuhammad/projects/SLI/data/derivatives/genotypes-subset/Nerve_Tibial.xmat.gz] (in compressed text format).
+
+Analysis finished at 17:07:20 CDT on Fri Oct 06 2023
+Overall computational time: 6 minutes 21 sec.
+[1] "done subsetting for tissue: Nerve_Tibial"
+[1] "this is the GCTA command for tissue: Skin_Sun_Exposed_Lower_leg\n/Dedicated/jmichaelson-wdata/msmuhammad/workbench/gcta/gcta-1.94.1 --bfile /Dedicated/jmichaelson-sdata/devGenes/merged_arrays/data/gsa2020_psycharray_merged --extract /Dedicated/jmichaelson-wdata/msmuhammad/data/UTMOST-GTEx-model-weights/tmp/rsid-ID02-UTMOST-for-Skin_Sun_Exposed_Lower_leg --thread-num 2 --recode --out /Dedicated/jmichaelson-wdata/msmuhammad/projects/SLI/data/derivatives/genotypes-subset/Skin_Sun_Exposed_Lower_leg"
+*******************************************************************
+* Genome-wide Complex Trait Analysis (GCTA)
+* version v1.94.1 Linux
+* Built at Nov 15 2022 21:14:25, by GCC 8.5
+* (C) 2010-present, Yang Lab, Westlake University
+* Please report bugs to Jian Yang <jian.yang@westlake.edu.cn>
+*******************************************************************
+Analysis started at 17:07:20 CDT on Fri Oct 06 2023.
+Hostname: argon-lc-g14-39.hpc
+
+Accepted options:
+--bfile /Dedicated/jmichaelson-sdata/devGenes/merged_arrays/data/gsa2020_psycharray_merged
+--extract /Dedicated/jmichaelson-wdata/msmuhammad/data/UTMOST-GTEx-model-weights/tmp/rsid-ID02-UTMOST-for-Skin_Sun_Exposed_Lower_leg
+--thread-num 2
+--recode
+--out /Dedicated/jmichaelson-wdata/msmuhammad/projects/SLI/data/derivatives/genotypes-subset/Skin_Sun_Exposed_Lower_leg
+
+Note: the program will be running on 2 threads.
+
+Reading PLINK FAM file from [/Dedicated/jmichaelson-sdata/devGenes/merged_arrays/data/gsa2020_psycharray_merged.fam].
+1388 individuals to be included from [/Dedicated/jmichaelson-sdata/devGenes/merged_arrays/data/gsa2020_psycharray_merged.fam].
+Reading PLINK BIM file from [/Dedicated/jmichaelson-sdata/devGenes/merged_arrays/data/gsa2020_psycharray_merged.bim].
+Reading a list of SNPs from [/Dedicated/jmichaelson-wdata/msmuhammad/data/UTMOST-GTEx-model-weights/tmp/rsid-ID02-UTMOST-for-Skin_Not_Sun_Exposed_Suprapubic].
+11850356 SNPs to be included from [/Dedicated/jmichaelson-sdata/devGenes/merged_arrays/data/gsa2020_psycharray_merged.bim].
+339837 SNPs are extracted from [/Dedicated/jmichaelson-wdata/msmuhammad/data/UTMOST-GTEx-model-weights/tmp/rsid-ID02-UTMOST-for-Skin_Not_Sun_Exposed_Suprapubic].
+Reading PLINK BED file from [/Dedicated/jmichaelson-sdata/devGenes/merged_arrays/data/gsa2020_psycharray_merged.bed] in SNP-major format ...
+Reading a list of SNPs from [/Dedicated/jmichaelson-wdata/msmuhammad/data/UTMOST-GTEx-model-weights/tmp/rsid-ID02-UTMOST-for-Skin_Sun_Exposed_Lower_leg].
+366389 SNPs are extracted from [/Dedicated/jmichaelson-wdata/msmuhammad/data/UTMOST-GTEx-model-weights/tmp/rsid-ID02-UTMOST-for-Skin_Sun_Exposed_Lower_leg].
+Reading PLINK BED file from [/Dedicated/jmichaelson-sdata/devGenes/merged_arrays/data/gsa2020_psycharray_merged.bed] in SNP-major format ...
+Genotype data for 1388 individuals and 291521 SNPs to be included from [/Dedicated/jmichaelson-sdata/devGenes/merged_arrays/data/gsa2020_psycharray_merged.bed].
+Saving the recoded genotype matrix to the file [/Dedicated/jmichaelson-wdata/msmuhammad/projects/SLI/data/derivatives/genotypes-subset/Ovary.xmat.gz].
+Genotype data for 1388 individuals and 317082 SNPs to be included from [/Dedicated/jmichaelson-sdata/devGenes/merged_arrays/data/gsa2020_psycharray_merged.bed].
+Saving the recoded genotype matrix to the file [/Dedicated/jmichaelson-wdata/msmuhammad/projects/SLI/data/derivatives/genotypes-subset/Pituitary.xmat.gz].
+Genotype data for 1388 individuals and 298087 SNPs to be included from [/Dedicated/jmichaelson-sdata/devGenes/merged_arrays/data/gsa2020_psycharray_merged.bed].
+Saving the recoded genotype matrix to the file [/Dedicated/jmichaelson-wdata/msmuhammad/projects/SLI/data/derivatives/genotypes-subset/Pancreas.xmat.gz].
+Genotype data for 1388 individuals and 329745 SNPs to be included from [/Dedicated/jmichaelson-sdata/devGenes/merged_arrays/data/gsa2020_psycharray_merged.bed].
+Saving the recoded genotype matrix to the file [/Dedicated/jmichaelson-wdata/msmuhammad/projects/SLI/data/derivatives/genotypes-subset/Prostate.xmat.gz].
+Genotype data for 1388 individuals and 339837 SNPs to be included from [/Dedicated/jmichaelson-sdata/devGenes/merged_arrays/data/gsa2020_psycharray_merged.bed].
+Saving the recoded genotype matrix to the file [/Dedicated/jmichaelson-wdata/msmuhammad/projects/SLI/data/derivatives/genotypes-subset/Skin_Not_Sun_Exposed_Suprapubic.xmat.gz].
+Genotype data for 1388 individuals and 366389 SNPs to be included from [/Dedicated/jmichaelson-sdata/devGenes/merged_arrays/data/gsa2020_psycharray_merged.bed].
+Saving the recoded genotype matrix to the file [/Dedicated/jmichaelson-wdata/msmuhammad/projects/SLI/data/derivatives/genotypes-subset/Skin_Sun_Exposed_Lower_leg.xmat.gz].
+The recoded genotype matrix has been saved in the file [/Dedicated/jmichaelson-wdata/msmuhammad/projects/SLI/data/derivatives/genotypes-subset/Ovary.xmat.gz] (in compressed text format).
+
+Analysis finished at 17:11:52 CDT on Fri Oct 06 2023
+Overall computational time: 5 minutes 38 sec.
+[1] "done subsetting for tissue: Ovary"
+[1] "this is the GCTA command for tissue: Small_Intestine_Terminal_Ileum\n/Dedicated/jmichaelson-wdata/msmuhammad/workbench/gcta/gcta-1.94.1 --bfile /Dedicated/jmichaelson-sdata/devGenes/merged_arrays/data/gsa2020_psycharray_merged --extract /Dedicated/jmichaelson-wdata/msmuhammad/data/UTMOST-GTEx-model-weights/tmp/rsid-ID02-UTMOST-for-Small_Intestine_Terminal_Ileum --thread-num 2 --recode --out /Dedicated/jmichaelson-wdata/msmuhammad/projects/SLI/data/derivatives/genotypes-subset/Small_Intestine_Terminal_Ileum"
+*******************************************************************
+* Genome-wide Complex Trait Analysis (GCTA)
+* version v1.94.1 Linux
+* Built at Nov 15 2022 21:14:25, by GCC 8.5
+* (C) 2010-present, Yang Lab, Westlake University
+* Please report bugs to Jian Yang <jian.yang@westlake.edu.cn>
+*******************************************************************
+Analysis started at 17:11:52 CDT on Fri Oct 06 2023.
+Hostname: argon-lc-g14-39.hpc
+
+Accepted options:
+--bfile /Dedicated/jmichaelson-sdata/devGenes/merged_arrays/data/gsa2020_psycharray_merged
+--extract /Dedicated/jmichaelson-wdata/msmuhammad/data/UTMOST-GTEx-model-weights/tmp/rsid-ID02-UTMOST-for-Small_Intestine_Terminal_Ileum
+--thread-num 2
+--recode
+--out /Dedicated/jmichaelson-wdata/msmuhammad/projects/SLI/data/derivatives/genotypes-subset/Small_Intestine_Terminal_Ileum
+
+Note: the program will be running on 2 threads.
+
+Reading PLINK FAM file from [/Dedicated/jmichaelson-sdata/devGenes/merged_arrays/data/gsa2020_psycharray_merged.fam].
+1388 individuals to be included from [/Dedicated/jmichaelson-sdata/devGenes/merged_arrays/data/gsa2020_psycharray_merged.fam].
+Reading PLINK BIM file from [/Dedicated/jmichaelson-sdata/devGenes/merged_arrays/data/gsa2020_psycharray_merged.bim].
+11850356 SNPs to be included from [/Dedicated/jmichaelson-sdata/devGenes/merged_arrays/data/gsa2020_psycharray_merged.bim].
+Reading a list of SNPs from [/Dedicated/jmichaelson-wdata/msmuhammad/data/UTMOST-GTEx-model-weights/tmp/rsid-ID02-UTMOST-for-Small_Intestine_Terminal_Ileum].
+319899 SNPs are extracted from [/Dedicated/jmichaelson-wdata/msmuhammad/data/UTMOST-GTEx-model-weights/tmp/rsid-ID02-UTMOST-for-Small_Intestine_Terminal_Ileum].
+The recoded genotype matrix has been saved in the file [/Dedicated/jmichaelson-wdata/msmuhammad/projects/SLI/data/derivatives/genotypes-subset/Pancreas.xmat.gz] (in compressed text format).
+
+Analysis finished at 17:12:17 CDT on Fri Oct 06 2023
+Overall computational time: 5 minutes 49 sec.
+[1] "done subsetting for tissue: Pancreas"
+[1] "this is the GCTA command for tissue: Spleen\n/Dedicated/jmichaelson-wdata/msmuhammad/workbench/gcta/gcta-1.94.1 --bfile /Dedicated/jmichaelson-sdata/devGenes/merged_arrays/data/gsa2020_psycharray_merged --extract /Dedicated/jmichaelson-wdata/msmuhammad/data/UTMOST-GTEx-model-weights/tmp/rsid-ID02-UTMOST-for-Spleen --thread-num 2 --recode --out /Dedicated/jmichaelson-wdata/msmuhammad/projects/SLI/data/derivatives/genotypes-subset/Spleen"
+*******************************************************************
+* Genome-wide Complex Trait Analysis (GCTA)
+* version v1.94.1 Linux
+* Built at Nov 15 2022 21:14:25, by GCC 8.5
+* (C) 2010-present, Yang Lab, Westlake University
+* Please report bugs to Jian Yang <jian.yang@westlake.edu.cn>
+*******************************************************************
+Analysis started at 17:12:17 CDT on Fri Oct 06 2023.
+Hostname: argon-lc-g14-39.hpc
+
+Accepted options:
+--bfile /Dedicated/jmichaelson-sdata/devGenes/merged_arrays/data/gsa2020_psycharray_merged
+--extract /Dedicated/jmichaelson-wdata/msmuhammad/data/UTMOST-GTEx-model-weights/tmp/rsid-ID02-UTMOST-for-Spleen
+--thread-num 2
+--recode
+--out /Dedicated/jmichaelson-wdata/msmuhammad/projects/SLI/data/derivatives/genotypes-subset/Spleen
+
+Note: the program will be running on 2 threads.
+
+Reading PLINK FAM file from [/Dedicated/jmichaelson-sdata/devGenes/merged_arrays/data/gsa2020_psycharray_merged.fam].
+1388 individuals to be included from [/Dedicated/jmichaelson-sdata/devGenes/merged_arrays/data/gsa2020_psycharray_merged.fam].
+Reading PLINK BIM file from [/Dedicated/jmichaelson-sdata/devGenes/merged_arrays/data/gsa2020_psycharray_merged.bim].
+Reading PLINK BED file from [/Dedicated/jmichaelson-sdata/devGenes/merged_arrays/data/gsa2020_psycharray_merged.bed] in SNP-major format ...
+11850356 SNPs to be included from [/Dedicated/jmichaelson-sdata/devGenes/merged_arrays/data/gsa2020_psycharray_merged.bim].
+Reading a list of SNPs from [/Dedicated/jmichaelson-wdata/msmuhammad/data/UTMOST-GTEx-model-weights/tmp/rsid-ID02-UTMOST-for-Spleen].
+The recoded genotype matrix has been saved in the file [/Dedicated/jmichaelson-wdata/msmuhammad/projects/SLI/data/derivatives/genotypes-subset/Pituitary.xmat.gz] (in compressed text format).
+
+Analysis finished at 17:12:35 CDT on Fri Oct 06 2023
+Overall computational time: 6 minutes 14 sec.
+[1] "done subsetting for tissue: Pituitary"
+[1] "this is the GCTA command for tissue: Stomach\n/Dedicated/jmichaelson-wdata/msmuhammad/workbench/gcta/gcta-1.94.1 --bfile /Dedicated/jmichaelson-sdata/devGenes/merged_arrays/data/gsa2020_psycharray_merged --extract /Dedicated/jmichaelson-wdata/msmuhammad/data/UTMOST-GTEx-model-weights/tmp/rsid-ID02-UTMOST-for-Stomach --thread-num 2 --recode --out /Dedicated/jmichaelson-wdata/msmuhammad/projects/SLI/data/derivatives/genotypes-subset/Stomach"
+*******************************************************************
+* Genome-wide Complex Trait Analysis (GCTA)
+* version v1.94.1 Linux
+* Built at Nov 15 2022 21:14:25, by GCC 8.5
+* (C) 2010-present, Yang Lab, Westlake University
+* Please report bugs to Jian Yang <jian.yang@westlake.edu.cn>
+*******************************************************************
+Analysis started at 17:12:36 CDT on Fri Oct 06 2023.
+Hostname: argon-lc-g14-39.hpc
+
+Accepted options:
+--bfile /Dedicated/jmichaelson-sdata/devGenes/merged_arrays/data/gsa2020_psycharray_merged
+--extract /Dedicated/jmichaelson-wdata/msmuhammad/data/UTMOST-GTEx-model-weights/tmp/rsid-ID02-UTMOST-for-Stomach
+--thread-num 2
+--recode
+--out /Dedicated/jmichaelson-wdata/msmuhammad/projects/SLI/data/derivatives/genotypes-subset/Stomach
+
+Note: the program will be running on 2 threads.
+
+Reading PLINK FAM file from [/Dedicated/jmichaelson-sdata/devGenes/merged_arrays/data/gsa2020_psycharray_merged.fam].
+1388 individuals to be included from [/Dedicated/jmichaelson-sdata/devGenes/merged_arrays/data/gsa2020_psycharray_merged.fam].
+Reading PLINK BIM file from [/Dedicated/jmichaelson-sdata/devGenes/merged_arrays/data/gsa2020_psycharray_merged.bim].
+The recoded genotype matrix has been saved in the file [/Dedicated/jmichaelson-wdata/msmuhammad/projects/SLI/data/derivatives/genotypes-subset/Prostate.xmat.gz] (in compressed text format).
+
+Analysis finished at 17:12:37 CDT on Fri Oct 06 2023
+Overall computational time: 5 minutes 57 sec.
+[1] "done subsetting for tissue: Prostate"
+[1] "this is the GCTA command for tissue: Testis\n/Dedicated/jmichaelson-wdata/msmuhammad/workbench/gcta/gcta-1.94.1 --bfile /Dedicated/jmichaelson-sdata/devGenes/merged_arrays/data/gsa2020_psycharray_merged --extract /Dedicated/jmichaelson-wdata/msmuhammad/data/UTMOST-GTEx-model-weights/tmp/rsid-ID02-UTMOST-for-Testis --thread-num 2 --recode --out /Dedicated/jmichaelson-wdata/msmuhammad/projects/SLI/data/derivatives/genotypes-subset/Testis"
+*******************************************************************
+* Genome-wide Complex Trait Analysis (GCTA)
+* version v1.94.1 Linux
+* Built at Nov 15 2022 21:14:25, by GCC 8.5
+* (C) 2010-present, Yang Lab, Westlake University
+* Please report bugs to Jian Yang <jian.yang@westlake.edu.cn>
+*******************************************************************
+Analysis started at 17:12:38 CDT on Fri Oct 06 2023.
+Hostname: argon-lc-g14-39.hpc
+
+Accepted options:
+--bfile /Dedicated/jmichaelson-sdata/devGenes/merged_arrays/data/gsa2020_psycharray_merged
+--extract /Dedicated/jmichaelson-wdata/msmuhammad/data/UTMOST-GTEx-model-weights/tmp/rsid-ID02-UTMOST-for-Testis
+--thread-num 2
+--recode
+--out /Dedicated/jmichaelson-wdata/msmuhammad/projects/SLI/data/derivatives/genotypes-subset/Testis
+
+Note: the program will be running on 2 threads.
+
+Reading PLINK FAM file from [/Dedicated/jmichaelson-sdata/devGenes/merged_arrays/data/gsa2020_psycharray_merged.fam].
+1388 individuals to be included from [/Dedicated/jmichaelson-sdata/devGenes/merged_arrays/data/gsa2020_psycharray_merged.fam].
+Reading PLINK BIM file from [/Dedicated/jmichaelson-sdata/devGenes/merged_arrays/data/gsa2020_psycharray_merged.bim].
+292201 SNPs are extracted from [/Dedicated/jmichaelson-wdata/msmuhammad/data/UTMOST-GTEx-model-weights/tmp/rsid-ID02-UTMOST-for-Spleen].
+11850356 SNPs to be included from [/Dedicated/jmichaelson-sdata/devGenes/merged_arrays/data/gsa2020_psycharray_merged.bim].
+Reading PLINK BED file from [/Dedicated/jmichaelson-sdata/devGenes/merged_arrays/data/gsa2020_psycharray_merged.bed] in SNP-major format ...
+11850356 SNPs to be included from [/Dedicated/jmichaelson-sdata/devGenes/merged_arrays/data/gsa2020_psycharray_merged.bim].
+Reading a list of SNPs from [/Dedicated/jmichaelson-wdata/msmuhammad/data/UTMOST-GTEx-model-weights/tmp/rsid-ID02-UTMOST-for-Stomach].
+Reading a list of SNPs from [/Dedicated/jmichaelson-wdata/msmuhammad/data/UTMOST-GTEx-model-weights/tmp/rsid-ID02-UTMOST-for-Testis].
+344096 SNPs are extracted from [/Dedicated/jmichaelson-wdata/msmuhammad/data/UTMOST-GTEx-model-weights/tmp/rsid-ID02-UTMOST-for-Stomach].
+424230 SNPs are extracted from [/Dedicated/jmichaelson-wdata/msmuhammad/data/UTMOST-GTEx-model-weights/tmp/rsid-ID02-UTMOST-for-Testis].
+Reading PLINK BED file from [/Dedicated/jmichaelson-sdata/devGenes/merged_arrays/data/gsa2020_psycharray_merged.bed] in SNP-major format ...
+Reading PLINK BED file from [/Dedicated/jmichaelson-sdata/devGenes/merged_arrays/data/gsa2020_psycharray_merged.bed] in SNP-major format ...
+Genotype data for 1388 individuals and 319899 SNPs to be included from [/Dedicated/jmichaelson-sdata/devGenes/merged_arrays/data/gsa2020_psycharray_merged.bed].
+Saving the recoded genotype matrix to the file [/Dedicated/jmichaelson-wdata/msmuhammad/projects/SLI/data/derivatives/genotypes-subset/Small_Intestine_Terminal_Ileum.xmat.gz].
+The recoded genotype matrix has been saved in the file [/Dedicated/jmichaelson-wdata/msmuhammad/projects/SLI/data/derivatives/genotypes-subset/Skin_Not_Sun_Exposed_Suprapubic.xmat.gz] (in compressed text format).
+
+Analysis finished at 17:13:30 CDT on Fri Oct 06 2023
+Overall computational time: 6 minutes 22 sec.
+[1] "done subsetting for tissue: Skin_Not_Sun_Exposed_Suprapubic"
+[1] "this is the GCTA command for tissue: Thyroid\n/Dedicated/jmichaelson-wdata/msmuhammad/workbench/gcta/gcta-1.94.1 --bfile /Dedicated/jmichaelson-sdata/devGenes/merged_arrays/data/gsa2020_psycharray_merged --extract /Dedicated/jmichaelson-wdata/msmuhammad/data/UTMOST-GTEx-model-weights/tmp/rsid-ID02-UTMOST-for-Thyroid --thread-num 2 --recode --out /Dedicated/jmichaelson-wdata/msmuhammad/projects/SLI/data/derivatives/genotypes-subset/Thyroid"
+*******************************************************************
+* Genome-wide Complex Trait Analysis (GCTA)
+* version v1.94.1 Linux
+* Built at Nov 15 2022 21:14:25, by GCC 8.5
+* (C) 2010-present, Yang Lab, Westlake University
+* Please report bugs to Jian Yang <jian.yang@westlake.edu.cn>
+*******************************************************************
+Analysis started at 17:13:31 CDT on Fri Oct 06 2023.
+Hostname: argon-lc-g14-39.hpc
+
+Accepted options:
+--bfile /Dedicated/jmichaelson-sdata/devGenes/merged_arrays/data/gsa2020_psycharray_merged
+--extract /Dedicated/jmichaelson-wdata/msmuhammad/data/UTMOST-GTEx-model-weights/tmp/rsid-ID02-UTMOST-for-Thyroid
+--thread-num 2
+--recode
+--out /Dedicated/jmichaelson-wdata/msmuhammad/projects/SLI/data/derivatives/genotypes-subset/Thyroid
+
+Note: the program will be running on 2 threads.
+
+Reading PLINK FAM file from [/Dedicated/jmichaelson-sdata/devGenes/merged_arrays/data/gsa2020_psycharray_merged.fam].
+1388 individuals to be included from [/Dedicated/jmichaelson-sdata/devGenes/merged_arrays/data/gsa2020_psycharray_merged.fam].
+Reading PLINK BIM file from [/Dedicated/jmichaelson-sdata/devGenes/merged_arrays/data/gsa2020_psycharray_merged.bim].
+11850356 SNPs to be included from [/Dedicated/jmichaelson-sdata/devGenes/merged_arrays/data/gsa2020_psycharray_merged.bim].
+Reading a list of SNPs from [/Dedicated/jmichaelson-wdata/msmuhammad/data/UTMOST-GTEx-model-weights/tmp/rsid-ID02-UTMOST-for-Thyroid].
+Genotype data for 1388 individuals and 292201 SNPs to be included from [/Dedicated/jmichaelson-sdata/devGenes/merged_arrays/data/gsa2020_psycharray_merged.bed].
+372992 SNPs are extracted from [/Dedicated/jmichaelson-wdata/msmuhammad/data/UTMOST-GTEx-model-weights/tmp/rsid-ID02-UTMOST-for-Thyroid].
+Saving the recoded genotype matrix to the file [/Dedicated/jmichaelson-wdata/msmuhammad/projects/SLI/data/derivatives/genotypes-subset/Spleen.xmat.gz].
+Reading PLINK BED file from [/Dedicated/jmichaelson-sdata/devGenes/merged_arrays/data/gsa2020_psycharray_merged.bed] in SNP-major format ...
+The recoded genotype matrix has been saved in the file [/Dedicated/jmichaelson-wdata/msmuhammad/projects/SLI/data/derivatives/genotypes-subset/Skin_Sun_Exposed_Lower_leg.xmat.gz] (in compressed text format).
+
+Analysis finished at 17:14:03 CDT on Fri Oct 06 2023
+Overall computational time: 6 minutes 42 sec.
+[1] "done subsetting for tissue: Skin_Sun_Exposed_Lower_leg"
+[1] "this is the GCTA command for tissue: Uterus\n/Dedicated/jmichaelson-wdata/msmuhammad/workbench/gcta/gcta-1.94.1 --bfile /Dedicated/jmichaelson-sdata/devGenes/merged_arrays/data/gsa2020_psycharray_merged --extract /Dedicated/jmichaelson-wdata/msmuhammad/data/UTMOST-GTEx-model-weights/tmp/rsid-ID02-UTMOST-for-Uterus --thread-num 2 --recode --out /Dedicated/jmichaelson-wdata/msmuhammad/projects/SLI/data/derivatives/genotypes-subset/Uterus"
+*******************************************************************
+* Genome-wide Complex Trait Analysis (GCTA)
+* version v1.94.1 Linux
+* Built at Nov 15 2022 21:14:25, by GCC 8.5
+* (C) 2010-present, Yang Lab, Westlake University
+* Please report bugs to Jian Yang <jian.yang@westlake.edu.cn>
+*******************************************************************
+Analysis started at 17:14:03 CDT on Fri Oct 06 2023.
+Hostname: argon-lc-g14-39.hpc
+
+Accepted options:
+--bfile /Dedicated/jmichaelson-sdata/devGenes/merged_arrays/data/gsa2020_psycharray_merged
+--extract /Dedicated/jmichaelson-wdata/msmuhammad/data/UTMOST-GTEx-model-weights/tmp/rsid-ID02-UTMOST-for-Uterus
+--thread-num 2
+--recode
+--out /Dedicated/jmichaelson-wdata/msmuhammad/projects/SLI/data/derivatives/genotypes-subset/Uterus
+
+Note: the program will be running on 2 threads.
+
+Reading PLINK FAM file from [/Dedicated/jmichaelson-sdata/devGenes/merged_arrays/data/gsa2020_psycharray_merged.fam].
+1388 individuals to be included from [/Dedicated/jmichaelson-sdata/devGenes/merged_arrays/data/gsa2020_psycharray_merged.fam].
+Reading PLINK BIM file from [/Dedicated/jmichaelson-sdata/devGenes/merged_arrays/data/gsa2020_psycharray_merged.bim].
+11850356 SNPs to be included from [/Dedicated/jmichaelson-sdata/devGenes/merged_arrays/data/gsa2020_psycharray_merged.bim].
+Genotype data for 1388 individuals and 344096 SNPs to be included from [/Dedicated/jmichaelson-sdata/devGenes/merged_arrays/data/gsa2020_psycharray_merged.bed].
+Saving the recoded genotype matrix to the file [/Dedicated/jmichaelson-wdata/msmuhammad/projects/SLI/data/derivatives/genotypes-subset/Stomach.xmat.gz].
+Genotype data for 1388 individuals and 424230 SNPs to be included from [/Dedicated/jmichaelson-sdata/devGenes/merged_arrays/data/gsa2020_psycharray_merged.bed].
+Saving the recoded genotype matrix to the file [/Dedicated/jmichaelson-wdata/msmuhammad/projects/SLI/data/derivatives/genotypes-subset/Testis.xmat.gz].
+Reading a list of SNPs from [/Dedicated/jmichaelson-wdata/msmuhammad/data/UTMOST-GTEx-model-weights/tmp/rsid-ID02-UTMOST-for-Uterus].
+268624 SNPs are extracted from [/Dedicated/jmichaelson-wdata/msmuhammad/data/UTMOST-GTEx-model-weights/tmp/rsid-ID02-UTMOST-for-Uterus].
+Reading PLINK BED file from [/Dedicated/jmichaelson-sdata/devGenes/merged_arrays/data/gsa2020_psycharray_merged.bed] in SNP-major format ...
+Genotype data for 1388 individuals and 372992 SNPs to be included from [/Dedicated/jmichaelson-sdata/devGenes/merged_arrays/data/gsa2020_psycharray_merged.bed].
