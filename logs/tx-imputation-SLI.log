@@ -1442,3 +1442,253 @@ Reading a list of SNPs from [/Dedicated/jmichaelson-wdata/msmuhammad/data/UTMOST
 268624 SNPs are extracted from [/Dedicated/jmichaelson-wdata/msmuhammad/data/UTMOST-GTEx-model-weights/tmp/rsid-ID02-UTMOST-for-Uterus].
 Reading PLINK BED file from [/Dedicated/jmichaelson-sdata/devGenes/merged_arrays/data/gsa2020_psycharray_merged.bed] in SNP-major format ...
 Genotype data for 1388 individuals and 372992 SNPs to be included from [/Dedicated/jmichaelson-sdata/devGenes/merged_arrays/data/gsa2020_psycharray_merged.bed].
+Saving the recoded genotype matrix to the file [/Dedicated/jmichaelson-wdata/msmuhammad/projects/SLI/data/derivatives/genotypes-subset/Thyroid.xmat.gz].
+Genotype data for 1388 individuals and 268624 SNPs to be included from [/Dedicated/jmichaelson-sdata/devGenes/merged_arrays/data/gsa2020_psycharray_merged.bed].
+Saving the recoded genotype matrix to the file [/Dedicated/jmichaelson-wdata/msmuhammad/projects/SLI/data/derivatives/genotypes-subset/Uterus.xmat.gz].
+The recoded genotype matrix has been saved in the file [/Dedicated/jmichaelson-wdata/msmuhammad/projects/SLI/data/derivatives/genotypes-subset/Small_Intestine_Terminal_Ileum.xmat.gz] (in compressed text format).
+
+Analysis finished at 17:17:41 CDT on Fri Oct 06 2023
+Overall computational time: 5 minutes 48 sec.
+[1] "done subsetting for tissue: Small_Intestine_Terminal_Ileum"
+[1] "this is the GCTA command for tissue: Vagina\n/Dedicated/jmichaelson-wdata/msmuhammad/workbench/gcta/gcta-1.94.1 --bfile /Dedicated/jmichaelson-sdata/devGenes/merged_arrays/data/gsa2020_psycharray_merged --extract /Dedicated/jmichaelson-wdata/msmuhammad/data/UTMOST-GTEx-model-weights/tmp/rsid-ID02-UTMOST-for-Vagina --thread-num 2 --recode --out /Dedicated/jmichaelson-wdata/msmuhammad/projects/SLI/data/derivatives/genotypes-subset/Vagina"
+*******************************************************************
+* Genome-wide Complex Trait Analysis (GCTA)
+* version v1.94.1 Linux
+* Built at Nov 15 2022 21:14:25, by GCC 8.5
+* (C) 2010-present, Yang Lab, Westlake University
+* Please report bugs to Jian Yang <jian.yang@westlake.edu.cn>
+*******************************************************************
+Analysis started at 17:17:41 CDT on Fri Oct 06 2023.
+Hostname: argon-lc-g14-39.hpc
+
+Accepted options:
+--bfile /Dedicated/jmichaelson-sdata/devGenes/merged_arrays/data/gsa2020_psycharray_merged
+--extract /Dedicated/jmichaelson-wdata/msmuhammad/data/UTMOST-GTEx-model-weights/tmp/rsid-ID02-UTMOST-for-Vagina
+--thread-num 2
+--recode
+--out /Dedicated/jmichaelson-wdata/msmuhammad/projects/SLI/data/derivatives/genotypes-subset/Vagina
+
+Note: the program will be running on 2 threads.
+
+Reading PLINK FAM file from [/Dedicated/jmichaelson-sdata/devGenes/merged_arrays/data/gsa2020_psycharray_merged.fam].
+1388 individuals to be included from [/Dedicated/jmichaelson-sdata/devGenes/merged_arrays/data/gsa2020_psycharray_merged.fam].
+Reading PLINK BIM file from [/Dedicated/jmichaelson-sdata/devGenes/merged_arrays/data/gsa2020_psycharray_merged.bim].
+11850356 SNPs to be included from [/Dedicated/jmichaelson-sdata/devGenes/merged_arrays/data/gsa2020_psycharray_merged.bim].
+Reading a list of SNPs from [/Dedicated/jmichaelson-wdata/msmuhammad/data/UTMOST-GTEx-model-weights/tmp/rsid-ID02-UTMOST-for-Vagina].
+The recoded genotype matrix has been saved in the file [/Dedicated/jmichaelson-wdata/msmuhammad/projects/SLI/data/derivatives/genotypes-subset/Spleen.xmat.gz] (in compressed text format).
+
+Analysis finished at 17:18:05 CDT on Fri Oct 06 2023
+Overall computational time: 5 minutes 48 sec.
+[1] "done subsetting for tissue: Spleen"
+[1] "this is the GCTA command for tissue: Whole_Blood\n/Dedicated/jmichaelson-wdata/msmuhammad/workbench/gcta/gcta-1.94.1 --bfile /Dedicated/jmichaelson-sdata/devGenes/merged_arrays/data/gsa2020_psycharray_merged --extract /Dedicated/jmichaelson-wdata/msmuhammad/data/UTMOST-GTEx-model-weights/tmp/rsid-ID02-UTMOST-for-Whole_Blood --thread-num 2 --recode --out /Dedicated/jmichaelson-wdata/msmuhammad/projects/SLI/data/derivatives/genotypes-subset/Whole_Blood"
+*******************************************************************
+* Genome-wide Complex Trait Analysis (GCTA)
+* version v1.94.1 Linux
+* Built at Nov 15 2022 21:14:25, by GCC 8.5
+* (C) 2010-present, Yang Lab, Westlake University
+* Please report bugs to Jian Yang <jian.yang@westlake.edu.cn>
+*******************************************************************
+Analysis started at 17:18:05 CDT on Fri Oct 06 2023.
+Hostname: argon-lc-g14-39.hpc
+
+Accepted options:
+--bfile /Dedicated/jmichaelson-sdata/devGenes/merged_arrays/data/gsa2020_psycharray_merged
+--extract /Dedicated/jmichaelson-wdata/msmuhammad/data/UTMOST-GTEx-model-weights/tmp/rsid-ID02-UTMOST-for-Whole_Blood
+--thread-num 2
+--recode
+--out /Dedicated/jmichaelson-wdata/msmuhammad/projects/SLI/data/derivatives/genotypes-subset/Whole_Blood
+
+Note: the program will be running on 2 threads.
+
+Reading PLINK FAM file from [/Dedicated/jmichaelson-sdata/devGenes/merged_arrays/data/gsa2020_psycharray_merged.fam].
+1388 individuals to be included from [/Dedicated/jmichaelson-sdata/devGenes/merged_arrays/data/gsa2020_psycharray_merged.fam].
+Reading PLINK BIM file from [/Dedicated/jmichaelson-sdata/devGenes/merged_arrays/data/gsa2020_psycharray_merged.bim].
+308528 SNPs are extracted from [/Dedicated/jmichaelson-wdata/msmuhammad/data/UTMOST-GTEx-model-weights/tmp/rsid-ID02-UTMOST-for-Vagina].
+Reading PLINK BED file from [/Dedicated/jmichaelson-sdata/devGenes/merged_arrays/data/gsa2020_psycharray_merged.bed] in SNP-major format ...
+11850356 SNPs to be included from [/Dedicated/jmichaelson-sdata/devGenes/merged_arrays/data/gsa2020_psycharray_merged.bim].
+Reading a list of SNPs from [/Dedicated/jmichaelson-wdata/msmuhammad/data/UTMOST-GTEx-model-weights/tmp/rsid-ID02-UTMOST-for-Whole_Blood].
+323319 SNPs are extracted from [/Dedicated/jmichaelson-wdata/msmuhammad/data/UTMOST-GTEx-model-weights/tmp/rsid-ID02-UTMOST-for-Whole_Blood].
+Reading PLINK BED file from [/Dedicated/jmichaelson-sdata/devGenes/merged_arrays/data/gsa2020_psycharray_merged.bed] in SNP-major format ...
+The recoded genotype matrix has been saved in the file [/Dedicated/jmichaelson-wdata/msmuhammad/projects/SLI/data/derivatives/genotypes-subset/Stomach.xmat.gz] (in compressed text format).
+
+Analysis finished at 17:19:01 CDT on Fri Oct 06 2023
+Overall computational time: 6 minutes 25 sec.
+[1] "done subsetting for tissue: Stomach"
+The recoded genotype matrix has been saved in the file [/Dedicated/jmichaelson-wdata/msmuhammad/projects/SLI/data/derivatives/genotypes-subset/Uterus.xmat.gz] (in compressed text format).
+
+Analysis finished at 17:19:10 CDT on Fri Oct 06 2023
+Overall computational time: 5 minutes 7 sec.
+[1] "done subsetting for tissue: Uterus"
+Genotype data for 1388 individuals and 308528 SNPs to be included from [/Dedicated/jmichaelson-sdata/devGenes/merged_arrays/data/gsa2020_psycharray_merged.bed].
+Saving the recoded genotype matrix to the file [/Dedicated/jmichaelson-wdata/msmuhammad/projects/SLI/data/derivatives/genotypes-subset/Vagina.xmat.gz].
+Genotype data for 1388 individuals and 323319 SNPs to be included from [/Dedicated/jmichaelson-sdata/devGenes/merged_arrays/data/gsa2020_psycharray_merged.bed].
+Saving the recoded genotype matrix to the file [/Dedicated/jmichaelson-wdata/msmuhammad/projects/SLI/data/derivatives/genotypes-subset/Whole_Blood.xmat.gz].
+The recoded genotype matrix has been saved in the file [/Dedicated/jmichaelson-wdata/msmuhammad/projects/SLI/data/derivatives/genotypes-subset/Thyroid.xmat.gz] (in compressed text format).
+
+Analysis finished at 17:20:03 CDT on Fri Oct 06 2023
+Overall computational time: 6 minutes 32 sec.
+[1] "done subsetting for tissue: Thyroid"
+The recoded genotype matrix has been saved in the file [/Dedicated/jmichaelson-wdata/msmuhammad/projects/SLI/data/derivatives/genotypes-subset/Testis.xmat.gz] (in compressed text format).
+
+Analysis finished at 17:20:07 CDT on Fri Oct 06 2023
+Overall computational time: 7 minutes 29 sec.
+[1] "done subsetting for tissue: Testis"
+The recoded genotype matrix has been saved in the file [/Dedicated/jmichaelson-wdata/msmuhammad/projects/SLI/data/derivatives/genotypes-subset/Vagina.xmat.gz] (in compressed text format).
+
+Analysis finished at 17:23:19 CDT on Fri Oct 06 2023
+Overall computational time: 5 minutes 38 sec.
+[1] "done subsetting for tissue: Vagina"
+The recoded genotype matrix has been saved in the file [/Dedicated/jmichaelson-wdata/msmuhammad/projects/SLI/data/derivatives/genotypes-subset/Whole_Blood.xmat.gz] (in compressed text format).
+
+Analysis finished at 17:23:54 CDT on Fri Oct 06 2023
+Overall computational time: 5 minutes 48 sec.
+[1] "done subsetting for tissue: Whole_Blood"
+[1] "this is the GCTA command for celltype: Endothelial\n/Dedicated/jmichaelson-wdata/msmuhammad/workbench/gcta/gcta-1.94.1 --bfile /Dedicated/jmichaelson-sdata/devGenes/merged_arrays/data/gsa2020_psycharray_merged --extract /Dedicated/jmichaelson-wdata/msmuhammad/data/celltypes-cis-eQTLs/data/derivatives/Endothelial-ID_37-FDR-sig --thread-num 2 --recode --out /Dedicated/jmichaelson-wdata/msmuhammad/projects/SLI/data/derivatives/genotypes-subset/Endothelial"
+[1] "this is the GCTA command for celltype: Inhibitory\n/Dedicated/jmichaelson-wdata/msmuhammad/workbench/gcta/gcta-1.94.1 --bfile /Dedicated/jmichaelson-sdata/devGenes/merged_arrays/data/gsa2020_psycharray_merged --extract /Dedicated/jmichaelson-wdata/msmuhammad/data/celltypes-cis-eQTLs/data/derivatives/Inhibitory-ID_37-FDR-sig --thread-num 2 --recode --out /Dedicated/jmichaelson-wdata/msmuhammad/projects/SLI/data/derivatives/genotypes-subset/Inhibitory"
+[1][1] "this is the GCTA command for celltype: Astrocytes\n/Dedicated/jmichaelson-wdata/msmuhammad/workbench/gcta/gcta-1.94.1 --bfile /Dedicated/jmichaelson-sdata/devGenes/merged_arrays/data/gsa2020_psycharray_merged --extract /Dedicated/jmichaelson-wdata/msmuhammad/data/celltypes-cis-eQTLs/data/derivatives/Astrocytes-ID_37-FDR-sig --thread-num 2 --recode --out /Dedicated/jmichaelson-wdata/msmuhammad/projects/SLI/data/derivatives/genotypes-subset/Astrocytes" "this is the GCTA command for celltype: Excitatory\n/Dedicated/jmichaelson-wdata/msmuhammad/workbench/gcta/gcta-1.94.1 --bfile /Dedicated/jmichaelson-sdata/devGenes/merged_arrays/data/gsa2020_psycharray_merged --extract /Dedicated/jmichaelson-wdata/msmuhammad/data/celltypes-cis-eQTLs/data/derivatives/Excitatory-ID_37-FDR-sig --thread-num 2 --recode --out /Dedicated/jmichaelson-wdata/msmuhammad/projects/SLI/data/derivatives/genotypes-subset/Excitatory"
+
+[1] "this is the GCTA command for celltype: Oligodendrocytes\n/Dedicated/jmichaelson-wdata/msmuhammad/workbench/gcta/gcta-1.94.1 --bfile /Dedicated/jmichaelson-sdata/devGenes/merged_arrays/data/gsa2020_psycharray_merged --extract /Dedicated/jmichaelson-wdata/msmuhammad/data/celltypes-cis-eQTLs/data/derivatives/Oligodendrocytes-ID_37-FDR-sig --thread-num 2 --recode --out /Dedicated/jmichaelson-wdata/msmuhammad/projects/SLI/data/derivatives/genotypes-subset/Oligodendrocytes"
+[1] "this is the GCTA command for celltype: Microglia\n/Dedicated/jmichaelson-wdata/msmuhammad/workbench/gcta/gcta-1.94.1 --bfile /Dedicated/jmichaelson-sdata/devGenes/merged_arrays/data/gsa2020_psycharray_merged --extract /Dedicated/jmichaelson-wdata/msmuhammad/data/celltypes-cis-eQTLs/data/derivatives/Microglia-ID_37-FDR-sig --thread-num 2 --recode --out /Dedicated/jmichaelson-wdata/msmuhammad/projects/SLI/data/derivatives/genotypes-subset/Microglia"
+*******************************************************************
+* Genome-wide Complex Trait Analysis (GCTA)
+* version v1.94.1 Linux
+* Built at Nov 15 2022 21:14:25, by GCC 8.5
+* (C) 2010-present, Yang Lab, Westlake University
+* Please report bugs to Jian Yang <jian.yang@westlake.edu.cn>
+*******************************************************************
+Analysis started at 17:23:54 CDT on Fri Oct 06 2023.
+Hostname: argon-lc-g14-39.hpc
+
+*******************************************************************
+* Genome-wide Complex Trait Analysis (GCTA)
+* version v1.94.1 Linux
+* Built at Nov 15 2022 21:14:25, by GCC 8.5
+* (C) 2010-present, Yang Lab, Westlake University
+* Please report bugs to Jian Yang <jian.yang@westlake.edu.cn>
+*******************************************************************
+Analysis started at 17:23:54 CDT on Fri Oct 06 2023.
+Hostname: argon-lc-g14-39.hpc
+
+*******************************************************************
+*******************************************************************
+* Genome-wide Complex Trait Analysis (GCTA)
+* Genome-wide Complex Trait Analysis (GCTA)
+* version v1.94.1 Linux
+* version v1.94.1 Linux
+* Built at Nov 15 2022 21:14:25, by GCC 8.5
+* (C) 2010-present, Yang Lab, Westlake University
+* Please report bugs to Jian Yang <jian.yang@westlake.edu.cn>
+* Built at Nov 15 2022 21:14:25, by GCC 8.5
+*******************************************************************
+* (C) 2010-present, Yang Lab, Westlake University
+* Please report bugs to Jian Yang <jian.yang@westlake.edu.cn>
+*******************************************************************
+Analysis started at 17:23:54 CDT on Fri Oct 06 2023.
+Hostname: argon-lc-g14-39.hpc
+
+Analysis started at 17:23:54 CDT on Fri Oct 06 2023.
+Hostname: argon-lc-g14-39.hpc
+
+*******************************************************************
+* Genome-wide Complex Trait Analysis (GCTA)
+* version v1.94.1 Linux
+* Built at Nov 15 2022 21:14:25, by GCC 8.5
+* (C) 2010-present, Yang Lab, Westlake University
+* Please report bugs to Jian Yang <jian.yang@westlake.edu.cn>
+*******************************************************************
+Analysis started at 17:23:54 CDT on Fri Oct 06 2023.
+Hostname: argon-lc-g14-39.hpc
+
+*******************************************************************
+* Genome-wide Complex Trait Analysis (GCTA)
+* version v1.94.1 Linux
+* Built at Nov 15 2022 21:14:25, by GCC 8.5
+* (C) 2010-present, Yang Lab, Westlake University
+* Please report bugs to Jian Yang <jian.yang@westlake.edu.cn>
+*******************************************************************
+Analysis started at 17:23:54 CDT on Fri Oct 06 2023.
+Hostname: argon-lc-g14-39.hpc
+
+Error: --extract /Dedicated/jmichaelson-wdata/msmuhammad/data/celltypes-cis-eQTLs/data/derivatives/Inhibitory-ID_37-FDR-sig not found
+An error occurs, please check the options or data
+Error: --extract /Dedicated/jmichaelson-wdata/msmuhammad/data/celltypes-cis-eQTLs/data/derivatives/Endothelial-ID_37-FDR-sig not found
+An error occurs, please check the options or data
+[1]Error: --extract /Dedicated/jmichaelson-wdata/msmuhammad/data/celltypes-cis-eQTLs/data/derivatives/Astrocytes-ID_37-FDR-sig not found
+An error occurs, please check the options or data
+ "done subsetting for celltype: Inhibitory"
+Error: --extract /Dedicated/jmichaelson-wdata/msmuhammad/data/celltypes-cis-eQTLs/data/derivatives/Microglia-ID_37-FDR-sig not found
+An error occurs, please check the options or data
+Error: --extract /Dedicated/jmichaelson-wdata/msmuhammad/data/celltypes-cis-eQTLs/data/derivatives/Oligodendrocytes-ID_37-FDR-sig not found
+[1] "done subsetting for celltype: Endothelial"An error occurs, please check the options or data
+
+Accepted options:
+[1]--bfile /Dedicated/jmichaelson-sdata/devGenes/merged_arrays/data/gsa2020_psycharray_merged
+--extract /Dedicated/jmichaelson-wdata/msmuhammad/data/celltypes-cis-eQTLs/data/derivatives/Excitatory-ID_37-FDR-sig
+ "done subsetting for celltype: Microglia"
+[1]--thread-num 2
+--recode
+ "done subsetting for celltype: Astrocytes"--out /Dedicated/jmichaelson-wdata/msmuhammad/projects/SLI/data/derivatives/genotypes-subset/Excitatory
+
+
+Note: the program will be running on 2 threads.
+
+[1] "done subsetting for celltype: Oligodendrocytes"
+Reading PLINK FAM file from [/Dedicated/jmichaelson-sdata/devGenes/merged_arrays/data/gsa2020_psycharray_merged.fam].
+1388 individuals to be included from [/Dedicated/jmichaelson-sdata/devGenes/merged_arrays/data/gsa2020_psycharray_merged.fam].
+Reading PLINK BIM file from [/Dedicated/jmichaelson-sdata/devGenes/merged_arrays/data/gsa2020_psycharray_merged.bim].
+[1] "this is the GCTA command for celltype: pb\n/Dedicated/jmichaelson-wdata/msmuhammad/workbench/gcta/gcta-1.94.1 --bfile /Dedicated/jmichaelson-sdata/devGenes/merged_arrays/data/gsa2020_psycharray_merged --extract /Dedicated/jmichaelson-wdata/msmuhammad/data/celltypes-cis-eQTLs/data/derivatives/pb-ID_37-FDR-sig --thread-num 2 --recode --out /Dedicated/jmichaelson-wdata/msmuhammad/projects/SLI/data/derivatives/genotypes-subset/pb"
+[1] "this is the GCTA command for celltype: Pericytes\n/Dedicated/jmichaelson-wdata/msmuhammad/workbench/gcta/gcta-1.94.1 --bfile /Dedicated/jmichaelson-sdata/devGenes/merged_arrays/data/gsa2020_psycharray_merged --extract /Dedicated/jmichaelson-wdata/msmuhammad/data/celltypes-cis-eQTLs/data/derivatives/Pericytes-ID_37-FDR-sig --thread-num 2 --recode --out /Dedicated/jmichaelson-wdata/msmuhammad/projects/SLI/data/derivatives/genotypes-subset/Pericytes"
+*******************************************************************
+* Genome-wide Complex Trait Analysis (GCTA)
+* version v1.94.1 Linux
+*******************************************************************
+* Built at Nov 15 2022 21:14:25, by GCC 8.5
+* Genome-wide Complex Trait Analysis (GCTA)
+* (C) 2010-present, Yang Lab, Westlake University
+* Please report bugs to Jian Yang <jian.yang@westlake.edu.cn>
+*******************************************************************
+* version v1.94.1 Linux
+* Built at Nov 15 2022 21:14:25, by GCC 8.5
+* (C) 2010-present, Yang Lab, Westlake University
+* Please report bugs to Jian Yang <jian.yang@westlake.edu.cn>
+*******************************************************************
+Analysis started at 17:23:55 CDT on Fri Oct 06 2023.
+Hostname: argon-lc-g14-39.hpc
+
+Analysis started at 17:23:55 CDT on Fri Oct 06 2023.
+Hostname: argon-lc-g14-39.hpc
+
+Error: --extract /Dedicated/jmichaelson-wdata/msmuhammad/data/celltypes-cis-eQTLs/data/derivatives/pb-ID_37-FDR-sig not found
+An error occurs, please check the options or data
+Error: --extract /Dedicated/jmichaelson-wdata/msmuhammad/data/celltypes-cis-eQTLs/data/derivatives/Pericytes-ID_37-FDR-sig not found
+An error occurs, please check the options or data
+[1][1] "done subsetting for celltype: pb"
+ "done subsetting for celltype: Pericytes"
+11850356 SNPs to be included from [/Dedicated/jmichaelson-sdata/devGenes/merged_arrays/data/gsa2020_psycharray_merged.bim].
+Reading a list of SNPs from [/Dedicated/jmichaelson-wdata/msmuhammad/data/celltypes-cis-eQTLs/data/derivatives/Excitatory-ID_37-FDR-sig].
+308878 SNPs are extracted from [/Dedicated/jmichaelson-wdata/msmuhammad/data/celltypes-cis-eQTLs/data/derivatives/Excitatory-ID_37-FDR-sig].
+Reading PLINK BED file from [/Dedicated/jmichaelson-sdata/devGenes/merged_arrays/data/gsa2020_psycharray_merged.bed] in SNP-major format ...
+Genotype data for 1388 individuals and 308878 SNPs to be included from [/Dedicated/jmichaelson-sdata/devGenes/merged_arrays/data/gsa2020_psycharray_merged.bed].
+Saving the recoded genotype matrix to the file [/Dedicated/jmichaelson-wdata/msmuhammad/projects/SLI/data/derivatives/genotypes-subset/Excitatory.xmat.gz].
+The recoded genotype matrix has been saved in the file [/Dedicated/jmichaelson-wdata/msmuhammad/projects/SLI/data/derivatives/genotypes-subset/Excitatory.xmat.gz] (in compressed text format).
+
+Analysis finished at 17:28:58 CDT on Fri Oct 06 2023
+Overall computational time: 5 minutes 3 sec.
+[1] "done subsetting for celltype: Excitatory"
+[1] "this is the GCTA command for celltype: OPCs\n/Dedicated/jmichaelson-wdata/msmuhammad/workbench/gcta/gcta-1.94.1 --bfile /Dedicated/jmichaelson-sdata/devGenes/merged_arrays/data/gsa2020_psycharray_merged --extract /Dedicated/jmichaelson-wdata/msmuhammad/data/celltypes-cis-eQTLs/data/derivatives/OPCs-ID_37-FDR-sig --thread-num 2 --recode --out /Dedicated/jmichaelson-wdata/msmuhammad/projects/SLI/data/derivatives/genotypes-subset/OPCs"
+*******************************************************************
+* Genome-wide Complex Trait Analysis (GCTA)
+* version v1.94.1 Linux
+* Built at Nov 15 2022 21:14:25, by GCC 8.5
+* (C) 2010-present, Yang Lab, Westlake University
+* Please report bugs to Jian Yang <jian.yang@westlake.edu.cn>
+*******************************************************************
+Analysis started at 17:28:58 CDT on Fri Oct 06 2023.
+Hostname: argon-lc-g14-39.hpc
+
+Error: --extract /Dedicated/jmichaelson-wdata/msmuhammad/data/celltypes-cis-eQTLs/data/derivatives/OPCs-ID_37-FDR-sig not found
+An error occurs, please check the options or data
+[1] "done subsetting for celltype: OPCs"
+Error in impute.tx(project_dir = project.dir, tissue_type = "all", celltype = T,  : 
+  could not find function "impute.tx"
+Execution halted
