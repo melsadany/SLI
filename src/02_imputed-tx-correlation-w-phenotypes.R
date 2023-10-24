@@ -135,12 +135,13 @@ tx.phe.corr <- foreach(i=1:length(files), .combine = rbind) %dopar% {
   return(f)
 }
 write_rds(tx.phe.corr, "data/derivatives/gene-by-phenotype-correlations/combined-brain-data.rds")
+#####
 tx.phe.corr <- read_rds("data/derivatives/gene-by-phenotype-correlations/combined-brain-data.rds")
 gc()
 ################################################################################
 ################################################################################
 ################################################################################
-# random forest predicting factos scores from imputed gene expression
+# random forest predicting factors scores from imputed gene expression
 library(randomForest)
 factors <- read_csv("/Dedicated/jmichaelson-wdata/common/SLI_WGS/public/phenotype/factors/pheno_factors_resid.csv")
 sample.mappings <- read_csv("/Dedicated/jmichaelson-wdata/common/SLI_WGS/public/phenotype/pheno_age_corrected.csv") %>%
@@ -150,6 +151,8 @@ sample.mappings <- read_csv("/Dedicated/jmichaelson-wdata/common/SLI_WGS/public/
 tissue.ls <- c("Adipose_Subcutaneous", "Adipose_Visceral_Omentum", "Adrenal_Gland", "Artery_Aorta", "Artery_Coronary", "Artery_Tibial", "Brain_Anterior_cingulate_cortex_BA24", "Brain_Caudate_basal_ganglia", "Brain_Cerebellar_Hemisphere", "Brain_Cerebellum", "Brain_Cortex", "Brain_Frontal_Cortex_BA9", "Brain_Hippocampus", "Brain_Hypothalamus", "Brain_Nucleus_accumbens_basal_ganglia", "Brain_Putamen_basal_ganglia", "Breast_Mammary_Tissue", "Cells_EBV-transformed_lymphocytes", "Cells_Transformed_fibroblasts", "Colon_Sigmoid", "Colon_Transverse", "Esophagus_Gastroesophageal_Junction", "Esophagus_Mucosa", "Esophagus_Muscularis", "Heart_Atrial_Appendage", "Heart_Left_Ventricle", "Liver", "Lung", "Muscle_Skeletal", "Nerve_Tibial", "Ovary", "Pancreas", "Pituitary", "Prostate", "Skin_Not_Sun_Exposed_Suprapubic", "Skin_Sun_Exposed_Lower_leg", "Small_Intestine_Terminal_Ileum", "Spleen", "Stomach", "Testis", "Thyroid", "Uterus", "Vagina", "Whole_Blood")
 # i=8
 registerDoMC(cores = 4)
+# build a RF to predict factors from gene expression of all genes per tissue
+# extract feature importance per RF and return it
 rf.importance <- foreach(i=7:16, .combine = rbind) %dopar% {
   tissue <- tissue.ls[i]
   tissue.tx.r <- pdsload(paste0("data/derivatives/imputed-tx/", tissue, ".rds.pxz"))
@@ -177,6 +180,7 @@ rf.importance <- foreach(i=7:16, .combine = rbind) %dopar% {
     ggplot(aes(x=t, y=MSE)) +
     geom_line() +
     labs(x = "trees", title = tissue)
+  # actual VS. predicted values
   p2 <- data.frame(o = rf.model$y, predicted = rf.model$predicted) %>%
     ggplot(aes(x = o, y = predicted)) +
     geom_point(alpha = 0.6) +
@@ -189,10 +193,12 @@ rf.importance <- foreach(i=7:16, .combine = rbind) %dopar% {
   rm(rf.model);rm(tissue.tx);gc()
   return(importance)
 }
+# histogram of feature importance per tissue for genes
 rf.importance %>%
   ggplot(aes(x = IncNodePurity)) +
   geom_histogram(bins = 50) +
   facet_wrap(~tissue, scales = "free", ncol = 2)
+# keep top 5% of genes per tissue based on their feature importance (95% quantile)
 top5 <- rf.importance %>%
   group_by(tissue) %>%
   filter(IncNodePurity > as.numeric(quantile(IncNodePurity, probs = 0.95)))
@@ -203,10 +209,10 @@ top5 <- rf.importance %>%
 ################################################################################
 # check how many gene of Tanner's langugae list are there with significant pearson corr
 tk.genes <- read.csv("/wdata/common/SLI_WGS/gene-lists/Language-Literatue-Review-Genes.csv")
+# plot how many genes of TK list are there in your gene-phenotype sig correlation
 right_join(tx.phe.corr %>% rename(gene = V2),
            tk.genes %>% select(gene =1),
            relationship = "many-to-many") %>%
-  # tx.phe.corr %>% rename(gene = V2) %>%
   distinct(V1, gene, tissue, .keep_all = T) %>%
   group_by(tissue, V1) %>%
   drop_na() %>%
@@ -215,10 +221,8 @@ right_join(tx.phe.corr %>% rename(gene = V2),
          phenotype = factor(sub("^[^_]+_([^_]+)_(\\w+)$", "\\2", V1)),
          tissue = sub("Brain_", "", tissue)) %>%
   ggplot(aes(x = tissue, y=grade, fill = count, label = ifelse(count>5,count,""))) +
-  # geom_bar(width = 0.5) +
   geom_tile() +
   geom_text(size = 3) +
-  # geom_bar(stat = "identity") +
   facet_grid2(rows = vars(phenotype),
               scales = "free", space = "free")+
   labs(x="", y="") +
@@ -226,8 +230,8 @@ right_join(tx.phe.corr %>% rename(gene = V2),
   theme(strip.text.y.right = element_text(angle = 0),
         strip.text.x.top = element_text(angle = 90)
         )
-length(unique(tk.genes$Gene.Region))
 
+# plot heatmap for correlations found between tx and phenotype for language genes in all brain tissues
 inner_join(tx.phe.corr %>% rename(gene = V2),
            tk.genes %>% select(gene =1),
            relationship = "many-to-many") %>%
@@ -249,6 +253,7 @@ inner_join(tx.phe.corr %>% rename(gene = V2),
   )
 ################################################################################
 # check available TK genes in important genes by RF
+# barplot for how many language genes found in top 5% important genes in RF models per tissue
 p2 <- top5 %>%
   mutate(TK = ifelse(gene %in% tk.genes$Gene.Region, 1, 0),
          tissue = sub("Brain_", "", tissue)) %>%
@@ -258,6 +263,7 @@ p2 <- top5 %>%
   geom_bar(stat = "identity", width = 0.5) +
   labs(x = "number of genes in TK language list", y="") +
   theme(axis.text.y.left = element_blank())
+# barplot for how many genes are the top 5% in RF models per tissue
 p1 <- top5 %>%
   mutate(TK = ifelse(gene %in% tk.genes$Gene.Region, 1, 0),
          tissue = sub("Brain_", "", tissue)) %>%
@@ -267,6 +273,8 @@ p1 <- top5 %>%
   geom_bar(stat = "identity", width = 0.5) +
   labs(x = "number of top 5% important genes", y="", 
        title = "Top 5% of important genes per tissue in RF model")
+# plot the importance distribution in a boxplot for RF models per tissue
+# add labels if TK language genes are in these top 5% genes
 d <- top5 %>%
   mutate(TK = ifelse(gene %in% tk.genes$Gene.Region, 1, 0)%>%as.factor(),
          tissue = sub("Brain_", "", tissue))
@@ -274,8 +282,6 @@ p3 <- d %>%
   ggplot(aes(y = tissue, x = IncNodePurity)) +
   geom_boxplot(width = 0.5, outlier.size = 0) +
   geom_point(alpha = 0.3, size = 0.4, data = d %>% filter(TK==1), color = "red") +
-  # geom_text(size = 2)+
-  # scale_color_manual(values = c("black","red")) +
   geom_text_repel(aes(label = ifelse(TK==1, gene, "")), 
                   box.padding = 1, force = 0.25, max.overlaps = Inf, size = 2) +
   labs(y="") +
