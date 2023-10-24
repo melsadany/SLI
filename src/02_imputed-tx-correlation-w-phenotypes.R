@@ -4,6 +4,7 @@
 rm(list = ls())
 gc()
 source("/Dedicated/jmichaelson-wdata/msmuhammad/msmuhammad-source.R")
+library(ggh4x)
 ################################################################################
 ################################################################################
 project.dir <- "/Dedicated/jmichaelson-wdata/msmuhammad/projects/SLI"
@@ -28,6 +29,8 @@ foreach(i=1:length(tissue.ls)) %dopar% {
   rm(tissue.tx.r); gc()
   tx.fa <- inner_join(factors, inner_join(sample.mappings,tissue.tx))
   registerDoMC(cores = 4)
+  
+  # build the model as gene_expression ~ all factors
   # tissue.output <- foreach(j=1:ncol(tx.fa), .combine = rbind) %dopar% {
   #   gene <- colnames(tx.fa)[j]
   #   if (gene %in% colnames(tissue.tx)[-1]) {
@@ -57,6 +60,8 @@ foreach(i=1:length(tissue.ls)) %dopar% {
   #     mutate(factor = factor)
   # }
   # write_csv(factor.output, paste0("data/derivatives/genes-predicting-factor/", tissue, ".csv"))
+  
+  # build the model as Factor_score ~ all genes expression
   factor.output <- corr.func(tx.fa %>% 
                                select(starts_with("Factor")) %>%
                                mutate_all(.funs = function(x) scale(x, scale = T, center = T)[,1]), 
@@ -64,6 +69,7 @@ foreach(i=1:length(tissue.ls)) %dopar% {
                                select(colnames(tissue.tx)[-1]) %>%
                                mutate_all(.funs = function(x) scale(x, scale = T, center = T)[,1]))
   write_csv(factor.output, paste0("data/derivatives/gene-by-factor-correlations/", tissue, ".csv"))
+  
 }
 
 ################################################################################
@@ -87,12 +93,120 @@ ge.fa.corr <- foreach(i=1:length(files), .combine = rbind) %dopar% {
   return(f)
 }
 ge.fa.corr.filt <- ge.fa.corr %>%
-  filter(grepl("Brain", tissue)) %>%
+  filter(grepl("Brain", tissue), pval < 0.05) %>%
   group_by(tissue) %>%
   mutate(FDR = p.adjust(pval))
 ################################################################################
+################################################################################
+################################################################################
+################################################################################
+# get correlations between imputed tx and raw phenotypes
+# independent section
+phenotypes <- read_csv("/Dedicated/jmichaelson-wdata/common/SLI_WGS/public/phenotype/pheno_imputed.csv")
+tissue.ls <- c("Adipose_Subcutaneous", "Adipose_Visceral_Omentum", "Adrenal_Gland", "Artery_Aorta", "Artery_Coronary", "Artery_Tibial", "Brain_Anterior_cingulate_cortex_BA24", "Brain_Caudate_basal_ganglia", "Brain_Cerebellar_Hemisphere", "Brain_Cerebellum", "Brain_Cortex", "Brain_Frontal_Cortex_BA9", "Brain_Hippocampus", "Brain_Hypothalamus", "Brain_Nucleus_accumbens_basal_ganglia", "Brain_Putamen_basal_ganglia", "Breast_Mammary_Tissue", "Cells_EBV-transformed_lymphocytes", "Cells_Transformed_fibroblasts", "Colon_Sigmoid", "Colon_Transverse", "Esophagus_Gastroesophageal_Junction", "Esophagus_Mucosa", "Esophagus_Muscularis", "Heart_Atrial_Appendage", "Heart_Left_Ventricle", "Liver", "Lung", "Muscle_Skeletal", "Nerve_Tibial", "Ovary", "Pancreas", "Pituitary", "Prostate", "Skin_Not_Sun_Exposed_Suprapubic", "Skin_Sun_Exposed_Lower_leg", "Small_Intestine_Terminal_Ileum", "Spleen", "Stomach", "Testis", "Thyroid", "Uterus", "Vagina", "Whole_Blood")
+# tissue.ls <- c("Excitatory", "Astrocytes", "Endothelial", "Inhibitory", "Microglia", "Oligodendrocytes", "OPCs", "Pericytes", "pb")
+registerDoMC(cores=4)
+foreach(i=1:length(tissue.ls)) %dopar% {
+  tissue <- tissue.ls[i]
+  tissue.tx.r <- pdsload(paste0("data/derivatives/imputed-tx/", tissue, ".rds.pxz"))
+  tissue.tx <- tissue.tx.r[rownames(tissue.tx.r) %in% phenotypes$id,] %>% 
+    as.data.frame() %>%
+    rownames_to_column("id")
+  rm(tissue.tx.r); gc()
+  tx.phe <- inner_join(phenotypes, tissue.tx)
+  tx.phe.corr <- corr.table(tx.phe %>% 
+                             select(colnames(phenotypes)[-c(1:4)]) %>%
+                             mutate_all(.funs = function(x) scale(x, scale = T, center = T)[,1]),
+                           tx.phe %>% 
+                             select(colnames(tissue.tx)[-1]) %>%
+                             mutate_all(.funs = function(x) scale(x, scale = T, center = T)[,1])) %>%
+    filter(V1 %in% colnames(phenotypes), !V2 %in% colnames(phenotypes)) %>%
+    mutate(FDR = p.adjust(pval, method = "fdr"))
+  # write_csv(tx.phe.corr, paste0("data/derivatives/gene-by-phenotype-correlations/", tissue, ".csv"))
+  # pdssave(tx.phe.corr, file = paste0("data/derivatives/gene-by-phenotype-correlations/", tissue, ".rds"))
+  pdssave(tx.phe.corr %>% filter(pval < 0.05), 
+          file = paste0("data/derivatives/gene-by-phenotype-correlations/", tissue, "-sig.rds"))
+}
 
+files <- list.files("data/derivatives/gene-by-phenotype-correlations", pattern = "Brain")
+tx.phe.corr <- foreach(i=1:length(files), .combine = rbind) %dopar% {
+  f <- pdsload(fname = paste0("data/derivatives/gene-by-phenotype-correlations/", files[i])) %>% 
+    mutate(tissue = sub("-sig.rds.pxz", "", files[i]))
+  return(f)
+}
+write_rds(tx.phe.corr, "data/derivatives/gene-by-phenotype-correlations/combined-brain-data.rds")
+tx.phe.corr <- read_rds("data/derivatives/gene-by-phenotype-correlations/combined-brain-data.rds")
+gc()
+################################################################################
+################################################################################
+################################################################################
+# random forest predicting factos scores from imputed gene expression
+library(randomForest)
+factors <- read_csv("/Dedicated/jmichaelson-wdata/common/SLI_WGS/public/phenotype/factors/pheno_factors_resid.csv")
+sample.mappings <- read_csv("/Dedicated/jmichaelson-wdata/common/SLI_WGS/public/phenotype/pheno_age_corrected.csv") %>%
+  select(id, sample = core_id) %>%
+  filter(sample %in% factors$sample)
+#####
+tissue.ls <- c("Adipose_Subcutaneous", "Adipose_Visceral_Omentum", "Adrenal_Gland", "Artery_Aorta", "Artery_Coronary", "Artery_Tibial", "Brain_Anterior_cingulate_cortex_BA24", "Brain_Caudate_basal_ganglia", "Brain_Cerebellar_Hemisphere", "Brain_Cerebellum", "Brain_Cortex", "Brain_Frontal_Cortex_BA9", "Brain_Hippocampus", "Brain_Hypothalamus", "Brain_Nucleus_accumbens_basal_ganglia", "Brain_Putamen_basal_ganglia", "Breast_Mammary_Tissue", "Cells_EBV-transformed_lymphocytes", "Cells_Transformed_fibroblasts", "Colon_Sigmoid", "Colon_Transverse", "Esophagus_Gastroesophageal_Junction", "Esophagus_Mucosa", "Esophagus_Muscularis", "Heart_Atrial_Appendage", "Heart_Left_Ventricle", "Liver", "Lung", "Muscle_Skeletal", "Nerve_Tibial", "Ovary", "Pancreas", "Pituitary", "Prostate", "Skin_Not_Sun_Exposed_Suprapubic", "Skin_Sun_Exposed_Lower_leg", "Small_Intestine_Terminal_Ileum", "Spleen", "Stomach", "Testis", "Thyroid", "Uterus", "Vagina", "Whole_Blood")
+# i=8
+registerDoMC(cores = 6)
+foreach(i=1:length(tissue.ls)) %dopar% {
+  tissue <- tissue.ls[i]
+  tissue.tx.r <- pdsload(paste0("data/derivatives/imputed-tx/", tissue, ".rds.pxz"))
+  tissue.tx <- tissue.tx.r[rownames(tissue.tx.r) %in% sample.mappings$id,] %>% 
+    as.data.frame() %>%
+    rownames_to_column("id")
+  rm(tissue.tx.r); gc()
+  ge.names <- data.frame(o = colnames(tissue.tx)[-1]) %>% 
+    mutate(n = sub("-", "_", o))
+  colnames(tissue.tx)[-1] <- ge.names$n
+  tx.fa <- inner_join(factors, inner_join(sample.mappings,tissue.tx)) %>%
+    select(starts_with("Factor"), colnames(tissue.tx)[-1])
+  # Train the Random Forest model
+  rf.model <- randomForest(as.formula(paste0(paste(paste0("Factor", 1:7), collapse = " + "), " ~ .")),
+                           data = tx.fa, 
+                           ntree = 100)
+  # Get feature importance
+  importance <- rf.model$importance
+  
+}
+
+################################################################################
+################################################################################
+################################################################################
+################################################################################
+################################################################################
+# check how many gene of Tanner's langugae list are there with significant pearson corr
+tk.genes <- read.csv("/wdata/common/SLI_WGS/gene-lists/Language-Literatue-Review-Genes.csv")
+right_join(tx.phe.corr %>% rename(gene = V2),
+           tk.genes %>% select(gene =1),
+           relationship = "many-to-many") %>%
+  # tx.phe.corr %>% rename(gene = V2) %>%
+  distinct(V1, gene, tissue, .keep_all = T) %>%
+  group_by(tissue, V1) %>%
+  drop_na() %>%
+  dplyr::summarise(count = n()) %>%
+  mutate(grade = sub("_.*", "", V1),
+         phenotype = factor(sub("^[^_]+_([^_]+)_(\\w+)$", "\\2", V1)),
+         tissue = sub("Brain_", "", tissue)) %>%
+  ggplot(aes(x = tissue, y=grade, fill = count, label = ifelse(count>5,count,""))) +
+  # geom_bar(width = 0.5) +
+  geom_tile() +
+  geom_text(size = 3) +
+  # geom_bar(stat = "identity") +
+  facet_grid2(rows = vars(phenotype),
+              scales = "free", space = "free")+
+  labs(x="", y="") +
+  my.guides + scale_fill_gradient2(low = "black", high = "#800000") +
+  theme(strip.text.y.right = element_text(angle = 0),
+        strip.text.x.top = element_text(angle = 90)
+        )
+length(unique(tk.genes$Gene.Region))
+################################################################################
+
+################################################################################
 
 
 ################################################################################
 
+################################################################################
