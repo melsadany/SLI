@@ -86,16 +86,16 @@ sample.mappings <- read_csv("/Dedicated/jmichaelson-wdata/common/SLI_WGS/public/
 #   mutate(FDR = p.adjust(`Pr(>|t|)`))
 # ################################################################################
 # # gene by factor correlations
-# files <- list.files("data/derivatives/gene-by-factor-correlations")
+# files <- list.files("data/derivatives/gene-by-factor-correlations", pattern = "Brain")
 # ge.fa.corr <- foreach(i=1:length(files), .combine = rbind) %dopar% {
-#   f <- read_csv(paste0("data/derivatives/gene-by-factor-correlations/", files[i])) %>% 
-#     mutate(tissue = sub(".csv", "", files[i]))
+#   f <- read_csv(paste0("data/derivatives/gene-by-factor-correlations/", files[i])) %>%
+#     mutate(tissue = sub(".csv", "", files[i])) %>%
+#     mutate(FDR = p.adjust(pval, method = "fdr")) %>%
+#     filter(pval<0.05)
 #   return(f)
 # }
-# ge.fa.corr.filt <- ge.fa.corr %>%
-#   filter(grepl("Brain", tissue), pval < 0.05) %>%
-#   group_by(tissue) %>%
-#   mutate(FDR = p.adjust(pval))
+# write_rds(ge.fa.corr, "data/derivatives/gene-by-factor-correlations/combined-sig-brain-data.rds")
+ge.fa.corr <- read_rds("data/derivatives/gene-by-factor-correlations/combined-sig-brain-data.rds")
 ################################################################################
 ################################################################################
 ################################################################################
@@ -207,7 +207,7 @@ top5 <- rf.importance %>%
 ################################################################################
 ################################################################################
 ################################################################################
-# check how many gene of Tanner's langugae list are there with significant pearson corr
+# check how many genes of TK list are there with sign gene phenotype correlations
 tk.genes <- read.csv("/wdata/common/SLI_WGS/gene-lists/Language-Literatue-Review-Genes.csv")
 # plot how many genes of TK list are there in your gene-phenotype sig correlation
 right_join(tx.phe.corr %>% rename(gene = V2),
@@ -291,6 +291,40 @@ patchwork::wrap_plots(p1+theme(axis.title.x.bottom = element_text(size = 7)),
                       p3, widths = c(1,1,3))
 
 ################################################################################
+# check available TK genes in gene factors sig correlations
+# plot how many genes of TK list are there in your gene-factor sig correlation
+right_join(ge.fa.corr %>% rename(gene = V2),
+           tk.genes %>% select(gene =1),
+           relationship = "many-to-many") %>%
+  distinct(V1, gene, tissue, .keep_all = T) %>%
+  group_by(tissue, V1) %>%
+  drop_na() %>%
+  dplyr::summarise(count = n()) %>%
+  mutate(phenotype = V1,
+         tissue = sub("Brain_", "", tissue)) %>%
+  ggplot(aes(x = tissue, y=phenotype, fill = count, label = ifelse(count>5,count,""))) +
+  geom_tile() +
+  geom_text(size = 3) +
+  labs(x="", y="") +
+  my.guides + scale_fill_gradient2(low = "black", high = "#800000")
+
+# plot heatmap for correlations found between tx and factors for language genes in all brain tissues
+inner_join(ge.fa.corr %>% rename(gene = V2),
+           tk.genes %>% select(gene =1),
+           relationship = "many-to-many") %>%
+  distinct(V1, gene, tissue, .keep_all = T) %>%
+  drop_na() %>%
+  mutate(phenotype = V1,
+         tissue = sub("Brain_", "", tissue)) %>%
+  ggplot(aes(x = tissue, y = phenotype))+
+  geom_tile(aes(fill = r)) +
+  facet_grid2(axes = "all" ,remove_labels = "all",
+              cols = vars(gene),
+              scales = "free", space = "free")+
+  my.guides + scale_fill_gradient2(low = "black", high = "#800000") +
+  labs(x = "", y="", title = "correlation between imputed tx for TK language genes and factors per tissue") +
+  theme(strip.text.x.top = element_text(angle = 90),
+        axis.text.x.bottom = element_text(size=7))
 
 
 ################################################################################
