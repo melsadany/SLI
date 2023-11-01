@@ -450,7 +450,8 @@ foreach(j=1:length(tissue.ls)) %dopar% {
          bg = "white", width = 9, height = 9, units = "in")
   ggsave(p4, filename = paste0("figs/CCA/tx-phenotypes/p4-", tissue, ".png"), 
          bg = "white", width = 6, height = 5, units = "in")
-  ggsave(p5, filename = paste0("figs/CCA/tx-phenotypes/p5-", tissue, ".png"), bg = "white")
+  ggsave(p5, filename = paste0("figs/CCA/tx-phenotypes/p5-", tissue, ".png"), 
+         bg = "white", width = 10, height = 10, units = "in")
   ######################################################
   # CCA for 3 blocks ~ imputed-tx, PGS, and phenotypes #
   ######################################################
@@ -463,73 +464,73 @@ foreach(j=1:length(tissue.ls)) %dopar% {
                           ncomp = 10, verbose = T, method = "sgcca", 
                           response = 1)
   # needed diagnostic plots
-  p1<- plot(tx.phe.pgs.cca, type = "ave", cex = 1) # average variance explained for components by block
-  # component loadings
-  loadings.plots <- list()
-  for (i in 1:5) {
-    loadings.plots[[i]] <- plot(tx.phe.pgs.cca, type = "weight", comp = i, display_order = FALSE, cex = 0.7)
-  }
-  p2<- patchwork::wrap_plots(loadings.plots[[1]],loadings.plots[[2]], loadings.plots[[3]],loadings.plots[[4]], 
-                             loadings.plots[[5]], ncol = 2)
+  # p1<- plot(tx.phe.pgs.cca, type = "ave", cex = 1) # average variance explained for components by block
+  # # component loadings
+  # loadings.plots <- list()
+  # for (i in 1:5) {
+  #   loadings.plots[[i]] <- plot(tx.phe.pgs.cca, type = "weight", comp = i, display_order = FALSE, cex = 0.7)
+  # }
+  # p2<- patchwork::wrap_plots(loadings.plots[[1]],loadings.plots[[2]], loadings.plots[[3]],loadings.plots[[4]], 
+  #                            loadings.plots[[5]], ncol = 2)
   # look at correlation between components 
   t2 <- data.frame(id= tx.phe.pgs$id,
                    ph_cc = tx.phe.pgs.cca$Y$phenotypes,
                    tx_cc = tx.phe.pgs.cca$Y$imputed_tx,
                    pgs_cc = tx.phe.pgs.cca$Y$PGS)
-  p3_12 <- t2 %>%
-    pivot_longer(cols = starts_with("tx_"), names_to = "tx_cc", values_to = "tx_cc_v") %>%
-    pivot_longer(cols = starts_with("ph_"), names_to = "ph_cc", values_to = "ph_cc_v") %>%
-    mutate(tx_cc = as.numeric(sub("tx_cc.comp", "", tx_cc)),
-           ph_cc = as.numeric(sub("ph_cc.comp", "", ph_cc))) %>%
-    ggplot(aes(x=tx_cc_v, y=ph_cc_v)) +
-    geom_point(alpha=0.1, size=0.005) +
-    geom_smooth(method = "glm")+
-    facet_grid2(rows = vars(ph_cc), cols = vars(tx_cc), scales = "free") +
-    labs(x="imputed-tx components", y = "phenotypes components") +
-    theme(strip.text.y.right = element_text(angle = 0))
-  p3_13 <- t2 %>%
-    pivot_longer(cols = starts_with("tx_"), names_to = "tx_cc", values_to = "tx_cc_v") %>%
-    pivot_longer(cols = starts_with("pgs_"), names_to = "pgs_cc", values_to = "pgs_cc_v") %>%
-    mutate(tx_cc = as.numeric(sub("tx_cc.comp", "", tx_cc)),
-           pgs_cc = as.numeric(sub("pgs_cc.comp", "", pgs_cc))) %>%
-    ggplot(aes(x=tx_cc_v, y=pgs_cc_v)) +
-    geom_point(alpha=0.1, size=0.005) +
-    geom_smooth(method = "glm")+
-    facet_grid2(rows = vars(pgs_cc), cols = vars(tx_cc), scales = "free") +
-    labs(x="imputed-tx components", y = "PGS components") +
-    theme(strip.text.y.right = element_text(angle = 0))
-  p3_23 <- t2 %>%
-    pivot_longer(cols = starts_with("pgs_"), names_to = "pgs_cc", values_to = "pgs_cc_v") %>%
-    pivot_longer(cols = starts_with("ph_"), names_to = "ph_cc", values_to = "ph_cc_v") %>%
-    mutate(pgs_cc = as.numeric(sub("pgs_cc.comp", "", pgs_cc)),
-           ph_cc = as.numeric(sub("ph_cc.comp", "", ph_cc))) %>%
-    ggplot(aes(x=pgs_cc_v, y=ph_cc_v)) +
-    geom_point(alpha=0.1, size=0.005) +
-    geom_smooth(method = "glm")+
-    facet_grid2(rows = vars(ph_cc), cols = vars(pgs_cc), scales = "free") +
-    labs(x="PGS components", y = "phenotypes components") +
-    theme(strip.text.y.right = element_text(angle = 0))
-  p4_12 <- corr.table(t2%>%select(starts_with("tx")), t2%>%select(starts_with("ph"))) %>%
-    filter(grepl("tx", V1), grepl("ph", V2)) %>%
-    ggplot(aes(x=V1, y=V2, fill = r, label = ifelse(pval<0.05, "*", ""))) +
-    geom_tile()+
-    redblu.col.gradient+my.guides+
-    geom_text(size=2) +
-    null_labs
-  p4_13 <- corr.table(t2%>%select(starts_with("tx")), t2%>%select(starts_with("pgs"))) %>%
-    filter(grepl("tx", V1), grepl("pgs", V2)) %>%
-    ggplot(aes(x=V1, y=V2, fill = r, label = ifelse(pval<0.05, "*", ""))) +
-    geom_tile()+
-    redblu.col.gradient+my.guides+
-    geom_text(size=2) +
-    null_labs
-  p4_23 <- corr.table(t2%>%select(starts_with("pgs")), t2%>%select(starts_with("ph"))) %>%
-    filter(grepl("pgs", V1), grepl("ph", V2)) %>%
-    ggplot(aes(x=V1, y=V2, fill = r, label = ifelse(pval<0.05, "*", ""))) +
-    geom_tile()+
-    redblu.col.gradient+my.guides+
-    geom_text(size=2) +
-    null_labs
+  # p3_12 <- t2 %>%
+  #   pivot_longer(cols = starts_with("tx_"), names_to = "tx_cc", values_to = "tx_cc_v") %>%
+  #   pivot_longer(cols = starts_with("ph_"), names_to = "ph_cc", values_to = "ph_cc_v") %>%
+  #   mutate(tx_cc = as.numeric(sub("tx_cc.comp", "", tx_cc)),
+  #          ph_cc = as.numeric(sub("ph_cc.comp", "", ph_cc))) %>%
+  #   ggplot(aes(x=tx_cc_v, y=ph_cc_v)) +
+  #   geom_point(alpha=0.1, size=0.005) +
+  #   geom_smooth(method = "glm")+
+  #   facet_grid2(rows = vars(ph_cc), cols = vars(tx_cc), scales = "free") +
+  #   labs(x="imputed-tx components", y = "phenotypes components") +
+  #   theme(strip.text.y.right = element_text(angle = 0))
+  # p3_13 <- t2 %>%
+  #   pivot_longer(cols = starts_with("tx_"), names_to = "tx_cc", values_to = "tx_cc_v") %>%
+  #   pivot_longer(cols = starts_with("pgs_"), names_to = "pgs_cc", values_to = "pgs_cc_v") %>%
+  #   mutate(tx_cc = as.numeric(sub("tx_cc.comp", "", tx_cc)),
+  #          pgs_cc = as.numeric(sub("pgs_cc.comp", "", pgs_cc))) %>%
+  #   ggplot(aes(x=tx_cc_v, y=pgs_cc_v)) +
+  #   geom_point(alpha=0.1, size=0.005) +
+  #   geom_smooth(method = "glm")+
+  #   facet_grid2(rows = vars(pgs_cc), cols = vars(tx_cc), scales = "free") +
+  #   labs(x="imputed-tx components", y = "PGS components") +
+  #   theme(strip.text.y.right = element_text(angle = 0))
+  # p3_23 <- t2 %>%
+  #   pivot_longer(cols = starts_with("pgs_"), names_to = "pgs_cc", values_to = "pgs_cc_v") %>%
+  #   pivot_longer(cols = starts_with("ph_"), names_to = "ph_cc", values_to = "ph_cc_v") %>%
+  #   mutate(pgs_cc = as.numeric(sub("pgs_cc.comp", "", pgs_cc)),
+  #          ph_cc = as.numeric(sub("ph_cc.comp", "", ph_cc))) %>%
+  #   ggplot(aes(x=pgs_cc_v, y=ph_cc_v)) +
+  #   geom_point(alpha=0.1, size=0.005) +
+  #   geom_smooth(method = "glm")+
+  #   facet_grid2(rows = vars(ph_cc), cols = vars(pgs_cc), scales = "free") +
+  #   labs(x="PGS components", y = "phenotypes components") +
+  #   theme(strip.text.y.right = element_text(angle = 0))
+  # p4_12 <- corr.table(t2%>%select(starts_with("tx")), t2%>%select(starts_with("ph"))) %>%
+  #   filter(grepl("tx", V1), grepl("ph", V2)) %>%
+  #   ggplot(aes(x=V1, y=V2, fill = r, label = ifelse(pval<0.05, "*", ""))) +
+  #   geom_tile()+
+  #   redblu.col.gradient+my.guides+
+  #   geom_text(size=2) +
+  #   null_labs
+  # p4_13 <- corr.table(t2%>%select(starts_with("tx")), t2%>%select(starts_with("pgs"))) %>%
+  #   filter(grepl("tx", V1), grepl("pgs", V2)) %>%
+  #   ggplot(aes(x=V1, y=V2, fill = r, label = ifelse(pval<0.05, "*", ""))) +
+  #   geom_tile()+
+  #   redblu.col.gradient+my.guides+
+  #   geom_text(size=2) +
+  #   null_labs
+  # p4_23 <- corr.table(t2%>%select(starts_with("pgs")), t2%>%select(starts_with("ph"))) %>%
+  #   filter(grepl("pgs", V1), grepl("ph", V2)) %>%
+  #   ggplot(aes(x=V1, y=V2, fill = r, label = ifelse(pval<0.05, "*", ""))) +
+  #   geom_tile()+
+  #   redblu.col.gradient+my.guides+
+  #   geom_text(size=2) +
+  #   null_labs
   p4 <- patchwork::wrap_plots(p4_12, p4_13, p4_23)
   # visualize component loadings
   l2 <- cbind(cc = as.factor(1:10),
@@ -566,17 +567,18 @@ foreach(j=1:length(tissue.ls)) %dopar% {
   # pdf(file = paste0("figs/CCA/tx-phenotypes-pgs/", tissue, ".pdf"), width = 13.5, height = 12.5)
   # print(p1);print(p2);print(p3_12);print(p3_13);print(p3_23);print(p4_12);print(p4_13);print(p4_23);print(p5)
   # dev.off()
-  ggsave(p1, filename = paste0("figs/CCA/tx-phenotypes-pgs/p1-", tissue, ".png"), 
-         bg = "white", width = 9, height = 5, units = "in")
-  ggsave(p3_12, filename = paste0("figs/CCA/tx-phenotypes-pgs/p3_12-", tissue, ".png"), 
-         bg = "white", width = 9, height = 9, units = "in")
-  ggsave(p3_13, filename = paste0("figs/CCA/tx-phenotypes-pgs/p3_13-", tissue, ".png"), 
-         bg = "white", width = 9, height = 9, units = "in")
-  ggsave(p3_23, filename = paste0("figs/CCA/tx-phenotypes-pgs/p3_23-", tissue, ".png"), 
-         bg = "white", width = 9, height = 9, units = "in")
-  ggsave(p4, filename = paste0("figs/CCA/tx-phenotypes-pgs/p4-", tissue, ".png"), 
-         bg = "white", width = 10.2, height = 5, units = "in")
-  ggsave(p5, filename = paste0("figs/CCA/tx-phenotypes-pgs/p5-", tissue, ".png"), bg = "white")
+  # ggsave(p1, filename = paste0("figs/CCA/tx-phenotypes-pgs/p1-", tissue, ".png"), 
+  #        bg = "white", width = 9, height = 5, units = "in")
+  # ggsave(p3_12, filename = paste0("figs/CCA/tx-phenotypes-pgs/p3_12-", tissue, ".png"), 
+  #        bg = "white", width = 9, height = 9, units = "in")
+  # ggsave(p3_13, filename = paste0("figs/CCA/tx-phenotypes-pgs/p3_13-", tissue, ".png"), 
+  #        bg = "white", width = 9, height = 9, units = "in")
+  # ggsave(p3_23, filename = paste0("figs/CCA/tx-phenotypes-pgs/p3_23-", tissue, ".png"), 
+  #        bg = "white", width = 9, height = 9, units = "in")
+  # ggsave(p4, filename = paste0("figs/CCA/tx-phenotypes-pgs/p4-", tissue, ".png"), 
+  #        bg = "white", width = 10.2, height = 5, units = "in")
+  ggsave(p5, filename = paste0("figs/CCA/tx-phenotypes-pgs/p5-", tissue, ".png"), 
+         bg = "white", width = 11, height = 11, units = "in")
   #################################################
   # saving data ~ CCA loadings and sample weights #
   #################################################
